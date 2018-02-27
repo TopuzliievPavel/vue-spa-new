@@ -1,0 +1,180 @@
+$folder: 'ht-font';
+
+@font-face {
+  font-family: 'TipsterIconset';
+  src:
+    url('#{$font-path}/#{$folder}/ht.woff?4ne0a4') format('woff'),
+    url('#{$font-path}/#{$folder}/ht.ttf?4ne0a4') format('truetype'),
+    url('#{$font-path}/#{$folder}/ht.svg?4ne0a4#ht') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ht {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'TipsterIconset' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.virtual_assistant:before {
+  content: "\e900";
+}
+.interviews:before {
+  content: "\e901";
+}
+.native-articles:before {
+  content: "\e902";
+}
+.native-videos:before {
+  content: "\e903";
+}
+.socialmedia-blasts:before {
+  content: "\e904";
+}
+.banner-ad:before {
+  content: "\e905";
+}
+.email-blasts:before {
+  content: "\e906";
+}
+.adverts:before {
+  content: "\e907";
+}
+.gallery:before {
+  content: "\e908";
+}
+.ext-vr:before {
+  content: "\e909";
+}
+.homeowner:before {
+  content: "\e90a";
+}
+.vr-key:before {
+  content: "\e90b";
+}
+.cross-mark:before {
+  content: "\e90c";
+}
+.close-popup-btn:before {
+  content: "\e90d";
+}
+.ht-logo:before {
+  content: "\e90e";
+}
+.ic_share:before {
+  content: "\e90f";
+}
+.armchair:before {
+  content: "\e910";
+}
+.bed:before {
+  content: "\e911";
+}
+.vr-cam9:before {
+  content: "\e912";
+}
+.vr-cam10:before {
+  content: "\e913";
+}
+.ht-sponsor:before {
+  content: "\e914";
+}
+.vr-box:before {
+  content: "\e915";
+}
+.visualizer:before {
+  content: "\e916";
+}
+.chick:before {
+  content: "\e917";
+}
+.vr-rotate:before {
+  content: "\e918";
+}
+.vr-face:before {
+  content: "\e919";
+}
+.vr-play:before {
+  content: "\e91a";
+}
+.vr-label:before {
+  content: "\e91b";
+}
+.vr-cam1:before {
+  content: "\e91c";
+}
+.vr-cam2:before {
+  content: "\e91d";
+}
+.vr-cam3:before {
+  content: "\e91e";
+}
+.vr-cam4:before {
+  content: "\e91f";
+}
+.vr-cam5:before {
+  content: "\e920";
+}
+.vr-cam6:before {
+  content: "\e921";
+}
+.vr-cam7:before {
+  content: "\e922";
+}
+.vr-cam8:before {
+  content: "\e923";
+}
+.Vplus-logo:before {
+  content: "\e924";
+}
+.pro-user:before {
+  content: "\e925";
+}
+.view-4:before {
+  content: "\e926";
+}
+.view-3:before {
+  content: "\e927";
+}
+.view-2:before {
+  content: "\e928";
+}
+.view-1:before {
+  content: "\e929";
+}
+.view-fullscreen:before {
+  content: "\e92a";
+}
+.cubes:before {
+  content: "\e92b";
+}
+.kitchen:before {
+  content: "\e92c";
+}
+.list-with-dots:before {
+  content: "\e92d";
+}
+.office-chair:before {
+  content: "\e92e";
+}
+.restaurant-cutlery:before {
+  content: "\e92f";
+}
+.shower:before {
+  content: "\e930";
+}
+.tree:before {
+  content: "\e931";
+}
+.compass:before {
+  content: "\e932";
+}

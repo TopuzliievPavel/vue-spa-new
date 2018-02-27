@@ -1,0 +1,112 @@
+.btn {
+  @include multi-transition (color, background-color);
+  padding: 5px 13px;
+  text-decoration: none;
+  &--link {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    &-primary {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      color: $col-primary;
+    }
+    &:hover {
+      color: $col-primary-hover;
+    }
+  }
+  &--primary {
+    display: inline-block;
+    background-color: $col-primary;
+    color: $white;
+    &:hover {
+      background-color: $col-primary-hover;
+    }
+  }
+  &--gray {
+    display: inline-block;
+    background-color: $placeholder;
+    color: $white;
+    &:hover {
+      background-color: $col-focus;
+    }
+  }
+  &--outline {
+    @include multi-transition (color, background-color, border-color);
+    display: inline-block;
+    border: $default-border;
+    text-align: center;
+    color: inherit;
+    background-color: transparent;
+    &:hover {
+      background-color: $col-primary;
+      color: $white;
+      border-color: $col-primary;
+    }
+  }
+}
+
+.btn--social-login {
+  @include multi-transition (color, background-color, border-color);
+  height: $input-height;
+  border: $default-border;
+  color: inherit;
+  text-transform: capitalize;
+  padding: 4px 0;
+  margin: 0 0 $input-holder-margin;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  min-width: 180px;
+  background: transparent;
+  .fa {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 100%;
+    width: 38px;
+    border-right: 1px solid rgba(#000, .25);
+    &:before {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(100% - 38px);
+    padding: 0 8px;
+  }
+  &:hover {
+    background: $col-primary;
+    color: $white;
+    border-color: $col-primary;
+  }
+  &.facebook-bg {
+    color: $white;
+  }
+  //.reg-social-inner & {
+  //  width: calc(50% - 5px);
+  //  margin-left: 2.5px;
+  //  margin-right: 2.5px;
+  //  //color: $white;
+  //  //color: $txt-registry;
+  //  color: $orange;
+  //  background-color: #fff;
+  //  border-color: currentColor;
+  //  .fa {
+  //    border-color: currentColor;
+  //  }
+  //  &:hover {
+  //    background: $orange;
+  //    color: $white;
+  //    border-color: $orange;;
+  //  }
+  //}
+}

@@ -1,0 +1,182 @@
+.uploader-bar {
+  background: $white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  font-size: 14px;
+  box-shadow: inset 0 1px 2px rgba(#000, .15);
+
+}
+.uploader-bar_box {
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  @include media('>=medium') {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+.uploader-bar_info {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+}
+.uploader-bar_btns-box {
+  flex: 0 0 auto;
+  .btn {
+    text-transform: uppercase;
+  }
+  .btn--link {
+    margin-right: .75em;
+    @include media('>=medium') {
+      margin-right: 2em;
+    }
+  }
+}
+.uploader-details_uploaded-files {
+  display: flex;
+  margin: 0 20px 0 0;
+  dt {
+    color: #ccc;
+    margin-right: 7px;
+  }
+  dd {
+    margin: 0;
+    padding: 0;
+  }
+}
+.uploader_global-progress {
+  flex: 1 1 100%;
+  margin-right: 10px;
+  max-width: 300px;
+  @include media('>=medium') {
+    margin-right: 30px;
+  }
+}
+.uploader_error-notification {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  .fa {
+    color: $col-error;
+    margin: 0 .5em;
+  }
+}
+
+progress.uploader-progress {
+  display: block;
+  background: #f1f1f1;
+  border: none;
+  border-radius: 0;
+  height: 16px;
+  overflow: hidden;
+  width: 100%;
+  &::-webkit-progress-bar { background: #f1f1f1; }
+  &::-webkit-progress-value { background: $col-success; }
+  &::-moz-progress-bar { background: $col-success; }
+  &::-ms-fill  { background: $col-success; }
+  &.error {
+    background: $col-error;
+    &::-webkit-progress-bar { background: $col-error; }
+    &::-webkit-progress-value { background: $col-error; }
+    &::-moz-progress-bar { background: $col-error; }
+    &::-ms-fill  { background: $col-error; }
+  }
+}
+/*----- Popup -----*/
+.uploader-popup_header-details {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $col-border;
+  font-size: 14px;
+  @include media('>=medium') {
+    padding-top: 0;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .h5 {
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-right: 50px;
+  }
+}
+
+.uploader-popup_body {
+  text-align: left;
+  font-size: 14px;
+}
+
+.uploads_list {
+  list-style: none;
+  margin: 0 0 4em;
+  padding: 0;
+  li {
+    margin-bottom: 24px;
+  }
+}
+.uploads_item {
+  @include media('>=medium') {
+    display: flex;
+    align-items: center;
+  }
+
+}
+.uploads_item-half {
+  display: flex;
+  align-items: center;
+  @include media('>=medium') {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.uploader_file-status {
+  flex: 0 0 70px;
+  padding-right: 1em;
+}
+.file-status {
+  text-transform: uppercase;
+  &.file-status--done {
+    color: $col-success;
+  }
+  &.file-status--fail {
+    color: $col-error;
+  }
+}
+.uploader_file-name {
+  padding-right: 1em;
+}
+.uploader_file-progress {
+  flex: 1 1 auto;
+}
+
+.uploader_btn-action {
+  .btn {
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 1em;
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.uploader_error-block {
+  margin-top: .5em;
+  background-color: $bg-article;
+}
+
+.uploader-popup_footer {
+  font-size: 14px;
+  .btn {
+    text-transform: uppercase;
+    margin: .5em;
+  }
+}
