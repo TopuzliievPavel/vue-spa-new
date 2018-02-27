@@ -1,5 +1,7 @@
 <template lang="pug">
   #app.page
+    page-header
+    .header_heightfix
     .page_main
       main.content-wrap.content-indent(ng-controller="HT.mainPageContentCtrl as mainPageContentCtrl")
         router-view
@@ -9,10 +11,14 @@
 
 <script>
   import pageFooter from './layout/footer/Footer.vue'
+  import pageHeader from './layout/header/Header.vue'
 
 export default {
   name: 'App',
-  components: {pageFooter}
+  components: {
+    pageFooter,
+    pageHeader
+  }
 }
 </script>
 

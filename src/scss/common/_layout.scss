@@ -27,6 +27,15 @@ body {
   /*End Fix for IE11*/
 }
 
+.header_heightfix {
+  height: 57px;
+  flex: 0 0 57px;
+  @include media('>=#{$collapse-menu}') {
+    height: 117px;
+    flex: 0 0 117px;
+  }
+}
+
 .content-indent {
   padding-left: 15px;
   padding-right: 15px;
