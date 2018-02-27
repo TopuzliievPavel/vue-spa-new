@@ -1,4 +1,4 @@
-<script src="./pageHeader.js"></script>
+<script src="./ctrl.js"></script>
 
 <style lang="scss" scoped> @import './styles'; </style>
 
@@ -168,8 +168,7 @@
           //-nav.header_nav
           ul.header_nav-list
             li
-              router-link(to="/vr-list") VIRTUAL ROOMS
-              //-a(href="/vr-list" target="_self").nav-list_link VIRTUAL ROOMS
+              a(href="#" target="_self").nav-list_link VIRTUAL ROOMS
             li
               a(href="#" target="_self").nav-list_link GALLERY
             li
