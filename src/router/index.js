@@ -10,7 +10,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {path: '/', name: 'MainPage', component: MainPage},
-    {path: '/coming-soon', name: 'ComingSoon', component: ComingSoon},
-    {path: '/vr-list', name: 'vrList', component: vrList}
+    {path: '/vr-list', name: 'vrList', component: vrList},
+    {path: '*', name: 'ComingSoon', component: ComingSoon}
   ]
 })

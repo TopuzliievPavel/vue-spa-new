@@ -654,8 +654,8 @@ input.header_search {
     font-weight: normal;
   }
   &:hover,
-  &.active,
-  .active & {
+  &.router-link-active,
+  .router-link-active & {
     color: $col-primary;
     @include media('>=#{$collapse-menu}') {
       color: inherit;

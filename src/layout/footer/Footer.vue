@@ -5,7 +5,7 @@
 <template lang="pug">
   - var imgPath = 'https://cdn3.housetipster.com/static-img/'
   mixin footer-logo(linkTo, visibilityClass, logoPic)
-    a.footer_logo-link(href=linkTo class=visibilityClass)
+    router-link.footer_logo-link(to=linkTo class=visibilityClass)
       img(src=imgPath + logoPic + '.png')
 
   footer.page_footer
@@ -27,12 +27,12 @@
             a.footer_social-link(:href="social.link" target="_blank")
               i(aria-hidden="true" class="fa"
                 :class="{ 'fa-facebook': social.title === 'Facebook',\
-                            'fa-instagram': social.title === 'Instagram',\
-                            'fa-twitter': social.title === 'Twitter',\
-                            'fa-google-plus': social.title === 'Google Plus',\
-                            'fa-youtube': social.title === 'YouTube',\
-                            'fa-pinterest-p': social.title === 'Pinterest'\
-                          }"
+                          'fa-instagram': social.title === 'Instagram',\
+                          'fa-twitter': social.title === 'Twitter',\
+                          'fa-google-plus': social.title === 'Google Plus',\
+                          'fa-youtube': social.title === 'YouTube',\
+                          'fa-pinterest-p': social.title === 'Pinterest'\
+                        }"
                 )
       .footer_col.footer_company
         h3.footer_item-title Company
@@ -40,7 +40,7 @@
           li(
           v-for="page in content.pages"
           )
-            a(:href="page.url_key") {{page.title}}
+            router-link(:to="page.url_key") {{page.title}}
 
       .footer_col.footer_tips-links
         h3.footer_item-title House Tipster
@@ -48,7 +48,7 @@
           li(
             v-for="htPage in content.sitePages"
           )
-            a( :href="htPage.url_key" ) {{ htPage.title}}
+            router-link(:to="htPage.url_key") {{htPage.title}}
 
       .footer_col.footer_about
         +footer-logo("/", "medium-hide", "new-logo-footer")
