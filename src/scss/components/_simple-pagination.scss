@@ -1,0 +1,20 @@
+simple-pagination {
+  display: block;
+}
+
+.pagination-light {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination_text {
+  margin: 0 5px;
+  @include media('>=medium') {
+    margin: 0 15px;
+  }
+  span {
+    //color: #949494;
+    color: $placeholder;
+  }
+}

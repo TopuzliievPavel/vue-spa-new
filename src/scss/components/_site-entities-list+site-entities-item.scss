@@ -1,0 +1,228 @@
+/* ---------------------------------------------------------
+   1. Layout Main tiles
+   ---------------------------------------------------------*/
+
+site-entities-list {
+  display: block;
+}
+
+site-entity-item {
+  display: block;
+  margin: 0 (-$item-indent);
+  @include media('>=medium') {
+
+  }
+  @include media('>=large') {
+    display: flex;
+    &.reverse-container {
+      flex-direction: row-reverse;
+    }
+  }
+
+}
+
+.tile-item_wrap {
+  @include media('>=medium') {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @include media('>=large') {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  /*huck for IE*/
+  @include media('>=large') {
+    &:first-child {
+      .tile-article_link {
+        position: relative;
+      }
+      .tile-article_img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: auto;
+        max-width: none;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+.tile-item {
+  display: flex;
+  padding: $item-indent;
+}
+
+.tile-item--full {
+  width: 100%;
+}
+
+.tile-item--half {
+  @include media('>=medium') {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+.site-entities_btn-wrap {
+  padding: 24px 0 38px;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
+/* ---------------------------------------------------------
+   2. Tile
+   ---------------------------------------------------------*/
+
+.tile_article {
+  width: 100%;
+  border: 1px solid $col-border;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-size: .875rem;
+  line-height: 1.142;
+}
+
+.tile-article_link {
+  flex: 1 1 auto;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*----- image, clip, adbutler -----*/
+.tile-article_link--img {
+  height: 100%;
+  img {
+    @include multi-transition (opacity);
+    height: 100%;
+    width: 100%;
+    @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+      object-fit: cover;
+    }
+  }
+}
+
+.tile-article_img {
+  height: 100%;
+  width: 100%;
+  @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+    object-fit: cover;
+  }
+}
+
+/*----- clip -----*/
+video-entity {
+  .tile-article_link--img {
+    //display: flex;
+  }
+}
+
+video-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.tile-article_video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+    object-fit: cover;
+  }
+}
+
+/*----- adbutler -----*/
+adbutler-entity {
+  overflow: hidden;
+  .tile-article_link--img {
+    background-color: $white;
+    position: relative;
+    z-index: 2;
+  }
+}
+.tile-article--img-hide {
+  position: absolute;
+  padding: 15px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: $col-primary-hover;
+  font-size: 1.125em;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/*----- article, virtual room, external video, projects, video -----*/
+.tile-article_label {
+  background: $col-primary;
+  color: $white;
+  font-size: .875em;
+  line-height: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  margin: 0 10px;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  z-index: 3;
+  &:before {
+    content: attr(data-label);
+  }
+}
+
+.tile-article_body {
+  padding: 13px 20px;
+}
+.tile-article_info {
+  font-size: .875em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 19px;
+}
+.tile-article_publish {}
+.tile-article_meta-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.2;
+  li {
+    + li {
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid;
+    }
+  }
+}
+
+.tile-article_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  text-transform: capitalize;
+  margin-bottom: 14px;
+  a {
+    color: inherit;
+  }
+}
+.tile-article_tagline {
+  overflow: hidden;
+  height: calc(3em * 1.1428 + 2px);
+  margin-bottom: 0;
+}
+
+room-entity {
+  .tile-article_tagline {
+    height: calc(1.9em * 1.1428);
+  }
+}

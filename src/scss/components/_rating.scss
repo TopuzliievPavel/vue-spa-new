@@ -1,0 +1,16 @@
+.rating-component {
+  font-size: .875rem;
+  i {
+    color: #ea7925;
+    margin: 0 2px;
+    position: relative;
+    &:after {
+      content: '\f005';
+      position: absolute;
+      left: 0;
+    }
+    &.empty {
+      &:after { color: transparent; }
+    }
+  }
+}

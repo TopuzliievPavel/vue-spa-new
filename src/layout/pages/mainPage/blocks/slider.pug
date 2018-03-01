@@ -1,0 +1,40 @@
+section.banners_slides-wrapper.slider--main(
+  ht-slider
+  ng-if="mainSliderCtrl.slidesModel.length"
+)
+
+  .banners_slide-block(
+    slide
+    ng-repeat="slideItem in mainSliderCtrl.slidesModel track by $index"
+    visibility-duration="{{::slideItem.visibilityDuration * 1000}}"
+    animation-duration="{{::slideItem.animationDuration * 1000}}"
+    ng-if="mainSliderCtrl.slidesModel.length"
+  )
+    a.banners_slide-link(target="_blank"
+      ng-href="{{slideItem.link }}"
+      ng-if="slideItem.link"
+    )
+
+    img.banners_slide-img(ng-src="{{::slideItem.slideImage | resize: 1920:500:1100}}" alt="slider picture")
+
+    .slide_text-block(
+      ng-if="slideItem.slideTitle || slideItem.slideText"
+    )
+      .banners_slide-title(ng-if="slideItem.slideTitle")
+        h1.h1 {{::slideItem.slideTitle}}
+      .banners_slide-text(ng-if="slideItem.slideText")
+        p {{::slideItem.slideText}}
+
+    button.btn.btn--primary.main-slide_popup-btn(type="button"
+      ng-if="slideItem.buttonVisibility"
+      show-popup="registrationPopup"
+    ) Sign Up with Email
+
+  .doted-controlls-holder(
+    ng-if="mainSliderCtrl.slidesModel.length > 1"
+  )
+    span.doted-controlls-holder_ctrls(
+      ng-repeat="slide in sliderController.slidesList track by $index"
+      ng-class="{'active': $index == sliderController.activeIndex}"
+      ng-click="sliderController.goToSlide($index)"
+    )

@@ -1,0 +1,149 @@
+.popup.active-popup.animate-fade( style="display: none"
+popup-container="registrationPopup"
+after-show="mainSliderCtrl.hideScroll(true)"
+after-hide="mainSliderCtrl.hideScroll(false)"
+)
+  section.popup_wrapper.popup--login(
+    ng-controller="HT.registration.regUserController as regUserController"
+  )
+    button.ht.close-popup-btn.popup_close-btn(type='button'
+      hide-popup="registrationPopup"
+    )
+    .popup-login_header(ng-class="{'error-combination': regUserController.registrationErrorMessage}")
+      h2.h2 Welcome to housetipster
+      .popup-header_text-wrap(ng-if="popupLoginCtrl.loginErrorMessage")
+        p.err-combination {{regUserController.registrationErrorMessage}}
+
+    .popup-login_body
+      .popup-login_form-section
+        h5.popup-login_section-title {{::regUserController.staticContentModel.secTitle}}
+
+        .reg_account-choose
+          .form-row
+            .input-holder
+              button.btn.btn--outline.w-100(type="button"
+                ng-class="{'active': regUserController.model.baseAccountType == 'homeowner'}"
+                ng-click="regUserController.setBaseAccountType('homeowner')"
+              )
+                i.fa.fa-check(aria-hidden="true")
+                span Homeowner
+                i.reg_user-ico.ht.homeowner(aria-hidden="true")
+              button.btn.btn--link(type="button"
+                show-popup="homeowner"
+              ) Show Features
+            .input-holder
+              button.btn.btn--outline.w-100(type="button"
+                ng-class="{'active': regUserController.model.baseAccountType == 'business'}"
+                ng-click="regUserController.setBaseAccountType('business')"
+              )
+                i(aria-hidden="true").fa.fa-check
+                span Business
+                i(aria-hidden="true").reg_user-ico.ht.pro-user
+              button.btn.btn--link(type="button"
+                show-popup="business"
+              ) Show Features
+
+        form(name="regForm")
+          .form-row
+            label.input-holder
+              input(type="text", placeholder="First name" name="firstname" required
+                ng-model="regUserController.model.firstname"
+                ng-model-options="{ updateOn: 'blur' }"
+                ng-pattern="regUserController.nameValidationPattern"
+                ng-class="{'error': regForm.firstname.$invalid && regForm.firstname.$touched}"
+              )
+            label.input-holder
+              input(type="text", placeholder="Last name" name="secondname" required
+                ng-model="regUserController.model.secondname"
+                ng-model-options="{ updateOn: 'blur' }"
+                ng-pattern="regUserController.nameValidationPattern"
+                ng-class="{'error': regForm.secondname.$invalid && regForm.secondname.$touched}"
+              )
+
+          label.input-holder
+            input(type="email" placeholder="E-mail" name="email" required
+              ng-model="regUserController.model.email"
+              ng-model-options="{ updateOn: 'blur' }"
+              ng-pattern="regUserController.emailValidationPattern"
+              ng-class="{'error': regForm.email.$invalid && regForm.email.$touched}"
+            )
+
+          .form-row
+            label.input-holder
+              input(type="password" placeholder="Password" name="password" required
+                ng-model="regUserController.model.password"
+                ng-model-options="{ updateOn: 'blur' }"
+                ng-class="{'error': regForm.password.$invalid && regForm.password.$touched || regForm.password.$touched && regForm.confirmPassword.$touched && regUserController.model.password != regUserController.model.confirmPassword}"
+              )
+            label.input-holder
+              input(type="password", placeholder="Repeat password" name="confirmPassword" required
+                ng-model="regUserController.model.confirmPassword"
+                ng-model-options="{ updateOn: 'blur' }"
+                ng-class="{'error': regForm.confirmPassword.$invalid && regForm.confirmPassword.$touched || regForm.password.$touched && regForm.confirmPassword.$touched && regUserController.model.password != regUserController.model.confirmPassword}"
+              )
+          input(type="hidden"  name="g-recaptcha-response"
+          ng-model="regUserController.model['g-recaptcha-response']"
+          )
+
+          .custom-checkbox
+            label
+              input(type='checkbox' name='receiveDelivery'
+              ng-model='regUserController.model.receiveDelivery'
+              )
+              span.checkbox-fake
+              span.checkbox-text Would you like to receive promotional emails and newsletters?
+
+
+          .reg_captcha-section
+            .recaptcha-block(
+            vc-recaptcha
+            ng-model="contactUsController.model['g-recaptcha-response']"
+            )
+            button(type="button"
+            ng-click="regUserController.submitForm($event)"
+            ).btn.btn--primary.main-slide_popup-send Sign Up
+
+      .popup-login_social-section
+        h5.popup-login_section-title or Use social account for registration
+        a.btn.btn--social-login.facebook-bg(href="{{::'' | linkTo:'LOGIN_FACEBOOK'}}")
+          i.fa.fa-facebook(aria-hidden="true")
+          span facebook sign in
+        a.btn.btn--social-login(href="{{::'' | linkTo:'LOGIN_GOOGLE'}}").btn.btn--social-login
+          i.fa.fa-google(aria-hidden="true")
+          span google sign in
+
+    .popup-login_footer
+      a(href="/signin") Sign in
+      | &nbsp;
+      span if you already have a House Tipster account
+
+    section(popup-container="homeowner").popup.active-popup.animate-fade
+      .popup_wrapper.popup--info-message
+        button.ht.close-popup-btn.popup_close-btn(type='button'
+          hide-popup="homeowner"
+        )
+        .popup-login_card
+          h3.h2 Homeowner
+          .popup-login_card-info
+            span Our features
+            hr
+          ul.popup-login_card-list
+            li(
+            ng-repeat="homeownerFeature in regUserController.staticContentModel.homeownerFeaturesList track by $index"
+            ) {{::homeownerFeature}}
+
+
+    section(popup-container="business").popup.active-popup.animate-fade
+      .popup_wrapper.popup--info-message
+        button.ht.close-popup-btn.popup_close-btn(type='button'
+        hide-popup="business"
+        )
+        .popup-login_card
+          h3.h2 Business
+          .popup-login_card-info
+            span Our features
+            hr
+          ul.popup-login_card-list
+            li(
+            ng-repeat="businessFeature in regUserController.staticContentModel.businessFeaturesList track by $index"
+            ) {{::businessFeature}}

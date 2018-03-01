@@ -1,0 +1,171 @@
+@import 'user-avatar';
+
+comments {
+  display: block;
+}
+
+.comments_head {
+  display: block;
+}
+h2.comments_title {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.comments_title-counter {
+  font-size: .875em;
+}
+
+show-more {
+  display: block;
+  text-align: center;
+}
+
+.comments_list {
+
+}
+
+comment {
+  display: block;
+}
+
+.comment_article {
+  //border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid $col-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5625em 0 0.75em;
+  width: 100%;
+}
+
+.comment_avatar {
+
+}
+
+.comment_body {
+  flex: 1 1 100%;
+  margin-left: 10px;
+  max-width: calc(100% - 32px);
+}
+.comment_user-name {
+  margin-bottom: 0.3125em;
+  color: $disable-txt;
+  a {
+    color: $col-primary;
+    &:hover {
+      color: $col-primary-hover;
+    }
+  }
+}
+.comment_message {
+  font-weight: 300;
+  word-break: break-all;
+  line-height: 1.142;
+  color: $col-txt2;
+  margin-bottom: 1.25em;
+}
+.comment_footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $disable-txt;
+  font-size: .875em;
+  * {
+    vertical-align: middle;
+  }
+  .decor {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    border-left: 1px solid;
+    margin: 0 10px;
+    &:last-child, &:first-child {
+      display: none;
+    }
+  }
+  .btn {
+    cursor: pointer;
+  }
+}
+
+send-comment {
+  display: block;
+  padding: 20px 0;
+}
+
+.comment_send-btn {
+  text-align: center;
+  .btn {
+    text-transform: capitalize;
+    font-size: 0.875rem;
+    padding: 8px 27px;
+  }
+}
+
+.comment_send {
+  display: flex;
+  align-items: flex-start;
+  font-size: .875rem;
+  textarea {
+    min-height: 50px;
+    margin-bottom: 10px;
+  }
+  .btn {
+    text-transform: uppercase;
+  }
+}
+
+.comment_send-actions {
+  display: flex;
+  align-items: flex-start;
+  .btn {
+    margin-left: auto;
+  }
+}
+
+.comment_user-badge {
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  button {
+    padding: 0;
+    background-color: transparent;
+    margin-left: .3em;
+  }
+}
+
+.user-badge_close {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 5px;
+  span {
+    position: absolute;
+    left: 0;
+    background-color: transparent;
+    height: 10px;
+    width: 10px;
+    border-radius: 1px;
+    cursor: pointer;
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      height: 1px;
+      width: 12px;
+      background-color: $col-txt;
+      border-radius: 1px;
+      cursor: pointer;
+      top: 0;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}

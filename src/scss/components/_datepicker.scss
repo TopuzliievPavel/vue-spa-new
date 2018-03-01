@@ -1,0 +1,26 @@
+datepicker {
+  display: block;
+  float: none;
+  ._720kb-datepicker-calendar a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+._720kb-datepicker-calendar-header:nth-child(odd) {
+  background:$col-primary;
+}
+._720kb-datepicker-calendar-days-header {
+  background: rgba($black, .08);
+}
+
+datepicker select,
+datepicker select:focus,
+datepicker select:hover,
+.datepicker select,
+.datepicker select:focus,
+.datepicker select:hover,
+[datepicker] select,
+[datepicker] select:focus,
+[datepicker] select:hover {
+  background-color: transparent;
+}

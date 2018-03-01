@@ -1,0 +1,40 @@
+no-search-result {
+  display: block;
+  + .category-list_settings {
+    display: none;
+  }
+  ~ .media_info-box {
+    border: none;
+  }
+}
+.noresult_box {
+  border: 1px solid $col-border;
+  padding: 1em 1.25em;
+  //color: $col-txt2;
+  width: 100%;
+  font-weight: 300;
+  @include media('>=medium') {
+    padding: 28px 40px;
+  }
+  .h4 {
+    font-weight: normal;
+    margin: 0;
+  }
+}
+.noresult_title {
+  text-transform: capitalize;
+  margin-bottom: 0;
+  @include media('<medium') {
+    font-size: 1.25rem;
+  }
+}
+.noresult_help-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    &:before {
+      content: '- ';
+    }
+  }
+}

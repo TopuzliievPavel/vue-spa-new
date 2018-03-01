@@ -1,0 +1,59 @@
+.spinner-wrapper {
+  @include sizes(50px);
+  position: fixed;
+  top: 175px;
+  right: 25px;
+  z-index: 9999;
+  img {
+    height: auto;
+    width: 35px;
+  }
+}
+
+@keyframes circle-fade {
+  50% {
+    opacity: .2;
+    transform: scale(.35)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+
+$animate-list: (
+  19px 0 0s,
+  13.05px 13.05px 0.12s,
+  0 19px 0.24s,
+  -13.05px 13.05px 0.36s,
+  -19px 0 0.48s,
+  -13.05px -13.05px 0.6s,
+  0 -19px 0.72s,
+  13.05px -13.05px 0.84s
+);
+.spinner-wrapper {
+  > span {
+    background-color: $col-primary;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin: 2px;
+    animation-fill-mode: both;
+    position: absolute
+  }
+  $i: 1;
+  @each $item in $animate-list {
+    $top: #{nth($item, 1)};
+    $left: #{nth($item, 2)};
+    $animation: #{nth($item, 3)};
+    > span:nth-child(#{$i}) {
+      top: $top;
+      left: $left;
+      -webkit-animation: circle-fade 1s $animation infinite linear;
+      animation: circle-fade 1s $animation infinite linear;
+    }
+    $i: $i + 1;
+  }
+}
+

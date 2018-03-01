@@ -3,23 +3,22 @@
     page-header
     .header_heightfix
     .page_main
-      main.content-wrap.content-indent(ng-controller="HT.mainPageContentCtrl as mainPageContentCtrl")
+      main.content-wrap.content-indent
         router-view
     page-footer
-
 </template>
 
 <script>
   import pageFooter from './layout/footer/Footer.vue'
   import pageHeader from './layout/header/Header.vue'
 
-export default {
-  name: 'App',
-  components: {
-    pageFooter,
-    pageHeader
+  export default {
+    name: 'App',
+    components: {
+      pageFooter,
+      pageHeader
+    }
   }
-}
 </script>
 
 <style lang="scss">

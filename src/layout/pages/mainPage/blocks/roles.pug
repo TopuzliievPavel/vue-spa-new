@@ -1,0 +1,10 @@
+h2.main-roles_title {{content.mainRolesTitle}}
+.main-roles_list
+  .main-roles_item(
+    v-for="role in content.mainRoles"
+    )
+    router-link.main-roles_link(to="/some-link")
+      img.main-roles_img(:src="role.image")
+      h4.h4 {{role.title}}
+    .main-roles_description
+      p {{role.description}}

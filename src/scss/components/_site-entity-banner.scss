@@ -1,0 +1,70 @@
+//-$item-indent - for the main page = 5px
+//                for the category-list = 10px
+
+site-entity-banner {
+  display: block;
+  width: 100%;
+}
+
+.banner-component_container {
+  margin: 0 (-$item-indent);
+  @include media('>=presmall') {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &.three-col--reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.banner-component_block {
+  width: 100%;
+  padding: $item-indent;
+  @include media('>=presmall') {
+    display: flex;
+  }
+  @include media('>=premedium') {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+  .three-col & {
+    @include media('>=presmall') {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    &:first-child {
+      flex: 1 1 50%;
+      max-width: 50%;
+      @include media('>=presmall') {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      @include media('>=premedium') {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+  }
+  .four-col & {
+    @include media('>=presmall') {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    @include media('>=premedium') {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+}
+
+.banner-component_link {
+  flex: 1;
+}
+
+.banner-component_image {
+  width: 100%;
+  @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+    height: 100%;
+    object-fit: cover;
+  }
+}

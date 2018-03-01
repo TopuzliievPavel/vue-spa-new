@@ -1,0 +1,28 @@
+.button-top {
+  @include multi-transition(opacity);
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 3px 6px 1px rgba(0, 0, 0, .1);
+  margin: 0;
+  position: fixed;
+  right: 5px;
+  bottom: 55px;
+  z-index: 500;
+  background-color: $col-primary;
+  color: $white;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  @include media('>=large') {
+    right: 25px;
+    bottom: 65px;
+  }
+  .fa {
+    line-height: 30px;
+    font-size: 1.6875rem;
+  }
+  .startSticky & {
+    opacity: 1;
+    visibility: visible;
+  }
+}

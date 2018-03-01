@@ -1,0 +1,38 @@
+pager {
+  display: block;
+  margin: 0 auto;
+  @include media('>=medium') {
+    margin: 0;
+  }
+  .pagination_btn{
+    margin: 0 0.625rem;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.pagination_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  //max-width: 260px;
+  li {
+    display: inline-block;
+    margin: 0 .125rem;
+    vertical-align: middle;
+  }
+  button {
+    background: transparent;
+    font-size: 0.875rem;
+    padding: 0 0.4375rem;
+    line-height: 27px;
+    &:hover,
+    &.current {
+      background: #ccc;
+      color: $white;
+    }
+  }
+}

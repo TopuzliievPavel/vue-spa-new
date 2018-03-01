@@ -1,75 +1,25 @@
-<template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <router-link to="/coming-soon">ComingSoon</router-link>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+<script src="./mainPage.js"></script>
+
+<style lang="scss"> @import './_styles.scss'; </style>
+
+<template lang="pug">
+  //-(:class="{'popup-shown': registrationPopupShown}")
+  .page_main(v-if="content")
+    //-include ./blocks/slider
+    //-include ./blocks/login-popup
+    main.content-wrap.content-indent
+      section.main-features_section
+        include blocks/features-list
+
+      section.main_title-holder
+        h2.h1
+          i.fa.fa-bullhorn(aria-hidden="true")
+          | &nbsp;
+          |{{content.contentTitle}}
+
+      .site-entities-list
+
+
+      section.main-roles_section
+        include ./blocks/roles
 </template>
-
-<script>
-export default {
-  name: 'MainPage',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

@@ -1,0 +1,79 @@
+.animate-fade(
+  v-for="entity in content.mainTile.entities"
+  )
+  .site-entity-item
+    mixin entity-switcher(type, entity, classDecorator, sizes)
+      article-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'article' || ${type} === 'sponsoredArticle' || ${type} === 'press'`
+      article=entity
+      resize=sizes
+      )
+      project-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'project'`
+      project=entity
+      resize=sizes
+      )
+      external-video-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'extVideo'`
+      ext-video=entity
+      resize=sizes
+      )
+      room-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'room' || ${type} === 'signatureRoom'`
+      room=entity
+      resize=sizes
+      )
+      image-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'image'`
+      image=entity
+      resize=sizes
+      )
+      video-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'video'`
+      video=entity
+      resize=sizes
+      )
+      adbutler-entity(class=`tile-item tile-item--${classDecorator}`
+      ng-if=`${type} === 'adbutler'`
+      adbutler=entity
+      )
+
+
+
+    .tile-item_wrap
+      +entity-switcher('$ctrl.entity.room.type', '$ctrl.entity.room', 'full')
+
+    .tile-item_wrap
+      +entity-switcher('$ctrl.entity.articles[0].type', '$ctrl.entity.articles[0]', 'half')
+      +entity-switcher('$ctrl.entity.articles[1].type', '$ctrl.entity.articles[1]', 'half')
+      +entity-switcher('$ctrl.entity.projects[0].type', '$ctrl.entity.projects[0]', 'half')
+      +entity-switcher('$ctrl.entity.projects[1].type', '$ctrl.entity.projects[1]', 'half')
+
+
+
+
+
+  site-entity-item(
+  entity="entity"
+  ng-class="{'reverse-container': $index % 2 !== 0}"
+  )
+  site-entity-banner(
+  ng-if="$index % 2"
+  banners="entitiesListCtrl.bannersMainList[($index + 1) / 2 - 1]"
+  )
+
+.animate-fade(
+  v-for="entity in entitiesListCtrl.entitiesList track by $index"
+  )
+  site-entity-item(
+  entity="entity"
+  ng-class="{'reverse-container': $index % 2 !== 0}"
+  )
+  site-entity-banner(
+  ng-if="$index % 2"
+  banners="entitiesListCtrl.bannersList[($index + 1) / 2 - 1]"
+  )
+
+//-.site-entities_btn-wrap
+  button.btn.btn--primary.main_more-btn(type="button"
+  ) SHOW MORE
