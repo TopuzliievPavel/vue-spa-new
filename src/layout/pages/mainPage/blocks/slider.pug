@@ -1,40 +1,21 @@
-section.banners_slides-wrapper.slider--main(
-  ht-slider
-  ng-if="mainSliderCtrl.slidesModel.length"
+agile.banners_slides-wrapper.slider--main(
+  v-if="content.slider.length"
+  :arrows="false"
+  :speed="2500"
+  :timing="'linear'"
+  :fade="true"
+  :autoplay="true"
+  :pauseOnHover="false"
 )
-
   .banners_slide-block(
-    slide
-    ng-repeat="slideItem in mainSliderCtrl.slidesModel track by $index"
-    visibility-duration="{{::slideItem.visibilityDuration * 1000}}"
-    animation-duration="{{::slideItem.animationDuration * 1000}}"
-    ng-if="mainSliderCtrl.slidesModel.length"
+    v-for="slideItem in content.slider"
   )
-    a.banners_slide-link(target="_blank"
-      ng-href="{{slideItem.link }}"
-      ng-if="slideItem.link"
-    )
-
-    img.banners_slide-img(ng-src="{{::slideItem.slideImage | resize: 1920:500:1100}}" alt="slider picture")
-
+    router-link.banners_slide-link(to="/some-link")
+    img.banners_slide-img(:src="slideItem.slideImage" alt="slider picture")
     .slide_text-block(
-      ng-if="slideItem.slideTitle || slideItem.slideText"
+      v-if="slideItem.slideTitle || slideItem.slideText"
     )
-      .banners_slide-title(ng-if="slideItem.slideTitle")
-        h1.h1 {{::slideItem.slideTitle}}
-      .banners_slide-text(ng-if="slideItem.slideText")
-        p {{::slideItem.slideText}}
-
-    button.btn.btn--primary.main-slide_popup-btn(type="button"
-      ng-if="slideItem.buttonVisibility"
-      show-popup="registrationPopup"
-    ) Sign Up with Email
-
-  .doted-controlls-holder(
-    ng-if="mainSliderCtrl.slidesModel.length > 1"
-  )
-    span.doted-controlls-holder_ctrls(
-      ng-repeat="slide in sliderController.slidesList track by $index"
-      ng-class="{'active': $index == sliderController.activeIndex}"
-      ng-click="sliderController.goToSlide($index)"
-    )
+      .banners_slide-title
+        h1.h1 {{ slideItem.slideTitle }}
+      .banners_slide-text
+        p {{ slideItem.slideText }}

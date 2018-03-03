@@ -25,6 +25,7 @@
     transform: translateX(0);
     flex: 0 0 240px;
     min-width: 240px;
+    overflow: hidden;
   }
   &.active {
     transform: translateX(0);
@@ -69,7 +70,7 @@
 }
 
 .sidebar-category {
-  border-bottom: 1px solid $col-border;
+  background-color: $white;
   &:last-child { border-bottom: none; }
   @include media('<xlarge') {
     border-bottom: none;
@@ -97,7 +98,7 @@
     color: $col-txt;
   }
   &:focus { color: $col-txt; }
-  h4 {
+  h5 {
     font-size: 17px;
     font-weight: normal;
     line-height: 1.2;
@@ -108,14 +109,20 @@
     border-bottom: 1px solid $col-border;
     padding: 18px 25px;
   }
-  &.active .toggle_arrow-icon {
-    &:before {
-      visibility: visible;
-      opacity: 1;
+  &.active {
+    .toggle_arrow-icon {
+      &:before {
+        visibility: visible;
+        opacity: 1;
+      }
+      &:after {
+        visibility: hidden;
+        opacity: 0;
+      }
     }
-    &:after {
-      visibility: hidden;
-      opacity: 0;
+    +.sidebar_groups-list {
+      transition: max-height 2s;
+      max-height: 2000px;
     }
   }
 }
@@ -156,6 +163,7 @@
     color: inherit;
     font-size: inherit;
     position: absolute;
+    right: 0;
   }
   &:before {
     content: '\f068';
@@ -178,17 +186,13 @@
 }
 
 .sidebar_groups-list {
+  transition: max-height 1s;
   border-top: 1px solid $col-border;
   margin: 0;
-  padding: 18px 0;
+  padding: 0;
   list-style: none;
-}
-.sidebar_group-item {
-  padding: 0 18px 20px;
-  &:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
+  max-height: 0;
+  overflow: hidden;
 }
 
 .sidebar_group-toggle {
@@ -199,24 +203,36 @@
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
+  background-color: transparent;
+  width: 100%;
+  padding: 15px 18px;
+  position: relative;
   .toggle_plus-icon {
     color: #bebebe;
     transition: color .3s;
   }
-  &:hover, &.opened {
+  &.opened {
     .toggle_plus-icon { color: $col-primary; }
+    +.sidebar_filters-list {
+      max-height: 1000px;
+    }
   }
 }
+
 .sidebar_group-title {
   font-size: inherit;
   font-weight: inherit;
   margin-bottom: 0;
+
 }
 
 .sidebar_filters-list {
-  margin: 25px 0 0;
-  padding: 0;
+  margin: 0;
+  padding: 0 18px;
   list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .6s;
 }
 
 .sidebar_filter-item {

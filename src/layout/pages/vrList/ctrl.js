@@ -13,14 +13,13 @@ export default {
       showSidebar: false,
       activeCategory: '',
       listLayoutRow: false,
+      setActiveTab: '',
+      setActiveFilter: ''
     }
   },
   methods: {
     clearAllFilters: function () {
       console.log("clearAllFilters")
-    },
-    setActiveTab: function (category) {
-      console.log("setActiveTab: " + category)
     }
   }
 }

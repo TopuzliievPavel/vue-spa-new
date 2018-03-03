@@ -3,10 +3,8 @@
 <style lang="scss"> @import './_styles.scss'; </style>
 
 <template lang="pug">
-  //-(:class="{'popup-shown': registrationPopupShown}")
   .page_main(v-if="content")
-    //-include ./blocks/slider
-    //-include ./blocks/login-popup
+    include ./blocks/slider.pug
     main.content-wrap.content-indent
       section.main-features_section
         include blocks/features-list.pug

@@ -24,6 +24,10 @@ main {
   }
 }
 
+.banners_slide-block {
+  transition: opacity 1s !important;
+}
+
 .banners_slide-img {
   height: auto;
   width: 100%;
