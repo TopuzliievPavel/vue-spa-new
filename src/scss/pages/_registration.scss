@@ -1,0 +1,266 @@
+$padding-l: 17%;
+
+.page_main {
+  background-color: $bg-article;
+  font-weight: 300;
+  text-align: center;
+  a {
+    color: rgba(0, 105, 180, 0.8);
+    text-decoration: underline;
+  }
+  .bnt--link {
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+.page_content {
+  max-width: 600px;
+  background-color: $white;
+  border: 1px solid $col-border;
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 47px;
+  @include media('<540px') {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  box-shadow: 0 0 0 10px $white, 0 12px 15px -2px rgba(#000, .75);
+}
+/*----- header -----*/
+.reg_header {
+  padding: 42px 15px 0;
+  @include media('>=medium') {
+    padding-left: $padding-l;
+    padding-right: $padding-l;
+  }
+  .h2 {
+    position: relative;
+    font-weight: normal;
+    padding-bottom: 1em;
+    margin-bottom: 1.4em;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 74px;
+      height: 2px;
+      background-color: $col-primary;
+    }
+  }
+  p {
+    margin: 0 0 .375em;
+  }
+}
+
+/*----- body -----*/
+.reg_body {
+  padding: 0 15px 1em;
+  line-height: 1.25;
+  @include media('>=medium') {
+    padding-left: $padding-l;
+    padding-right: $padding-l;
+  }
+  form {
+    margin-bottom: 36px;
+  }
+  .btn--primary {
+    font-weight: normal;
+    padding: 9px 35px;
+  }
+  a {
+    white-space: nowrap;
+  }
+}
+
+.reg_account-choose {
+  .btn--outline {
+    height: $input-height;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    &:hover {
+      background-color: inherit;
+      color: inherit;
+    }
+    &.active {
+      border-color: $col-primary;
+      .fa {
+        opacity: 1;
+        color: $col-primary;
+      }
+      .reg_user-ico {
+        color: $col-primary;
+      }
+    }
+  }
+  .btn--link {
+    color: #ccc;
+    font-size: .875em;
+    display: block;
+    margin: 0 auto;
+    &:hover {
+      color: $col-primary;
+    }
+  }
+  .fa {
+    opacity: 0;
+    font-size: .75em;
+    margin-right: 1em;
+  }
+  .reg_user-ico {
+    font-size: 1.25em;
+    color: #ccc;
+    margin-left: auto;
+  }
+}
+
+.err-combination,
+.success-valid {
+  color: $white;
+  background-color: $col-error;
+  font-weight: normal;
+  p {
+    padding: 10px 0;
+    margin: 0;
+  }
+}
+.success-valid {
+  background-color: $col-success;
+}
+.input-holder {
+  position: relative;
+  text-align: left;
+}
+.input_link {
+  @include media('>=medium') {
+    position: absolute;
+    padding: 5px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+  }
+}
+
+.recaptcha-block {
+  margin: 10px auto 30px;
+}
+
+.custom-checkbox {
+  font-size: .875rem;
+  margin-bottom: 33px;
+  label {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+.checkbox-text {
+  color: $col-page_title;
+  flex: 0 0 auto;
+}
+.checkbox-description {
+  text-align: left;
+  padding-left: 10px;
+  margin-left: 10px;
+  position: relative;
+  border-left: 1px solid $col-primary;
+  &:after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 52%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid $col-primary;
+    border-bottom: 1px solid $col-primary;
+    background-color: $white;
+  }
+}
+
+/*----- Footer -----*/
+.reg_footer {
+  background-color: $bg-article;
+  padding: 38px 15px;
+  font-weight: normal;
+  @include media('>=medium') {
+    padding-left: $padding-l;
+    padding-right: $padding-l;
+  }
+  .h4 {
+    font-weight: normal;
+    text-transform: uppercase;
+    color: $col-txt2;
+    margin-bottom: 1.333em;
+  }
+  .btn--social-login {
+    color: $col-primary;
+    border-color: currentColor;
+    background-color: $white;
+    margin: 5px;
+    .fa {
+      border-color: currentColor;
+    }
+    &:hover {
+      border-color: $col-primary;
+      color: $white;
+      background-color: $col-primary;
+    }
+  }
+  .d-flex {
+    @include media('<premedium') {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+/*----- popups -----*/
+.popup-login_card {
+  @include media('>=premedium') {
+    padding: 10px 20px;
+  }
+  .h2 {
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+}
+.popup-login_card-info {
+  position: relative;
+  span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    background-color: $white;
+    padding: 0 15px;
+    font-weight: 300;
+  }
+  hr {
+    border: none;
+    border-bottom: 1px solid $col-placeholder;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+}
+.popup-login_card-list {
+  font-weight: 300;
+  list-style-type: none;
+  margin: 23px auto 0;
+  max-width: 185px;
+  padding: 0;
+  text-align: left;
+  li {
+    &:before {
+      content: "\f058";
+      font-family: FontAwesome;
+      color: $col-primary;
+      margin-right: 10px;
+    }
+  }
+}

@@ -146,19 +146,19 @@
         .header_row.header_row--nav
           ul.header_nav-list
             li
-              router-link.nav-list_link(to="/vr-list") VIRTUAL ROOMS
+              router-link.nav-list_link(to="/vr-list" exact) VIRTUAL ROOMS
             li
-              router-link.nav-list_link(to="/some-link") GALLERY
+              router-link.nav-list_link(to="/some-link" exact ) GALLERY
             li
-              router-link.nav-list_link(to="/some-link") HOUSE TIPS
+              router-link.nav-list_link(to="/some-link" exact) HOUSE TIPS
             li
-              router-link.nav-list_link(to="/some-link") MARKETPLACE
+              router-link.nav-list_link(to="/some-link" exact) MARKETPLACE
             li
-              router-link.nav-list_link(to="/some-link") DESIGN DEN
+              router-link.nav-list_link(to="/some-link" exact) DESIGN DEN
             li
-              router-link.nav-list_link(to="/some-link") FIND A PRO
+              router-link.nav-list_link(to="/some-link" exact) FIND A PRO
             li
-              router-link.nav-list_link(to="/some-link") CONTACT
+              router-link.nav-list_link(to="/some-link" exact) CONTACT
           ul.header_options.header_nav-secondary
             li
               router-link.nav-list_link(to="/some-link")

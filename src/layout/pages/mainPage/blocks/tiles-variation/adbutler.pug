@@ -1,0 +1,6 @@
+article.tile_article.tile--adbutler(v-if="tile.type === 'adbutler'")
+  .tile-article_label(
+  v-if="tile.tileTitle"
+  ) {{ tile.tileTitle }}
+  p.tile-article--img-hide We have detected that you are using Adblock. Please disable your ad blocker to see this content.
+  router-link.tile-article_link.tile-article_link--img(to="/some-link" v-html="tile.content")

@@ -1,0 +1,196 @@
+//- Used in
+// virtual-rooms/list
+// galleries-section/list
+// media-list
+
+$line-height-detail: 1.2;
+$item-indent: 10px;
+
+
+/* ---------------------------------------------------------
+   Layout
+   ---------------------------------------------------------*/
+.articles-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 (-$item-indent);
+  .navigation-filters {
+    margin: 0 $item-indent;
+    padding: 36px 0;
+    width: 100%;
+    border-bottom: 1px solid $col-border;
+
+  }
+}
+
+.articles-list_item {
+  padding: $item-indent;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  @include media('>=medium') {
+    width: 50%;
+  }
+  .articles-list--album-view & {
+    @include media('>=large') {
+      width: 100%;
+    }
+  }
+  &.commercial-img {
+    width: 100%;
+    padding: 0 $item-indent;
+    .tips_banner-container {
+      display: flex;
+      align-items: center;
+    }
+    .bannerLink {
+      border: 1px solid $col-border;
+    }
+    a {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .banner-component_block {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.article-item_container {
+  width: 100%;
+  border: 1px solid $col-border;
+  display: flex;
+  flex-direction: column;
+  .articles-list--album-view & {
+    @include media('>=large') {
+      flex-flow: row nowrap;
+    }
+  }
+}
+
+
+/* ---------------------------------------------------------
+   IMG box
+   ---------------------------------------------------------*/
+.article-item_picture-holder {
+  position: relative;
+  width: 100%;
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+  .articles-list--album-view & {
+    @include media('>=large') {
+      width: auto;
+      flex: 0 0 68.57%;
+      max-width: 68.57%;
+    }
+  }
+}
+
+.article-item_picture-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+      position: static;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transform: none;
+    }
+  }
+}
+
+.article-item_hover-link {
+  @include multi-transition (background-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  &:hover {
+    background-color: rgba(#000, .25);
+  }
+}
+
+
+/* ---------------------------------------------------------
+   Content box
+   ---------------------------------------------------------*/
+.article-item_details {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 1.2;
+  width: 100%;
+  flex: 1 1 auto;
+  @include media('>=medium') {
+    padding: 25px 20px 15px;
+  }
+
+  .articles-list--album-view & {
+    @include media('>=large') {
+      flex: 0 0 31.43%;
+      max-width: 31.43%;
+      padding: 30px 15px;
+    }
+  }
+
+  > * {
+    width: 100%;
+  }
+  a {
+    color: inherit;
+    &:hover {
+      color: $col-primary;
+    }
+  }
+}
+
+/* ---------------------------------------------------------
+   Activity counters
+   ---------------------------------------------------------*/
+.article-item_counters-list {
+  align-items: center;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: {
+    left: -10px;
+    right: -10px;
+  }
+}
+.counter-item {
+  color: #595959;
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: color .3s;
+  margin: 0 10px;
+  i {
+    color: #bebebe;
+  }
+}
+
+/* ---------------------------------------------------------
+   Sidebar
+   ---------------------------------------------------------*/
+
+

@@ -1,0 +1,78 @@
+//- components-mixin.jade
+
+//- VENDORS MIXIN
+
+mixin vendors
+  .follower-block.vertical-common
+    a(href="{{::vendor.userUrl}}").ava-holder
+      .img-wrapper
+        img(ng-src="{{::vendor.userPhoto}}")
+        span.pro(ng-show="::vendor.userType == 'prefessional'") PRO
+    a(href="{{::vendor.userUrl}}").name-holder.vertical-common
+      span.name {{::vendor.userName}}
+    .actions-holder.vertical-common
+      a(href="{{::vendor.userId}}").follow-this
+          i.fa.fa-shopping-bag(aria-hidden="true")&nbsp;
+          span.follow
+            | Products&nbsp;
+          span.qty {{::vendor.productsCount}}
+      a(href="{{::vendor.userId}}").send-message
+        i.fa.fa-comment(aria-hidden="true")&nbsp;
+        span Send message
+
+
+//- COMPONENTS MIXIN
+mixin components
+  .component_row
+    .component_item.component_item--pic
+      a(href="{{::component.retailerUrl}}"
+        style="background-image: url('{{::component.productPhoto | resize: 300}}')"
+      ).component_thumbnail
+    .component_item.component_item--info
+      .component_info-wrapper
+        a(href="{{::component.retailerUrl}}").component_item-title {{::component.productName}}
+        dl.component_item-price
+          dt
+            | Price:
+            | &nbsp;
+          dd {{::component.startingAt}} {{::component.currency | currencyConverter}}{{::component.priceNew}}{{::component.units | prefix : '/'}}
+        .component_retailers
+          dl.retailer_info
+            dt Retailer:&nbsp;
+            dd
+              .ellipsis {{::component.retailerName}}
+          a(href="{{::component.retailerId}}"
+            unavailable
+          ).retailer_message
+            i(aria-hidden='true').fa.fa-envelope
+            | Send message
+    .component_item.component_item--cart
+      .item-cart_btn-holder(
+        ng-switch
+        on="::component.buttonType"
+      )
+        a(href="{{::component.shopLink}}"
+          ng-switch-when="shop"
+        ).item_btn
+          i.fa.fa-link(aria-hidden="true")
+          | &nbsp;
+          | Go to Shop
+        a(href="{{::component.proLink}}"
+          ng-switch-when="pro"
+        ).item_btn
+          i.fa.fa-user(aria-hidden="true")
+          | &nbsp;
+          | Go to Pro
+        a(href="#"
+          unavailable
+          ng-switch-when="cart"
+        ).item_btn
+          i.fa.fa-shopping-cart(aria-hidden="true")
+          | &nbsp;
+          | Add to Cart
+      .item-cart_rooms-block
+        a(href="{{::component.productId}}"
+          unavailable
+        )
+          i(aria-hidden='true').ht.vr-box
+          span Show all rooms with this product

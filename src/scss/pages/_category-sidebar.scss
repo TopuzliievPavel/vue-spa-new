@@ -1,0 +1,143 @@
+//- Use in
+// virtual-rooms/list
+// housetips
+// media-list
+
+.show-sidebar-btn {
+  width: 100%;
+  margin: 0 auto 10px;
+}
+
+.category-sidebar {
+  @include multi-transition(transform);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 70;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  background-color: $white;
+  @include media('>=medium') {
+    padding: 40px;
+  }
+  @include media('>=xlarge') {
+    padding: 0;
+    position: static;
+    z-index: 0;
+    height: auto;
+    transform: translateX(0);
+    flex: 0 0 240px;
+    min-width: 240px;
+    overflow: visible;
+  }
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.sidebar_controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: .875rem;
+  padding: 25px 18px;
+  border-bottom: 1px solid $col-border;
+  @include media('>=medium') {
+    border: none;
+    padding: 0 0 40px;
+  }
+  .btn--outline {
+    border-width: 1px;
+    .fa {
+      margin-right: .5em;
+    }
+  }
+}
+
+.sidebar_close-btn {
+  padding: 0 7px;
+  font-size: 1.2857em;
+  transform: translateX(7px);
+}
+
+.category-sidebar_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @include media('>=medium') {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  @include media('>=xlarge') {
+    display: block;
+    margin: 0;
+  }
+}
+.category-sidebar_item {
+
+  @include media('>=medium') {
+    margin: 0 10px;
+    flex: 0 0 50%;
+    max-width: calc(50% - 20px);
+    border-top: 1px solid $col-border;
+  }
+  @include media('>=xlarge') {
+    border: none;
+    max-width: none;
+    margin: 0;
+  }
+  + .category-sidebar_item {
+    @include media('>=medium') {
+      border-top: 1px solid $col-border;
+    }
+  }
+}
+.category-sidebar_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 18px;
+  color: $col-txt2;
+  h3 {
+    font-weight: normal;
+    font-size: 17px;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .fa {
+    @include multi-transition(transform);
+    font-size: 11px;
+    padding: 5px;
+  }
+  &.active {
+    color: $col-page_title;
+    .fa {
+      transform: rotate(180deg);
+    }
+  }
+  &:hover {
+    background-color: #fafafa;
+    color: $col-page_title;
+  }
+}
+.category-sidebar_subcategory-list {
+  margin: 0;
+  padding: 0 0 23px;
+  list-style: none;
+
+}
+.category-sidebar_subcategory-item {
+  padding: 3px 18px;
+
+}
+.category-sidebar_subcategory-link {
+  color: inherit;
+  font-weight: 300;
+  &:hover {
+    color: $col-primary-hover;
+  }
+}

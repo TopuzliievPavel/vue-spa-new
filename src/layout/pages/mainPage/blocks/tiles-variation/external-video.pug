@@ -1,0 +1,20 @@
+article.tile_article(v-if="tile.type === 'extVideo'")
+  .tile-article_label {{tile.tileTitle || 'Video'}}
+  .tile-article_link
+    img.tile-article_img(
+    :src="tile.thumbnail"
+    )
+
+  .tile-article_body
+    .tile-article_info
+      .tile-article_publish
+        time {{tile.date}}
+      ul.tile-article_meta-list
+        li
+          | {{tile.viewsCount}}&nbsp;views
+        li
+          | {{tile.commentsCount}}&nbsp;comments
+
+    h3.tile-article_title
+      router-link(to="/some-link") {{ tile.title }}
+    p.tile-article_tagline {{ tile.description }}

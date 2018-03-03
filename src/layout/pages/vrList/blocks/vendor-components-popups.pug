@@ -1,0 +1,32 @@
+include ./components-mixin
+div(
+  popup-container="vendorsPopup"
+)
+  .components-wrapper.vendors
+    .components_header
+      h3.title
+        i(aria-hidden='true').fa.fa-users
+        | vendors
+      button(type="button" hide-popup="vendorsPopup").ht.close-popup-btn
+    .vendors-holder
+      ul.intitled-list
+        li.animate-slide(
+          ng-repeat="vendor in virtualRoomsController.vendorsList"
+        )
+          +vendors
+div(
+  popup-container="componentsPopup"
+)
+  .components-wrapper
+    .components_header
+      h3.title
+        i(aria-hidden='true').fa.fa-shopping-bag
+        | components
+      button(type="button" hide-popup="componentsPopup").ht.close-popup-btn
+    //-.components-holder
+    .components_body
+      ul.components_list
+        li.animate-slide(
+        ng-repeat="component in virtualRoomsController.componentsList"
+        )
+          +components

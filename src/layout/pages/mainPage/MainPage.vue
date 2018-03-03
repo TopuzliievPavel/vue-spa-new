@@ -9,7 +9,7 @@
     //-include ./blocks/login-popup
     main.content-wrap.content-indent
       section.main-features_section
-        include blocks/features-list
+        include blocks/features-list.pug
 
       section.main_title-holder
         h2.h1
@@ -17,9 +17,9 @@
           | &nbsp;
           |{{content.contentTitle}}
 
-      .site-entities-list
-
+      section.main-tile_section-list
+        include blocks/tile-list.pug
 
       section.main-roles_section
-        include ./blocks/roles
+        include ./blocks/roles.pug
 </template>

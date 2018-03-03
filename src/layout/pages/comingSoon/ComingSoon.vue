@@ -1,38 +1,23 @@
+<script src="./ctrl.js"></script>
+
+<style lang="scss" scoped> @import './styles'; </style>
+
 <template lang="pug">
-  .hello
-    h1 ComingSoon
-    router-link(to="/") MainPage
+  .page_main
+    .content-wrap.content-indent
+      header.main_header
+        h1 this page is <br> coming soon
+        p Leave your email below and we'll send you an email when the functionality will be available.
+      form.main_form
+        .form-row
+          label
+            input(type="email" required)
+
+          button.btn.btn--primary(type="button") Send
+
+      router-link.btn.btn--outline(to="/")
+        i(aria-hidden="true").fa.fa-angle-left
+        |&ensp;
+        | Go to Main page
 
 </template>
-
-<script>
-export default {
-  name: 'ComingSoon',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.hello {
-  a {color: red;}
-}
-</style>

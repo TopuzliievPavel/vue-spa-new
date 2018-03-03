@@ -1,4 +1,4 @@
-pager {
+.pager {
   display: block;
   margin: 0 auto;
   @include media('>=medium') {
@@ -18,11 +18,10 @@ pager {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  //max-width: 260px;
   li {
     display: inline-block;
     margin: 0 .125rem;
-    vertical-align: middle;
+    vertical-align: top;
   }
   button {
     background: transparent;

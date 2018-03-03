@@ -1,0 +1,40 @@
+.sidebar_controls.hide-for-xlarge
+  button.btn.btn--outline(type="button"
+  @click="clearAllFilters"
+  )
+    i(aria-hidden="true").fa.fa-filter
+    | &nbsp;
+    | &nbsp;
+    span Clear All Filters
+  button.btn.btn--link.sidebar_close-btn(type="button"
+  @click="showSidebar = !showSidebar"
+  )
+    i(aria-hidden="true").fa.fa-times
+ul.category-sidebar_list
+  //-opened
+  li.sidebar-category(
+    v-for="category in content.categories"
+  )
+    button.sidebar-category_title(type="button"
+      @click="setActiveTab(category)"
+      :class="{'active': activeCategory}"
+      )
+      h4 {{ category.title}}
+      i(aria-hidden="true").fa.toggle_arrow-icon
+    .animate-slide
+      ul.sidebar_groups-list
+        li.sidebar_group-item(
+          v-for="filter in category.filters"
+          )
+          .sidebar_group-toggle
+            h4.sidebar_group-title {{ filter.title }}
+            i(aria-hidden="true").fa.toggle_plus-icon
+
+          ul.sidebar_filters-list
+            li.sidebar_filter-item(
+              v-for="filterItem in filter.filterItems"
+              )
+              label.sidebar_filter-item_block
+                input(type="checkbox")
+                span.checkbox-emmitator
+                span.sidebar_filter {{ filterItem.title }}

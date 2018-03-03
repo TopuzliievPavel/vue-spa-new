@@ -1,0 +1,6 @@
+article.tile_article(v-if="tile.type === 'video'")
+  router-link.tile-article_link.tile-article_link--img(to="/some-link")
+    img.tile-article_img(:src="tile.thumbnail")
+    video.tile-article_video(id="5" preload="auto" autoplay
+      :src="tile.getVideoUrl"
+    )

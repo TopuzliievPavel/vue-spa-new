@@ -1,0 +1,43 @@
+
+.category-list_settings
+  .flex-wrapper
+    dl.sorting
+      dt.show-for-large sort by:
+      dd
+        select.sorting_select
+          option(value="popular") Popular
+          option(value="newest") Newest
+          option(value="oldest") Oldest
+          option(value="title") Title
+
+    ul.list_views.show-for-large
+      li(
+        :class="{'current': !listLayoutRow}"
+        @click="listLayoutRow = false"
+      ).list_views_item
+        span.ht.view-2.view-icon
+      li(
+        :class="{'current': listLayoutRow}"
+        @click="listLayoutRow = true"
+      ).list_views_item
+        span.ht.view-1.view-icon
+
+  .pagination-light(
+    v-if="content.pagination.pages > 2"
+    )
+    button.pagination_btn( type="button"
+      v-show="content.pagination.page > 1"
+    )
+      i(aria-hidden="true").fa.fa-angle-left
+    .pagination_text
+      | {{ (content.pagination.page * content.pagination.limit) - (content.pagination.limit - 1) }}
+      span &nbsp;-&nbsp;
+      | {{ content.pagination.page * content.pagination.limit }}
+      span &nbsp;of&nbsp;
+      | {{ content.pagination.total }}
+      span.show-for-large &nbsp;{{ content.pagination.name }}
+
+    button.pagination_btn(type="button"
+      v-show="content.pagination.page < content.pagination.pages"
+    )
+      i(aria-hidden="true").fa.fa-angle-right

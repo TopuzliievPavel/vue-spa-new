@@ -1,0 +1,91 @@
+//- Use in
+//- 1. Media-article
+//- 2. Tips-article
+
+.article_social-section {
+  margin: 27px 0 0;
+  .article_footer & {
+    margin: 27px 0;
+  }
+}
+
+.article_social-list {
+  padding: 0;
+  margin: 0 0 12px;
+  list-style: none;
+  font-size: 1.25em;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    + li {
+      margin-left: 6px;
+    }
+  }
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    color: $white;
+    &.bg-primary {
+      font-size: 1rem;
+    }
+    .fa {
+      line-height: 32px;
+    }
+  }
+}
+
+.article_actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .875rem;
+  font-weight: 300;
+  li {
+    display: inline-block;
+    vertical-align: middle;
+    + li {
+      margin-left: 1.65em;
+    }
+  }
+}
+
+.article_action-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 0 3px 0 0;
+  &:hover {
+    color: $white;
+    background-color: $col-primary;
+  }
+  .fa, .ht {
+    background-color: $col-primary;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    color: $white;
+    font-size: .714em;
+    text-align: center;
+    margin-right: 7px;
+    &:before {
+      line-height: 20px;
+    }
+  }
+  span {
+    border-right: 1px solid;
+    padding-right: 8px;
+    margin-right: 8px;
+    line-height: 1.2;
+  }
+}
+
+
+//fb rgba(73, 97, 155, 0.9) rgba(73, 97, 155, 1),
+//twit rgba(94, 169, 221, 0.9) rgba(94, 169, 221, 1),
+//pin rgba(203, 32, 39, 0.9) rgba(203, 32, 39, 1),
+//in rgba(2, 116, 179, 0.9) rgba(2, 116, 179, 1),
+//ggp rgba(227, 62, 43, 0.9) rgba(227, 62, 43, 1),
+

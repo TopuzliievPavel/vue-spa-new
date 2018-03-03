@@ -1,0 +1,49 @@
+.sidebar_controls.hide-for-xlarge
+  button.btn.btn--outline(type="button"
+    ng-click="virtualRoomsController.clearAllFilters()"
+  )
+    i(aria-hidden="true").fa.fa-filter
+    | &nbsp;
+    | &nbsp;
+    span Clear All Filters
+  button.btn.btn--link.sidebar_close-btn(type="button"
+    ng-click="showSidebar = !showSidebar"
+  )
+    i(aria-hidden="true").fa.fa-times
+ul.category-sidebar_list
+  li.sidebar-category(
+    ng-repeat="category in virtualRoomsController.leftMenuTree track by $index"
+    check-active-link='opened' links="{{category._id | linkTo:'EXT_VIRTUAL_ROOMS_LIST'}}"
+  )
+    a(href="{{category.slug | linkTo:'EXT_VIRTUAL_ROOMS_LIST':'search'}}"
+      ng-click="virtualRoomsController.setActiveTab(category)"
+      ng-class="{'active': virtualRoomsController.activeCategory == category._id}"
+    ).sidebar-category_title
+      h4 {{::category.title}}
+      i(aria-hidden="true").fa.toggle_arrow-icon
+    .animate-slide(
+      ng-show="virtualRoomsController.activeCategory == category._id"
+    )
+      ul.sidebar_groups-list
+        li.sidebar_group-item(
+          ng-repeat="filter in category.filters track by $index"
+        )
+          .sidebar_group-toggle(
+            ng-click="virtualRoomsController.activeFilter = virtualRoomsController.activeFilter === filter ?  null : filter"
+            ng-class="{'opened': virtualRoomsController.activeFilter === filter}"
+          )
+            h4.sidebar_group-title {{::filter.title}}
+            i(aria-hidden="true").fa.toggle_plus-icon
+
+          ul.sidebar_filters-list(ng-show="virtualRoomsController.activeFilter === filter").animate-slide
+            li.sidebar_filter-item(
+              ng-repeat="filterItem in filter.filterItems"
+            )
+              label(
+                ng-click="virtualRoomsController.updateParams(true)"
+              ).sidebar_filter-item_block
+                input(type="checkbox"
+                  ng-model="filterItem.selected"
+                )
+                span.checkbox-emmitator
+                span.sidebar_filter {{::filterItem.title}}

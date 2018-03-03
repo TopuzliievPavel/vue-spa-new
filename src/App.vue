@@ -2,9 +2,8 @@
   #app.page
     page-header
     .header_heightfix
-    .page_main
-      main.content-wrap.content-indent
-        router-view
+    .page_main-wrap
+      router-view
     page-footer
 </template>
 

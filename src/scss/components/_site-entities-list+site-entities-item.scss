@@ -1,12 +1,11 @@
 /* ---------------------------------------------------------
    1. Layout Main tiles
    ---------------------------------------------------------*/
-
-site-entities-list {
-  display: block;
+.main-tile_section-list {
+  margin-bottom: 2rem;
 }
 
-site-entity-item {
+.main-tile_block {
   display: block;
   margin: 0 (-$item-indent);
   @include media('>=medium') {
@@ -139,25 +138,28 @@ video-container {
 }
 
 /*----- adbutler -----*/
-adbutler-entity {
+.tile--adbutler {
   overflow: hidden;
   .tile-article_link--img {
-    background-color: $white;
+    background-color: transparent;
     position: relative;
     z-index: 2;
   }
 }
 .tile-article--img-hide {
-  position: absolute;
-  padding: 15px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  text-align: center;
   color: $col-primary-hover;
   font-size: 1.125em;
+  padding: 15px;
   margin: 0;
-  width: 100%;
-  text-align: center;
+  @include media('>=large') {
+    position: absolute;
+    padding: 15px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
 }
 
 /*----- article, virtual room, external video, projects, video -----*/
@@ -213,16 +215,17 @@ adbutler-entity {
   margin-bottom: 14px;
   a {
     color: inherit;
+    &:hover {
+      color: $col-primary-hover;
+    }
   }
 }
 .tile-article_tagline {
   overflow: hidden;
   height: calc(3em * 1.1428 + 2px);
   margin-bottom: 0;
-}
-
-room-entity {
-  .tile-article_tagline {
-    height: calc(1.9em * 1.1428);
+  .tile--room & {
+    height: calc(1em * 1.1428);
+    margin-bottom: 18px;
   }
 }

@@ -1,0 +1,49 @@
+.filter_block {
+  display: flex;
+  align-items: center;
+}
+.filter_title {
+  text-transform: capitalize;
+  flex: 1 0 auto;
+  min-width: 49px;
+  margin-right: 10px;
+  color: $col-txt2;
+}
+.filter_list {
+  margin: 0 -5px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.filter_item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  font-size: 13px;
+  line-height: 1.2;
+  border: 1px solid $col-border;
+  padding: 4px 8px;
+  color: $col-txt2;
+}
+.filter-item_text {
+  border-right: 1px solid $col-border;
+  padding-right: 6px;
+  span {
+    margin-right: .3em;
+  }
+}
+.filter-item_delete {
+  padding-left: 6px;
+}
+.filter_clear {
+  .btn {
+    font-size: .875rem;
+    padding: 0 16px;
+    border: 1px solid $col-border;
+  }
+  .fa {
+    margin: 0 5px;
+  }
+}

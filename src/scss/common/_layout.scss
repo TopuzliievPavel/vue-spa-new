@@ -75,9 +75,14 @@ body {
   width: 100%;
 }
 
-.page_main {
+.page_main-wrap {
+  width: 100%;
   flex: 1 1 auto;
-  //width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page_main {
   @include media('>=large') {
     padding-top: $vert-indent;
     padding-bottom: $vert-indent;
@@ -93,7 +98,7 @@ body {
 
 .page_content {
   flex: 1 1 100%;
-  padding: $vert-indent 25px;
+  padding: $vert-indent 15px;
   @include media('>=xlarge') {
     border: 1px solid $col-border;
     padding: 33px ($vert-indent * 2);

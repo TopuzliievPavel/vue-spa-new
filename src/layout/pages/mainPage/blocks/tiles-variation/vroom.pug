@@ -1,0 +1,32 @@
+article.tile_article.tile--room(v-if="tile.type === 'room' || tile.type === 'signatureRoom'")
+  .tile-article_label(
+    v-if="tile.tileTitle"
+    ) {{tile.tileTitle}}
+  .tile-article_label(
+    v-if="!tile.tileTitle"
+    ) {{(tile.isSignature ? 'Signature Virtual Room' : '') + (!tile.isSignature && !tile.tileTitle ? 'Virtual Room' : '')}}
+  router-link.tile-article_link(to="/some-link")
+    .commercial-banner.vr-360(v-if='tile.is360View')
+    img.tile-article_img(:src="tile.thumbnail[0]")
+  .tile-article_body
+    .tile-article_info
+      ul.tile-article_meta-list
+        li
+          | {{tile.componentsCount}}&nbsp;components
+        //-li
+          | {{::tile.vendorsCount}}&nbsp;vendors
+      ul.tile-article_meta-list
+        li
+          | {{tile.viewsCount}}&nbsp;views
+        li
+          | {{tile.commentsCount}}&nbsp;comments
+    h3.tile-article_title
+      router-link(to="/some-link") {{ tile.title }}
+    p.tile-article_tagline {{tile.description}}
+
+    .tile-article_rating.rating-component
+      .stars-holder
+        i(aria-hidden="true"
+        v-for="rating in [1,2,3,4,5]"
+          :class="{'empty': rating}"
+        ).fa.fa-star-o

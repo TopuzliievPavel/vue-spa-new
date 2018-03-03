@@ -1,0 +1,36 @@
+@import '../../../scss/base';
+
+.page_main {
+  flex: 1 1 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(242, 242, 242, 0.1) 100%);
+}
+
+.main_header {
+  font-weight: 300;
+  h1 {
+    line-height: 1.2;
+    text-transform: capitalize;
+    margin-bottom: 3em;
+    &:first-line {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+.main_form {
+  padding: 1.5em 0;
+  max-width: 350px;
+  margin: 0 auto;
+  label {
+    width: 100%;
+  }
+  .btn {
+    margin-left: 5px;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}

@@ -1,0 +1,66 @@
+
+.article-item_picture-holder
+  .commercial-banner.vr-360(v-if="room.is360View")
+  .article-item_picture-box
+    img.media-item_picture(
+      :src="room.thumbnail[0] || 'https://cdn3.housetipster.com/empty.jpg'"
+    )
+  router-link.article-item_hover-link(:to="room.link")
+
+.article-item_details
+  .article-item_details-body
+    h3.article-item_title.articleTitle
+      router-link(:to='room.link') {{ room.title }}
+    .article-item_views-details
+      ul.article-item_counters-list
+        li.counter-item
+          i(aria-hidden="true").fa.fa-thumbs-up
+          | &nbsp;
+          | {{ room.likesCount }}
+        li.counter-item
+          i(aria-hidden="true").fa.fa-eye
+          | &nbsp;
+          | {{ room.viewsCount }}
+        li.counter-item
+          i(aria-hidden="true").fa.fa-comment
+          | &nbsp;
+          | {{ room.commentsCount }}
+
+      .article-item_rating.rating-component
+        .stars-holder
+          i(aria-hidden="true"
+            v-for="rating in [1,2,3,4,5]"
+            :class="{'empty': rating}"
+          ).fa.fa-star-o
+
+    .article-item_content(v-if="room.tagLine")
+      p {{ room.tagLine }}
+
+  footer.article-item_details-footer
+    ul.vr-card_components-list
+      li
+        .vr_component-item
+          i(aria-hidden="true").fa.fa-shopping-basket
+          | &nbsp;
+          | {{ room.componentsCount }}
+          | &nbsp;
+          span.item-name components
+      li
+        .vr_component-item
+          i(aria-hidden="true").fa.fa-user
+          | &nbsp;
+          | {{ room.vendorsCount }}
+          | &nbsp;
+          span.item-name vendors
+    .show-for-album.features-list_holder
+      ul.vr-card_features-list
+        li(:class="{'disabled': !room.features.human}")
+          i(aria-hidden="true").ht.chick
+        li(:class="{'disabled': !room.features.panorama}")
+          i(aria-hidden="true").ht.vr-rotate
+        li(:class="{'disabled': !room.features.video}")
+          i(aria-hidden="true").ht.vr-play
+        li(:class="{'disabled': !room.features.virtualRoom}")
+          i(aria-hidden="true").ht.vr-face
+        li(:class="{'disabled': !room.features.labels}")
+          i(aria-hidden="true").ht.vr-label

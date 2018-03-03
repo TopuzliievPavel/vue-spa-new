@@ -1,0 +1,97 @@
+$product-layout-padding           : 5px;
+$prod-wrap-padding                : 20px;
+$prod-wrap-padding-list           : 37px;
+$box-shadow                       : 0 6px 8px rgba(#000, .22);
+$font-size__s                     : 12px;
+$_icon-font-size-prod             : 26px;
+$_icon-font-size-prod-description : 21px;
+$_icon-font-size-prod-review      : 32px;
+
+$dark-gray: #7f7f7f;
+$footer-col-dark: #36363a;
+
+
+.page_main {
+  margin-bottom: 4em;
+}
+
+/* ---------------------------------------------------------
+   1. Header
+   ---------------------------------------------------------*/
+
+.shop_title-page {
+  text-align: center;
+  @include media('>=medium') {
+    margin-bottom: 2em;
+  }
+  .h1 {
+    text-transform: capitalize;
+    font-weight: normal;
+  }
+}
+.shop-category_head {
+  font-size: .875rem;
+  @include media('>=medium') {
+    font-size: 1rem;
+  }
+  .h2 {
+    text-transform: capitalize;
+    margin-bottom: .25em;
+    font-weight: normal;
+  }
+}
+
+.shop-category_head-info {
+  ul {
+    list-style: disc;
+    padding-left: 1em;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   2. List
+   ---------------------------------------------------------*/
+.shop_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 -$product-layout-padding;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shop-tile_wrap {
+  padding: $product-layout-padding;
+  display: flex;
+  width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
+  @include media('>=presmall') {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  @include media('>=medium') {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  @include media('>=large') {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .layout-list & {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.shop-tile {
+  @include multi-transition (box-shadow);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid $col-border;
+  width: 100%;
+  &:hover {
+    box-shadow: $box-shadow;
+  }
+}
