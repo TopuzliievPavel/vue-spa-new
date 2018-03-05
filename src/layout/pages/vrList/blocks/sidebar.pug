@@ -1,7 +1,5 @@
 .sidebar_controls.hide-for-xlarge
-  button.btn.btn--outline(type="button"
-  @click="clearAllFilters"
-  )
+  button.btn.btn--outline(type="button")
     i(aria-hidden="true").fa.fa-filter
     | &nbsp;
     | &nbsp;
@@ -16,8 +14,8 @@ ul.category-sidebar_list
     v-for="(category, index) in content.categories"
   )
     button.sidebar-category_title(type="button"
-      @click="setActiveTab = index"
-      :class="{'active': setActiveTab == index}"
+      @click="setActiveTab(index)"
+      :class="{'active': activeTab == index}"
       )
       h5 {{ category.title}}
       i(aria-hidden="true").fa.toggle_arrow-icon
@@ -28,8 +26,8 @@ ul.category-sidebar_list
         v-for="(filter, index) in category.filters"
         )
         button.sidebar_group-toggle(type="button"
-          @click="setActiveFilter = index"
-          :class="{'opened': setActiveFilter == index}"
+          @click="setActiveFilter(index)"
+          :class="{'opened': activeFilter == index}"
         )
           h6.sidebar_group-title {{ filter.title }}
           i(aria-hidden="true").fa.toggle_plus-icon

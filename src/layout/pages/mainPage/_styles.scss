@@ -13,6 +13,7 @@ main {
    ---------------------------------------------------------*/
 .slider--main {
   height: 385px;
+  display: flex;
   @include media('>=presmall') {
     height: 500px;
   }
@@ -22,6 +23,15 @@ main {
   @include media('>=large') {
     margin-top: -20px;
   }
+}
+
+.agile__list {
+  display: flex;
+}
+
+
+.agile__track {
+  align-items: stretch;
 }
 
 .banners_slide-block {

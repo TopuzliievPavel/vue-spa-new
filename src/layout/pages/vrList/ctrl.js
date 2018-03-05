@@ -10,16 +10,31 @@ export default {
   },
   data () {
     return {
+      content: false,
       showSidebar: false,
       activeCategory: '',
       listLayoutRow: false,
-      setActiveTab: '',
-      setActiveFilter: ''
+      activeTab: undefined,
+      activeFilter: undefined
     }
   },
   methods: {
-    clearAllFilters: function () {
-      console.log("clearAllFilters")
+    setActiveTab: function (index) {
+      if(this.activeTab == index) {
+        this.activeTab = undefined;
+      }
+      else {
+        this.activeTab = index;
+        this.activeFilter = undefined;
+      }
+    },
+    setActiveFilter: function (index) {
+      if(this.activeFilter == index) {
+        this.activeFilter = undefined;
+      }
+      else {
+        this.activeFilter = index;
+      }
     }
   }
 }

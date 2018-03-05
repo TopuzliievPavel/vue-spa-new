@@ -86,6 +86,9 @@
             )
               input.header_search(type="text", placeholder="Search for pros, galleries, products and more"
                 v-model="autocomplete.searchText"
+                @focus="autocomplete.isOpen = true"
+                @blur="autocomplete.isOpen = false"
+
               )
               button.fa.fa-search.header_search-btn.btn.btn--link( type="button"
                 v-on:click="autocomplete.isShowInput = !autocomplete.isShowInput"
@@ -101,7 +104,7 @@
                 ]
 
               .search-autocomplete_wrapper(
-                :class="{'show-search': autocomplete.searchText}"
+                :class="{'show-search': autocomplete.isOpen && autocomplete.searchText.length > 0}"
                 )
                 ul.search-autocomplete_list
                   each item in searchList
@@ -113,7 +116,7 @@
                           p.search-autocomplete_search
                             | {{autocomplete.searchText}}
                             span &nbsp;in&nbsp;
-                            span.search-autocomplete_category item.section
+                            span.search-autocomplete_category=item.section
               //- --------------------- autocomplete end ---------------------- -//
           .head-main_col.head-main_col--reg
             .header_options.head-main_reg

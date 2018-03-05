@@ -10,5 +10,8 @@ export default {
         searchText: ''
       }
     }
+  },
+  methods: {
+
   }
 }

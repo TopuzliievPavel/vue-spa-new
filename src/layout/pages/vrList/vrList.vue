@@ -4,8 +4,8 @@
 
 <template lang="pug">
   .page_main
-    .page_content-wrap.content-wrap
-      main.page_content(v-if="content")
+    .page_content-wrap.content-wrap(v-if="content")
+      main.page_content
         button(type="button"
           @click="showSidebar = !showSidebar"
           ).btn.btn--outline.hide-for-xlarge.show-sidebar-btn

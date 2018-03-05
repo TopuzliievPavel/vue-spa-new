@@ -3,7 +3,7 @@
     page-header
     .header_heightfix
     .page_main-wrap
-      router-view
+      //-router-view
     page-footer
 </template>
 

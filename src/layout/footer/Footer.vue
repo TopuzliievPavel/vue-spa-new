@@ -8,9 +8,7 @@
     router-link.footer_logo-link(to=linkTo class=visibilityClass)
       img(src=imgPath + logoPic + '.png')
 
-  footer.page_footer(
-    v-if="content"
-  )
+  footer.page_footer(v-if="content")
     .content-wrap.content-indent.footer_content-wrap
       .footer_col.footer_contacts
         +footer-logo("/", "medium-show", "new-logo-footer")

@@ -71,7 +71,14 @@
 
 .sidebar-category {
   background-color: $white;
-  &:last-child { border-bottom: none; }
+  &:last-child {
+    .sidebar_groups-list {
+      border-top: none;
+    }
+    .sidebar_group-item {
+      border-bottom: none;
+    }
+  }
   @include media('<xlarge') {
     border-bottom: none;
     flex: 0 0 50%;
@@ -193,6 +200,12 @@
   list-style: none;
   max-height: 0;
   overflow: hidden;
+}
+
+.sidebar_group-item {
+  &:last-child {
+    border-bottom: 1px solid $col-border;
+  }
 }
 
 .sidebar_group-toggle {
