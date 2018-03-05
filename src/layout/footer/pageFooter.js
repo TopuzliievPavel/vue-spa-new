@@ -6,6 +6,18 @@ export default {
     content: {
       source: db.ref('dataComponent/footer'),
       asObject: true,
+
+    }
+  },
+  // beforeCreate: function () {
+  //   let self = this;
+  //   db.ref('dataComponent/footer').once('value').then(function(s){
+  //     self.content = s.val();
+  //   });
+  // },
+  data () {
+    return {
+      content: ""
     }
   }
 }

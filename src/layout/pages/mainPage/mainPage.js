@@ -3,15 +3,15 @@ import { db } from '../../../core/dataBase';
 
 export default {
   name: 'MainPage',
-  firebase: {
-    content: {
-      source: db.ref('dataPages/mainPage'),
-      asObject: true,
-    }
+  beforeCreate: function () {
+    let self = this;
+    db.ref('dataPages/mainPage').once('value').then(function(s){
+      self.content = s.val();
+    });
   },
   data () {
     return {
-
+      content: ""
     }
   }
 }

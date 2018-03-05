@@ -2,15 +2,15 @@ import { db } from '../../../core/dataBase';
 
 export default {
   name: 'vrList',
-  firebase: {
-    content: {
-      source: db.ref('dataPages/vrList'),
-      asObject: true
-    }
+  beforeCreate: function () {
+    let self = this;
+    db.ref('dataPages/vrList').once('value').then(function(s){
+      self.content = s.val();
+    });
   },
   data () {
     return {
-      content: false,
+      content: '',
       showSidebar: false,
       activeCategory: '',
       listLayoutRow: false,
@@ -18,6 +18,7 @@ export default {
       activeFilter: undefined
     }
   },
+
   methods: {
     setActiveTab: function (index) {
       if(this.activeTab == index) {
