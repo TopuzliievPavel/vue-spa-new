@@ -30,8 +30,9 @@
         .stars-holder
           i(aria-hidden="true"
             v-for="rating in [1,2,3,4,5]"
-            :class="{'empty': rating}"
+            :class="{'empty': rating > room.rating}"
           ).fa.fa-star-o
+          | {{room.rating}}
 
     .article-item_content(v-if="room.tagLine")
       p {{ room.tagLine }}

@@ -25,7 +25,7 @@
           :class="{'articles-list--album-view': listLayoutRow}"
           )
           article.articles-list_item(
-          v-for="room in content.items"
+          v-for="room in list"
           :class="{'commercial-img': room.type == 'banner',\
                    'commercial-article': room.type == 'room'\
                  }"

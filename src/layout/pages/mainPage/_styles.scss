@@ -23,20 +23,15 @@ main {
   @include media('>=large') {
     margin-top: -20px;
   }
+  .agile__list {
+    display: flex;
+  }
+  .agile__track {
+    align-items: stretch;
+  }
 }
 
-.agile__list {
-  display: flex;
-}
 
-
-.agile__track {
-  align-items: stretch;
-}
-
-.banners_slide-block {
-  transition: opacity 1s !important;
-}
 
 .banners_slide-img {
   height: auto;

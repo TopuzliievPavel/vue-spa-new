@@ -7,10 +7,14 @@ export default {
     db.ref('dataPages/vrList').once('value').then(function(s){
       self.content = s.val();
     });
+    db.ref('dataPages/vrList/items').limitToFirst(12).once('value').then(function(s){
+      self.list = s.val();
+    });
   },
   data () {
     return {
       content: '',
+      list: '',
       showSidebar: false,
       activeCategory: '',
       listLayoutRow: false,
