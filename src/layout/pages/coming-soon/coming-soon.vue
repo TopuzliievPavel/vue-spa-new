@@ -1,7 +1,3 @@
-<script src="./ctrl.js"></script>
-
-<style lang="scss" scoped> @import './styles'; </style>
-
 <template lang="pug">
   .page_main
     .content-wrap.content-indent
@@ -21,3 +17,7 @@
         | Go to Main page
 
 </template>
+
+<script src="./coming-soon.js"></script>
+
+<style lang="scss" scoped> @import './coming-soon'; </style>

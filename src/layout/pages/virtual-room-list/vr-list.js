@@ -1,7 +1,7 @@
 import { db } from '../../../core/dataBase';
 
 export default {
-  name: 'vrList',
+  name: 'VrList',
   beforeCreate: function () {
     let self = this;
     db.ref('dataPages/vrList').once('value').then(function(s){

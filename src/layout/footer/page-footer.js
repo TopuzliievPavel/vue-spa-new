@@ -1,7 +1,7 @@
 import { db } from '../../core/dataBase';
 
 export default {
-  name: 'page-footer',
+  name: 'PageFooter',
   // firebase: {
   //   content: {
   //     source: db.ref('dataComponent/footer'),

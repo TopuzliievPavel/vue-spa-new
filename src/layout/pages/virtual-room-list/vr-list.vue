@@ -1,7 +1,3 @@
-<script src="./ctrl.js"></script>
-
-<style lang="scss" scoped> @import './styles'; </style>
-
 <template lang="pug">
   .page_main
     .page_content-wrap.content-wrap(v-if="content")
@@ -42,4 +38,6 @@
 
 </template>
 
+<script src="./vr-list.js"></script>
 
+<style lang="scss" scoped> @import './vr-list'; </style>

@@ -5,11 +5,9 @@
     dt Show:
     dd
       select.sorting_select.select-num
+        option(value="6") 6
         option(value="12") 12
         option(value="24") 24
-        option(value="36") 36
-        option(value="48") 48
-        option(value="60") 60
   .pager
     .pagination
       button.btn.btn--link.show-for-medium(type="button"
@@ -24,8 +22,8 @@
         v-for='page in content.pagination.pages',
         )
           button(type="button"
-          :class="{'current': page == content.pagination.page}"
-          ) {{ page }}
+            :class="{'current': page == content.pagination.page}"
+            ) {{ page }}
 
       button.pagination_btn.pagination_btn--primary(type="button"
         :class="{'invisible': content.pagination.page == content.pagination.pages}"

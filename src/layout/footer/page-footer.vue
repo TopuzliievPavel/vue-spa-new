@@ -1,7 +1,3 @@
-<script src="./pageFooter.js"></script>
-
-<style lang="scss" scoped> @import './_page-footer.scss'; </style>
-
 <template lang="pug">
   - var imgPath = 'https://cdn3.housetipster.com/static-img/'
   mixin footer-logo(linkTo, visibilityClass, logoPic)
@@ -63,4 +59,6 @@
 
 </template>
 
+<script src="./page-footer.js"></script>
 
+<style lang="scss" scoped> @import './_page-footer.scss'; </style>

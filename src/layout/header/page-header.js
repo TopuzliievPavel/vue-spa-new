@@ -12,6 +12,9 @@ export default {
     }
   },
   methods: {
-
+    routing: function (index) {
+      this.$router.push(index);
+      this.openBurgerMenu = false;
+    }
   }
 }

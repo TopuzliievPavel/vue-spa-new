@@ -1,7 +1,3 @@
-<script src="./pageHeader.js"></script>
-
-<style lang="scss" scoped> @import './styles'; </style>
-
 <template lang="pug">
   //:class="{\
     : false,\
@@ -76,7 +72,7 @@
       .content-wrap.content-indent
         .header_row.header_row--main
           .head-main_col.head-main_col--logo
-            router-link(to="/" tabindex="1")
+            //-router-link(to="/" tabindex="1")
               img(src="https://cdn3.housetipster.com/static-img/Housetipster_logo-new-big.png" width="186" height="auto").medium-show
               img(src="https://cdn2.housetipster.com/Housetipster_logo-new.svg" width="186" height="auto").medium-hide
 
@@ -174,4 +170,6 @@
 
 </template>
 
+<script src="./page-header.js"></script>
 
+<style lang="scss" scoped> @import './page-header'; </style>

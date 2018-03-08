@@ -1,7 +1,3 @@
-<script src="./mainPage.js"></script>
-
-<style lang="scss"> @import './_styles.scss'; </style>
-
 <template lang="pug">
   .page_main(v-if="content")
     include ./blocks/slider.pug
@@ -21,3 +17,7 @@
       section.main-roles_section
         include ./blocks/roles.pug
 </template>
+
+<script src="./main-page.js"></script>
+
+<style lang="scss"> @import './main-page'; </style>

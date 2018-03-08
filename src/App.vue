@@ -8,14 +8,14 @@
 </template>
 
 <script>
-  import pageFooter from './layout/footer/Footer.vue'
-  import pageHeader from './layout/header/Header.vue'
+  import PageFooter from './layout/footer/page-footer.vue'
+  import PageHeader from './layout/header/page-header.vue'
 
   export default {
     name: 'App',
     components: {
-      pageFooter,
-      pageHeader
+      PageFooter,
+      PageHeader
     }
   }
 </script>
