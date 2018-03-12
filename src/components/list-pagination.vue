@@ -10,7 +10,7 @@
     .pager
       .pagination
         button.btn.btn--link.show-for-medium(type="button"
-          :class="{'disable': content.pagination.page == 1}"
+          v-bind:class="{'disable': content.pagination.page == 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
           :class="{'invisible':content.pagination.page == 1}"

@@ -11,7 +11,8 @@ export default new Router({
   routes: [
     {path: '/', name: 'MainPage', component: MainPage},
     {path: '/vr-list', name: 'VrList', component: VrList},
-    {path: '*', name: 'ComingSoon', component: ComingSoon}
+    {path: '/coming-soon', name: 'ComingSoon', component: ComingSoon},
+    {path: '*', redirect: '/coming-soon'}
   ]
 })
 

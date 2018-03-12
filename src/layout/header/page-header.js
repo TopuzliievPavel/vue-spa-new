@@ -16,5 +16,11 @@ export default {
       this.$router.push(index);
       this.openBurgerMenu = false;
     }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.openBurgerMenu = false;
+      this.openSignIn = false;
+    }
   }
 }
