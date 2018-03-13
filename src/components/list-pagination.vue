@@ -1,42 +1,66 @@
 <template lang="pug">
   .settings-bottom
+    p(v-model="setPaginLengthC") {{setPaginLengthC}}
     dl.sorting.show-for-medium
       dt Show:
       dd
-        select.sorting_select.select-num
+        select.sorting_select.select-num(v-model.number="selectVal")
           option(value="6") 6
           option(value="12") 12
           option(value="24") 24
+
     .pager
       .pagination
         button.btn.btn--link.show-for-medium(type="button"
-          v-bind:class="{'disable': content.pagination.page == 1}"
+          v-bind:class="{'disable': currentPage == 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
-          :class="{'invisible':content.pagination.page == 1}"
+          :class="{'invisible':currentPage == 1}"
         )
           i(aria-hidden="true").fa.fa-angle-left
         ul.pagination_list
           li(
-          v-for='page in content.pagination.pages',
+          v-for='page in paginLength',
           )
             button(type="button"
-              :class="{'current': page == content.pagination.page}"
+              :class="{'current': page == currentPage}"
             ) {{ page }}
 
         button.pagination_btn.pagination_btn--primary(type="button"
-          :class="{'invisible': content.pagination.page == content.pagination.pages}"
+          :class="{'invisible': currentPage == paginLength}"
         )
           i(aria-hidden="true").fa.fa-angle-right
         button.btn.btn--link.show-for-medium(type="button"
-          :class="{'disable': content.pagination.page == content.pagination.pages}"
+          :class="{'disable': currentPage == paginLength}"
         ) Last
 </template>
 
 <script>
-    export default {
-        name: "ListPagination"
+  export default {
+    name: "ListPagination",
+    props: ['listLength', 'test'],
+    data () {
+      return {
+        test: 'test',
+        pageLength: this.listLength,
+        selectVal: 6,
+        currentPage: 1,
+        paginLength: 1,
+        paginLengthComp: 1,
+
+      }
+    },
+    methods: {
+      setPaginLength: function () {
+        this.paginLength = Math.ceil(this.pageLength/this.selectVal);
+      }
+    },
+    computed: {
+      setPaginLengthC: function () {
+        return Math.ceil(this.pageLength/this.selectVal);
+      }
     }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -133,6 +157,43 @@
   /* ---------------------------------------------------------
      Pagination
      ---------------------------------------------------------*/
+  .pager {
+    display: block;
+    margin: 0 auto;
+    @include media('>=medium') {
+      margin: 0;
+    }
+    .pagination_btn{
+      margin: 0 0.625rem;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+  }
+
+  .pagination_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin: 0 .125rem;
+      vertical-align: top;
+    }
+    button {
+      background: transparent;
+      font-size: 0.875rem;
+      padding: 0 0.4375rem;
+      line-height: 27px;
+      &:hover,
+      &.current {
+        background: #ccc;
+        color: $white;
+      }
+    }
+  }
 
 
 

@@ -1,4 +1,5 @@
 import { db } from '../../../core/dataBase';
+import ListPagination from '../../../components/list-pagination.vue'
 
 export default {
   name: 'VrList',
@@ -41,5 +42,8 @@ export default {
         this.activeFilter = index;
       }
     }
+  },
+  components: {
+    ListPagination
   }
 }

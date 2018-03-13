@@ -29,7 +29,8 @@
             .article-item_container(v-if="room")
               include blocks/article-item.pug
 
-        include ./blocks/pagination.pug
+        list-pagination.category-list_settings(:listLength="content.items.length")
+
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         :class="{'active': showSidebar}"
         )

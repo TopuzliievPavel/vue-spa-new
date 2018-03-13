@@ -5,6 +5,7 @@
     .page_main-wrap
       router-view
     page-footer
+    list-pagination
 </template>
 
 <script>
