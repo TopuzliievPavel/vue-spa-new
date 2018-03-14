@@ -5,12 +5,12 @@
     .page_main-wrap
       router-view
     page-footer
-    list-pagination
 </template>
 
 <script>
-  import PageFooter from './layout/footer/page-footer.vue'
+  //-import PageFooter from './layout/footer/page-footer.vue'
   import PageHeader from './layout/header/page-header.vue'
+  export const PageFooter = () => import(/* webpackChunkName: 'footer' */ './layout/footer/page-footer.vue');
 
   export default {
     name: 'App',

@@ -1,10 +1,13 @@
 <template lang="pug">
   .settings-bottom
-    p(v-model="setPaginLengthC") {{setPaginLengthC}}
+
     dl.sorting.show-for-medium
       dt Show:
       dd
-        select.sorting_select.select-num(v-model.number="selectVal")
+        select.sorting_select.select-num(
+          v-model.number="selectVal"
+          @change="setRangeArticleList()"
+          )
           option(value="6") 6
           option(value="12") 12
           option(value="24") 24
@@ -12,52 +15,94 @@
     .pager
       .pagination
         button.btn.btn--link.show-for-medium(type="button"
-          v-bind:class="{'disable': currentPage == 1}"
+          @click="gotoFirstPage"
+          :class="{'disable': currentPage == 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
+          @click="reducePage"
           :class="{'invisible':currentPage == 1}"
         )
           i(aria-hidden="true").fa.fa-angle-left
         ul.pagination_list
           li(
-          v-for='page in paginLength',
+          v-for="page in setPagesLength",
           )
             button(type="button"
+              @click="thisPage(page)"
               :class="{'current': page == currentPage}"
             ) {{ page }}
 
         button.pagination_btn.pagination_btn--primary(type="button"
-          :class="{'invisible': currentPage == paginLength}"
+          @click="addPage"
+          :class="{'invisible': currentPage == setPagesLength}"
         )
           i(aria-hidden="true").fa.fa-angle-right
         button.btn.btn--link.show-for-medium(type="button"
-          :class="{'disable': currentPage == paginLength}"
+          @click="gotoLastPage"
+          :class="{'disable': currentPage == setPagesLength}"
         ) Last
 </template>
 
 <script>
   export default {
     name: "ListPagination",
-    props: ['listLength', 'test'],
+    props: {
+      listLength: {
+        type: Number,
+        default: 6
+      },
+      setPage:  {
+        type: Number,
+        default: 1
+      }
+    },
     data () {
       return {
-        test: 'test',
-        pageLength: this.listLength,
         selectVal: 6,
         currentPage: 1,
-        paginLength: 1,
-        paginLengthComp: 1,
-
       }
     },
     methods: {
-      setPaginLength: function () {
-        this.paginLength = Math.ceil(this.pageLength/this.selectVal);
+      setRangeArticleList() {
+        if(this.currentPage > this.setPagesLength) {
+          this.currentPage = this.setPagesLength;
+        }
+        let startArticle = (this.currentPage * this.selectVal) - this.selectVal;
+        let stopArticle = this.currentPage * this.selectVal - 1;
+        this.$emit('rangeArticleList', [startArticle, stopArticle, this.currentPage])
+      },
+      gotoFirstPage() {
+        this.currentPage = 1;
+        this.setRangeArticleList();
+      },
+      reducePage() {
+        this.currentPage = this.currentPage - 1;
+        this.setRangeArticleList();
+      },
+      thisPage(page) {
+        this.currentPage = page;
+        this.setRangeArticleList();
+      },
+      addPage() {
+        this.currentPage = this.currentPage + 1;
+        this.setRangeArticleList();
+      },
+      gotoLastPage() {
+        this.currentPage = this.setPagesLength;
+        this.setRangeArticleList();
       }
     },
     computed: {
-      setPaginLengthC: function () {
-        return Math.ceil(this.pageLength/this.selectVal);
+      setPagesLength() {
+        return Math.ceil(this.listLength / this.selectVal);
+      },
+      setCurrentPage() {
+        return this.setPage
+      }
+    },
+    watch: {
+      setCurrentPage() {
+        this.thisPage(this.setPage)
       }
     }
   }

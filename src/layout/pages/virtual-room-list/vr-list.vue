@@ -10,8 +10,7 @@
           | Filters
 
         .page_title
-          h1.h2
-            | {{ content.pageTitle.title }}
+          h1.h2 {{ content.pageTitle.title }}
           p.h5 {{ content.pageTitle.description }}
 
         include blocks/settings.pug
@@ -21,15 +20,17 @@
           :class="{'articles-list--album-view': listLayoutRow}"
           )
           article.articles-list_item(
-          v-for="room in list"
-          :class="{'commercial-img': room.type == 'banner',\
-                   'commercial-article': room.type == 'room'\
-                 }"
+            v-for="room in list"
+            :key="room.id"
           )
-            .article-item_container(v-if="room")
+            .article-item_container
               include blocks/article-item.pug
 
-        list-pagination.category-list_settings(:listLength="content.items.length")
+        list-pagination.category-list_settings(
+          :listLength="content.items.length"
+          :setPage="currentPage"
+          @rangeArticleList="updateArticleList($event)"
+          )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         :class="{'active': showSidebar}"

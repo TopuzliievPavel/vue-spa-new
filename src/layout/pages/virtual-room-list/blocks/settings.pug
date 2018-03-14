@@ -4,10 +4,13 @@
     dl.sorting
       dt.show-for-large sort by:
       dd
-        select.sorting_select
+        select.sorting_select(
+          v-model="sortParam"
+          @change="updateArticleList([startArticle, stopArticle, currentPage])"
+        )
+          option(value="default") Default
           option(value="popular") Popular
-          option(value="newest") Newest
-          option(value="oldest") Oldest
+          option(value="view") View
           option(value="title") Title
 
     ul.list_views.show-for-large
@@ -30,14 +33,15 @@
     )
       i(aria-hidden="true").fa.fa-angle-left
     .pagination_text
-      | {{ (content.pagination.page * content.pagination.limit) - (content.pagination.limit - 1) }}
+      | {{ startArticle + 1 }}
       span &nbsp;-&nbsp;
-      | {{ content.pagination.page * content.pagination.limit }}
+      | {{((stopArticle + 1) >= content.pagination.total) ? content.pagination.total : stopArticle + 1 }}
       span &nbsp;of&nbsp;
       | {{ content.pagination.total }}
       span.show-for-large &nbsp;{{ content.pagination.name }}
 
     button.pagination_btn(type="button"
-      v-show="content.pagination.page < content.pagination.pages"
+      v-show="(stopArticle + 1) <= content.pagination.total"
+      @click="currentPage = currentPage + 1"
     )
       i(aria-hidden="true").fa.fa-angle-right
