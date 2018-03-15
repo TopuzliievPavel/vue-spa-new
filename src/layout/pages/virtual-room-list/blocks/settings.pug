@@ -6,7 +6,7 @@
       dd
         select.sorting_select(
           v-model="sortParam"
-          @change="updateArticleList([startArticle, stopArticle, currentPage])"
+          @change="sortArticleList(sortParam)"
         )
           option(value="default") Default
           option(value="popular") Popular

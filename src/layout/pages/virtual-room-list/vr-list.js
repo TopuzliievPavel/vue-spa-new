@@ -1,6 +1,18 @@
 import { db } from '../../../core/dataBase';
 import ListPagination from '../../../components/list-pagination.vue'
 import ListSorting from '../../../components/list-sorting.vue'
+//import SortService from '';
+
+const SortService = {
+  sort: (a, b, direction) => {
+    switch (direction) {
+      case "asc":
+        return a > b ? 1 : -1;
+      default:
+        return a < b ? 1 : -1;
+    }
+  }
+};
 
 export default {
   name: 'VrList',
@@ -66,6 +78,28 @@ export default {
         const val = s.val();
         self.list = Array.isArray(val) ? val.filter(val => val !== undefined) : val;
       });
+    },
+    sortArticleList(value) {
+      switch(value) {
+        case 'default':
+          this.updateArticleList([this.startArticle, this.stopArticle, this.currentPage]);
+          break;
+        case 'popular':
+          this.list.sort((a, b) => {
+            return SortService.sort(a.rating, b.rating)
+          });
+          break;
+        case 'view':
+          this.list.sort((a, b) => {
+            return SortService.sort(a.viewsCount, b.viewsCount)
+          });
+          break;
+        case 'title':
+          this.list.sort((a, b) => {
+            return SortService.sort(a.title, b.title)
+          });
+          break;
+      }
     }
   },
   components: {

@@ -64,6 +64,7 @@ $item-indent: 10px;
   border: 1px solid $col-border;
   display: flex;
   flex-direction: column;
+  background-color: $white;
   .articles-list--album-view & {
     @include media('>=large') {
       flex-flow: row nowrap;

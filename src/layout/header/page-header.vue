@@ -34,7 +34,7 @@
                 br
                 | Create your account right now and start using House Tipster!
 
-              router-link.btn.btn--outline(to="/some-link") Create an Account
+              router-link.btn.btn--outline(to="/registration") Create an Account
           .head-signin_content-col.content-col_form
             .head-signin_content.head-signin_content--outer-width
               h3.head-signin_title Sign in
