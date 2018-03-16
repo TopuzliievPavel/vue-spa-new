@@ -83,6 +83,7 @@ body {
 }
 
 .page_main {
+  flex: 1;
   @include media('>=large') {
     padding-top: $vert-indent;
     padding-bottom: $vert-indent;

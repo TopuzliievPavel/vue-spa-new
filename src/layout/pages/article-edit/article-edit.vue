@@ -4,26 +4,28 @@
       main.page_content
         article.article_box.content-indent
           header.article_header
-            h1 article edit
             .article_meta
-              //include ./blocks/breadcrumbs.pug
+              h1 Create the new article
 
               .article_published
                 i.fa.fa-clock-o(aria-hidden="true")
                 | &nbsp;
-                //- TODO Need add timedate=""
-                //-time #{(article.date)}
+                time {{ date }}
 
-            //h1 #{article.title}
-            //h2 #{article.tagLine}
+            label.h1.input-holder
+              input(type="text" placeholder="Article title *"
+              v-model="title")
+            label.h2.input-holder
+              textarea(v-model="tagLine" placeholder="Preview paragraph")
 
-          //-aside.article_social-section
-            include ./blocks/social-block.pug
+          label.input-holder
+            input(type="text" placeholder="Url main image *"
+            v-model="image")
 
-          //-images-for-popup-container(
-            ck-editor-gallery="true"
-            )
-            .article_content!= article.content
+          .article_content
+            textarea(v-model="content" placeholder="Content *")
+
+          button.btn.btn--primary(type="button") Save and publish
 
 </template>
 
