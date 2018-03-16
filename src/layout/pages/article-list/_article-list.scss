@@ -1,0 +1,72 @@
+@import '../../../scss/base';
+
+@import '../../../scss/components/slider-entity';
+@import '../../../scss/pages/articles-list';
+@import '../../../scss/pages/category-sidebar';
+@import '../../../scss/components/site-entity-banner';
+@import '../../../scss/components/pager';
+@import '../../../scss/components/simple-pagination';
+@import '../../../scss/components/no-result';
+@import '../../../scss/repeating-blocks/sorting&pagination';
+@import '../../../scss/repeating-blocks/filters';
+@import '../../../scss/components/affiliations';
+
+.media-item_title {
+  margin-bottom: 4px;
+  height: calc(2em * #{$line-height-detail});
+  overflow: hidden;
+}
+.media-item_content {
+  margin-bottom: 1em;
+  overflow: hidden;
+  font-weight: 300;
+  p {
+    display: none;
+    @include media('>=medium') {
+      height: calc(4em * #{$line-height-detail});
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.media-item_details-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.media-item_date {
+  font-size: .875rem;
+  color: $disable-txt;
+  span {
+    font-size: inherit;
+  }
+}
+
+
+
+.media_info-box {
+  border-top: 1px solid $col-border;
+  text-align: center;
+  padding: 57px 0 20px;
+  .info-box_title {
+    margin-bottom: 1.25em;
+    letter-spacing: .025em;
+    color: $col-primary;
+  }
+  .info-box_text {
+    display: block;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0 auto 50px;
+    max-width: 400px;
+  }
+  .info-box_btn-link {
+    padding-left: 31px;
+    padding-right: 31px;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+  }
+}

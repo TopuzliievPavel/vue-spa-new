@@ -1,0 +1,21 @@
+
+.article-item_picture-holder
+  .commercial-banner(ng-if="::tip.isSponsored == true")
+  .article-item_picture-box
+    img.media-item_picture(ng-src="{{::tip.thumbnail || 'https://thumbnails-xsdo23s.s3.amazonaws.com/empty.jpg' | resize: 460}}")
+  a.article-item_hover-link(ng-href='{{::tip.url}}' target="_self")
+
+.article-item_details
+  .media-item_details-body
+    h3.media-item_title.articleTitle
+      a(ng-href='{{::tip.url}}' target="_self") {{::tip.title}}
+    .media-item_content(ng-if="::tip.summary")
+      p(ng-bind="::tip.summary" data-ellipsis)
+
+  footer.media-item_details-footer
+    a(ng-href="{{::tip.url}}" target="_self")
+      span Full story
+    .media-item_date
+      i(aria-hidden="true").fa.fa-clock-o
+      | &nbsp;
+      time(timedate="{{::tip.published_date}}") {{::tip.date}}

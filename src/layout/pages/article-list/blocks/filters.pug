@@ -1,0 +1,22 @@
+
+.category-list_settings.animate-slide.speed-300(
+  ng-show="mediaCtrl.getSearchText()"
+)
+  .filter_block
+    span.filter_title Filters:
+    ul.filter_list(ng-if="mediaCtrl.getSearchText()")
+      li.filter_item
+        .filter-item_text
+          span Search:&nbsp;
+          strong {{mediaCtrl.getSearchText()}}
+        button.btn.btn--link.filter-item_delete(type="button"
+          ng-click="mediaCtrl.removeSearchFilter()"
+        )
+          i(aria-hidden="true").fa.fa-times
+
+  .filter_clear
+    button(type="button"
+    ng-click="mediaCtrl.clearAllFilters()"
+    ).btn.btn--outline
+      i(aria-hidden="true").fa.fa-filter
+      span Clear

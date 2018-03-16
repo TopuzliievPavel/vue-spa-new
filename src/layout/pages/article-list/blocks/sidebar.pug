@@ -1,0 +1,33 @@
+.sidebar_controls.hide-for-xlarge
+  button.btn.btn--outline(type="button"
+  ng-click="mediaCtrl.clearAllFilters()"
+  )
+    i(aria-hidden="true").fa.fa-filter
+    | &nbsp;
+    | &nbsp;
+    span Clear All Filters
+  button.btn.btn--link.sidebar_close-btn(type="button"
+  ng-click="showSidebar = !showSidebar"
+  )
+    i(aria-hidden="true").fa.fa-times
+ul.category-sidebar_list
+  li.category-sidebar_item(
+    ng-repeat="category in mediaCtrl.leftMenuTree track by category._id"
+    ng-class="{'opened': mediaCtrl.getOpenedCategory(category)}"
+  )
+    a.category-sidebar_title(href="{{category.url_key | linkTo: 'MEDIA_LIST':'search'}}"
+      ng-click="mediaCtrl.setActiveTab(category)"
+      ng-class="{'active': mediaCtrl.activeCategory == category}"
+    )
+      h3 {{category.title}}
+      i.fa.fa-chevron-down(aria-hidden="true" ng-show="mediaCtrl.hasVisibleCategories(category.subcategories)")
+    ul.category-sidebar_subcategory-list.animate-slide(
+      ng-show="mediaCtrl.activeCategory === category && mediaCtrl.hasVisibleCategories(category.subcategories)"
+    )
+      li.category-sidebar_subcategory-item(
+        ng-repeat="subcategory in category.subcategories | filter: subcategory.visible track by subcategory._id"
+      )
+        a.category-sidebar_subcategory-link(
+          ng-href="{{category.url_key+'/'+subcategory.url_key | linkTo: 'MEDIA_LIST':'search'}}"
+          ng-class="{'active': mediaCtrl.getActiveSubcategory(subcategory)}"
+        ) {{subcategory.title}}

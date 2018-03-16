@@ -1,0 +1,21 @@
+
+.category-list_settings
+  dl.sorting
+    dt.show-for-large sort by:
+    dd
+      select.sorting_select(
+        ng-model="mediaCtrl.globalParams.sortBy"
+        ng-change="mediaCtrl.updateParams(true)"
+      )
+        option(value="popular") Popular
+        option(value="newest") Newest
+        option(value="oldest") Oldest
+        option(value="title") Title
+
+  simple-pagination(
+    page="mediaCtrl.page"
+    show="mediaCtrl.globalParams.show"
+    results-name="articles"
+    total-count="mediaCtrl.totalCount"
+    on-page-change="mediaCtrl.onPageChange(page)"
+  )

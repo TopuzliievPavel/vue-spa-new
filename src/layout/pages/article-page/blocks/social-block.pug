@@ -1,0 +1,60 @@
+//-
+   Created by anton.stetsenko on 1/30/2018.
+
+ul.article_social-list
+  li
+    a.bg-primary(href="mailto:?subject=#{article.title}&body=#{article.summary}%20%20%20%20Article:#{pageUrl}")
+      i.fa.fa-envelope(aria-hidden="true")
+  li
+    a.facebook-bg(href="https://www.facebook.com/sharer/sharer.php?u=#{pageUrl}" target="_blank")
+      i.fa.fa-facebook(aria-hidden="true")
+  li
+    a.twitter-bg(class='twitter-share-button' data-url="#{pageUrl}" href='https://twitter.com/share' target="_blank")
+      i.fa.fa-twitter(aria-hidden="true")
+  li
+    a.linkedin-bg(href='https://www.linkedin.com/shareArticle?mini=true&url=#{pageUrl}&title=#{article.title}&summary=#{article.summary}&source=HouseTipster' target="_blank")
+      i.fa.fa-linkedin(aria-hidden="true")
+  li
+    a.google-plus-bg(href='https://plus.google.com/share?url=#{pageUrl}' target="_blank")
+      i.fa.fa-google-plus(aria-hidden="true")
+  li
+    a.pinterest-bg(href='https://pinterest.com/pin/create/button/?url=#{pageUrl}&media=#{article.thumbnail}&description=#{article.summary}' target="_blank")
+      i.fa.fa-pinterest-p(aria-hidden="true")
+
+
+ul.article_actions
+  li
+    button.article_action-btn(type="button"
+      ng-click="oneTipController.scrollToComments()"
+    )
+      i.fa.fa-comment(aria-hidden="true")
+      span.show-for-medium Comment
+      | {{oneTipController.commentsCount}}
+
+  li
+    button.article_action-btn(type="button"
+      login-messenger="Please, sign in to leave a like."
+      actions-switcher="like"
+      action-id="oneTipController.articleId"
+      action-type="media"
+      action-status="oneTipController.articleLiked"
+      on-switched="oneTipController.switchSocialActionCount(isEnable, 'likesCount')"
+      ng-class="{'active': oneTipController.articleLiked}"
+    )
+      i.fa.fa-thumbs-up(aria-hidden="true")
+      span.show-for-medium {{'Like' + oneTipController.getActionEnding(oneTipController.articleLiked)}}
+      | {{oneTipController.socials.likesCount}}
+
+  li
+    button.article_action-btn(type="button"
+      ng-class="{'active': oneTipController.articleShared}"
+      login-messenger="Please, sign in to share."
+      actions-switcher="share"
+      action-id="oneTipController.articleId"
+      action-type="media"
+      action-status="oneTipController.articleShared"
+      on-switched="oneTipController.switchSocialActionCount(isEnable, 'shareCount')"
+    )
+      i.ht.ic_share(aria-hidden="true")
+      span.show-for-medium {{'Share' + oneTipController.getActionEnding(oneTipController.articleShared)}}
+      | {{oneTipController.socials.shareCount}}

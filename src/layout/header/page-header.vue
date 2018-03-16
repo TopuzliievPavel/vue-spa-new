@@ -160,7 +160,7 @@
               router-link.nav-list_link(to="/some-link" exact) CONTACT
           ul.header_options.header_nav-secondary
             li
-              router-link.nav-list_link(to="/some-link")
+              router-link.nav-list_link(to="/media-list")
                 span MEDIA
             li
               router-link.nav-list_link(to="/some-link")
