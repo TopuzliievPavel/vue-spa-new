@@ -8,6 +8,7 @@ import Router from 'vue-router'
 import MainPage from '@/layout/pages/main-page/main-page.vue'
 import ComingSoon from '@/layout/pages/coming-soon/coming-soon.vue'
 import VrList from '@/layout/pages/virtual-room-list/vr-list.vue'
+import SignIn from '@/layout/pages/sign-in/sign-in.vue'
 import RegUser from '@/layout/pages/registration/reg-user.vue'
 import UserProfile from '@/layout/pages/user-profile/user-profile.vue'
 import ArticleList from '@/layout/pages/article-list/article-list.vue'
@@ -22,6 +23,7 @@ export default new Router({
     {path: '/', name: 'MainPage', component: MainPage},
     {path: '/vr-list', name: 'VrList', component: VrList},
     {path: '/registration', name: 'RegUser', component: RegUser},
+    {path: '/sign-in', name: 'SignIn', component: SignIn},
     {path: '/user-profile', name: 'UserProfile', component: UserProfile},
     {path: '/media-list', name: 'ArticleList', component: ArticleList},
     {path: '/media-page', name: 'ArticlePage', component: ArticlePage},

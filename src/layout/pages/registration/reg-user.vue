@@ -5,42 +5,49 @@
         h1.h2 Registration
         p We are glad to meet new users. All fields are required
       .reg_body
-        .err-combination(v-if="null")
-          p Error
+        ol.err-combination()
+          li(v-if="validName") First name and Last name can`t be empty
+          li(v-if="validEmail") Entered email is incorrect.
+          li(v-if="validPass") Please check password (min 6 letter)
+          li(v-if="error") {{ error }}
 
         //-#reg-form
         form(name="regForm")
           .form-row
             label.input-holder
-              input(type="text" placeholder="First name" name="firstname" required
-
+              input(type="text" placeholder="First name"
+                v-model="user.firstName"
+                :class="{error: validName}"
               )
             label.input-holder
-              input(type="text" placeholder="Last name" name="secondname" required
-
+              input(type="text" placeholder="Last name" required
+                v-model="user.lastName"
+                :class="{error: validName}"
               )
 
           label.input-holder
-            input(type="email" placeholder="E-mail" name="email" required
-
-
+            input(type="email" placeholder="E-mail" required
+              v-model="user.email"
+              :class="{error: validEmail}"
             )
           label.input-holder
-            input(type="password", placeholder="Password" name="password" required
-
+            input(type="password", placeholder="Password" required
+              v-model="user.pass"
+              :class="{error: validPass}"
             )
           label.input-holder
-            input(type="password" placeholder="Repeat password" name="confirmPassword" required
-
+            input(type="password" placeholder="Repeat password" required
+              v-model="user.repass"
+              :class="{error: validPass}"
             )
-          input(type="hidden"  name="g-recaptcha-response"
-
+          input(type="hidden"
+            v-model="user.recaptcha"
           )
 
           .custom-checkbox
             label
-              input(type='checkbox' name='receiveDelivery'
-
+              input(type='checkbox'
+                v-model="user.subscription"
               )
               span.checkbox-fake
               span.checkbox-text Would you like to receive promotional emails and newsletters?
@@ -49,8 +56,17 @@
             router-link(to="/some-link") &nbsp;Terms & Conditions
 
 
-          button(type="button"
-          ).btn.btn--primary.main-slide_popup-send Sign Up
+          button.btn.btn--primary.main-slide_popup-send(type="button"
+            @click.prevent="regUser()"
+            :disabled ="sendForm"
+          )
+            span(v-if="!sendForm") Sign Up
+            .spinner(v-if="sendForm")
+              .rect1
+              .rect2
+              .rect3
+              .rect4
+              .rect5
 
       footer.reg_footer
         h4.h4 OR USE SOCIAL MEDIA ACCOUNT FOR REGISTRATION
@@ -64,7 +80,7 @@
 
     div
       p.text-center Already have an account? Please,&nbsp;
-        router-link(to="/some-link") Sign in.
+        router-link(to="/sign-in") Sign in.
 
 
 </template>
