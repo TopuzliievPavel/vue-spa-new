@@ -1,0 +1,41 @@
+.edit-profile
+  .form-row
+    label.input-holder
+      input(type="text" placeholder="First name"
+      v-model="user.firstName"
+
+      )
+    label.input-holder
+      input(type="text" placeholder="Last name"
+      v-model="user.lastName"
+
+      )
+    label.input-holder
+      input(type="email" placeholder="E-mail"
+      v-model="user.email"
+
+      )
+  h3 Social links
+  ul.edit-social_list.form-row
+    li(v-for="(value, key) in user.social" )
+      label.input-holder
+        i.fa(aria-hidden="true"
+          :class="'fa-' + key + '-square'")
+        input(type="url"
+          :placeholder="key"
+          v-model="user.social[key]"
+          )
+  .edit-btn-wrap
+    div
+      button.btn.btn--gray(type="button") Cancel
+    div
+      button.btn.btn--primary(type="button"
+
+      )
+        span(v-if="!sendForm") Save
+        .spinner(v-if="sendForm")
+          .rect1
+          .rect2
+          .rect3
+          .rect4
+          .rect5

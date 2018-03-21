@@ -18,38 +18,16 @@
             .user-info-block
               .name-wrapper
                 h1.name
-                  span.user-name Name
+                  span.user-name {{ user.firstName }}
 
-              .soc-block
+              .soc-block(v-if="isSocial")
                 span.spoil-text.show-for-medium Social networks links
-                .soc-links
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-facebook-square(aria-hidden="true")
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-google-plus-square(aria-hidden="true")
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-instagram(aria-hidden="true")
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-linkedin-square(aria-hidden="true")
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-twitter-square(aria-hidden="true")
+                .soc-links()
+                  a(v-for="(value, key) in user.social"
+                    :href="value"
+                    v-if="value")
+                    i.fa(aria-hidden="true" :class="'fa-' + key + '-square'")
 
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-youtube-square(aria-hidden="true")
-
-                  a(href="#" target="_blank"
-                  )
-                    i.fa.fa-pinterest-square(aria-hidden="true")
-
-                  a(href="#"   target="_blank"
-                  )
-                    i.fa.fa-rss-square(aria-hidden="true")
 
               span.edit-button.show-for-medium
                 button.btn.btn--link(type="button")
@@ -62,86 +40,27 @@
         .tabs
           ul.tabs_list
             li
-              button.btn.btn--link(type="button") My profile
+              button.btn.btn--link(type="button"
+                @click="tabs = ''"
+              ) My profile
             li
-              button.btn.btn--link(type="button") Add article
+              button.btn.btn--link(type="button"
+                @click="tabs = 'add-article'"
+              ) Add article
             li
-              button.btn.btn--link(type="button") Edit profile
+              button.btn.btn--link(type="button"
+                @click="tabs = 'edit-profile'"
+              ) Edit profile
             li
               button.btn.btn--link(type="button") Sign out
-      .page_content
-        .edit-profile
-          .form-row
-            label.input-holder
-              input(type="text" placeholder="First name"
-                v-model="user.firstName"
-                :class="{error: validName}"
-              )
-            label.input-holder
-              input(type="text" placeholder="Last name"
-                v-model="user.lastName"
-                :class="{error: validName}"
-              )
-            label.input-holder
-              input(type="email" placeholder="E-mail"
-              v-model="user.email"
-                :class="{error: validEmail}"
-              )
-          h3 Social links
-          label.input-holder
-            i.fa.fa-facebook-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-google-plus-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-instagram(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-linkedin-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-twitter-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-youtube-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-pinterest-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
-          label.input-holder
-            i.fa.fa-rss-square(aria-hidden="true")
-            input(type="url" placeholder="facebook")
 
-          button.btn.btn--primary(type="button"
+      .page_content(v-if="tabs == 'edit-profile'")
+        include blocks/edit-profile.pug
+      .page_content(v-if="tabs == 'add-article'")
+        add-article
 
-          )
-            span(v-if="!sendForm") Save
-            .spinner(v-if="sendForm")
-              .rect1
-              .rect2
-              .rect3
-              .rect4
-              .rect5
 </template>
 
-<script>
-  export default {
-    name: 'UserProfile',
-      data () {
-      return {
-        user: {
-          firstName: '',
-          lastName: '',
-          email: '',
-          pass: '',
-          repass: '',
-          recaptcha: null,
-          subscription: true,
-        },
-      }
-    }
-  }
-</script>
+<script src="./user-profile.js"></script>
 
 <style lang="scss" scoped> @import './user-profile'; </style>
