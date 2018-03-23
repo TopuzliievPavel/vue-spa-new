@@ -1,4 +1,5 @@
-import Firebase from 'firebase'
+//import Firebase from 'firebase'
+import { db, Firebase } from '../../../core/dataBase';
 
 export default {
   name: 'RegUser',
@@ -18,6 +19,28 @@ export default {
     }
   },
   methods: {
+    createUser(uid) {
+      console.log("create new user");
+      db.ref('users/' + uid).set(
+        {
+          firstName: this.user.firstName,
+          lastName: this.user.lastName,
+          email: this.user.email,
+          confirm: false,
+          social: {
+            facebook: '',
+            'google-plus': '',
+            instagram: '',
+            linkedin: '',
+            twitter: '',
+            youtube: '',
+            pinterest: '',
+            rss: '',
+          },
+          articleList: [],
+        }
+      );
+    },
     regUser() {
       if (!this.validName && !this.validEmail && !this.validPass && !this.recaptcha) {
         this.sendForm = true;
@@ -25,10 +48,11 @@ export default {
           .createUserWithEmailAndPassword(this.user.email, this.user.pass)
           .then(
             (user) => {
+              this.createUser(user.uid);
+              localStorage.setItem('userId', user.uid);
               this.$router.replace('/user-profile');
             },
             (error) => {
-              console.log(error.message);
               this.sendForm = false;
               this.error = error.message;
           });

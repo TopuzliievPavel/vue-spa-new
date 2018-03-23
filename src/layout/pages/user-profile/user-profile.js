@@ -1,7 +1,11 @@
 import AddArticle from '../../../components/add-article.vue'
+import {db} from "../../../core/dataBase";
 
 export default {
   name: 'UserProfile',
+  created: function () {
+    this.loadUser();
+  },
   data () {
     return {
       user: {
@@ -25,6 +29,22 @@ export default {
       },
       sendForm: false,
       tabs: '',
+    }
+  },
+  methods: {
+    loadUser (){
+      let userID = localStorage.getItem('userId');
+      if (userID) {
+        db.ref('users/' + userID)
+          .once('value')
+          .then(
+            (s)=>{
+              this.user = s.val();
+        });
+      }
+      else {
+        this.$router.replace('/');
+      }
     }
   },
   computed: {

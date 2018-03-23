@@ -8,16 +8,16 @@
         p To use House Tipster you have to sign in
       .reg_body
         //-h3.err-fields Login data is incorrect. Please, check.
-        .err-combination()
-          p
+        .err-combination(v-if="error")
+          p {{error}}
         form(name="loginForm")
           label.input-holder
             input(type="email" placeholder="E-mail"
-
+              v-model="email"
             )
           .input-holder
             input(type="password" placeholder="Password"
-
+              v-model="pass"
             )
             router-link.input_link(to="/restore-password") Forgot password?
 
@@ -31,7 +31,7 @@
 
 
           button.btn.btn--primary(type="button"
-
+            @click="loginUser()"
           ) Sign in
 
         p By signing in, I acknowledge and agree to
@@ -59,11 +59,7 @@
 
 </template>
 
-<script>
-  import Firebase from 'firebase'
-  export default {
-    name: "SignIn"
-  }
-</script>
+<script src="./sign-in.js"></script>
+
 
 <style lang="scss" scoped>@import './sign-in';</style>
