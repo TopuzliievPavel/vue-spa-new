@@ -1,16 +1,18 @@
 <template lang="pug">
   main.page_main
-    .content-wrap.content-indent
-      .profile_head
+    .content-wrap.content-indent(v-if="user")
+      .profile_head(
+        v-bind:style="'background-image: url('+ user.bg + ');'"
+      )
         .user_info
           .user-ava-block
             .avatar
-              a.avatar_pic(href='/profile/geger5a8828b236a5122fae59ac2d')
+              .avatar_pic
                 img(:src="user.avatar")
             .edit-button
-              input(type="file"
-              @change="pushAvatar")
-              button.btn.btn--link(type="button")
+              label.btn.btn--link
+                input.invisible(type="file"
+                  @change="pushUserAvatar")
                 i.fa.fa-camera(aria-hidden="true") &nbsp;
                 | Edit
               button.btn.btn--link(type="button")
@@ -31,7 +33,9 @@
 
 
               span.edit-button.show-for-medium
-                button.btn.btn--link(type="button")
+                label.btn.btn--link
+                  input.invisible(type="file"
+                  @change="pushUserBg")
                   i.fa.fa-camera(aria-hidden="true") &nbsp;
                   | Edit Background
                 button.btn.btn--link(type="button")
@@ -53,7 +57,8 @@
                 @click="tabs = 'edit-profile'"
               ) Edit profile
             li
-              button.btn.btn--link(type="button") Sign out
+              button.btn.btn--link(type="button"
+                @click="logoutUser") Sign out
 
       .page_content(v-if="tabs == 'edit-profile'")
         include blocks/edit-profile.pug

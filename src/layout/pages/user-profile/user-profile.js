@@ -12,10 +12,6 @@ export default {
         firstName: '',
         lastName: '',
         email: '',
-        pass: '',
-        repass: '',
-        recaptcha: null,
-        subscription: true,
         avatar: '',
         bg: '',
         social: {
@@ -35,6 +31,9 @@ export default {
     }
   },
   methods: {
+    returnToLogin () {
+      this.$router.replace('/sign-in');
+    },
     loadUser (){
       let userID = localStorage.getItem('userId');
       if (userID) {
@@ -43,25 +42,61 @@ export default {
           .once('value')
           .then(
             (s)=>{
-              this.user = s.val();
+              if (s.val()) {
+                console.log('s=' + s);
+                this.user = s.val();
+              }
+              else {
+                console.log('null');
+                localStorage.setItem('userId', false);
+                this.returnToLogin();
+              }
         });
       }
       else {
-        this.$router.replace('/');
+        console.log('return');
+        this.returnToLogin();
       }
     },
-    pushAvatar (e) {
+    saveUser () {
+      console.log('save');
+      this.sendForm = true;
+      db.ref('users/' + this.ID).set({
+        firstName: this.user.firstName,
+        lastName: this.user.lastName,
+        email: this.user.email,
+        avatar: this.user.avatar,
+        bg: this.user.bg,
+        social: {
+          facebook: this.user.social.facebook,
+          //'google-plus': this.user.google-plus,
+          instagram: this.user.social.instagram,
+          linkedin: this.user.social.linkedin,
+          twitter: this.user.social.twitter,
+          youtube: this.user.social.youtube,
+          pinterest: this.user.social.pinterest,
+          rss: this.user.social.rss,
+        },
+      });
+    },
+    pushUserAvatar (e) {
+      const prefix = 'avatar';
+      this.pushImg(e, prefix);
+    },
+    pushUserBg (e) {
+      const prefix = 'bg';
+      this.pushImg(e, prefix);
+    },
+    pushImg (e, prefix) {
       const metadata = {
         contentType: 'image/jpeg',
       };
 
       e.preventDefault();
       let img = e.target.files[0];
-      let uploadTask = Firebase.storage().ref('users/'+ this.ID + '-ava.jpg').put(img, metadata);
+      let uploadTask = Firebase.storage().ref('users/' + this.ID + '-' + prefix + '.jpg').put(img, metadata);
 
       uploadTask.on('state_changed', function(snapshot){
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
         switch (snapshot.state) {
@@ -76,33 +111,25 @@ export default {
         // Handle unsuccessful uploads
       },
         () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        this.user.avatar = uploadTask.snapshot.downloadURL;
+        if (prefix === 'avatar') {
+          this.user.avatar = uploadTask.snapshot.downloadURL;
+        }
+        else {
+          this.user.bg = uploadTask.snapshot.downloadURL;
+        }
+          this.saveUser();
       });
+    },
+    logoutUser () {
+      Firebase.auth().signOut()
+        .then(() => {
+          localStorage.setItem('userId', false);
+          this.$router.replace('/');
 
-      db.ref('users/' + this.ID).set({
-        firstName: this.user.firstName,
-        lastName: this.user.lastName,
-        email: this.user.email,
-        pass: this.user.pass,
-        repass: this.user.repass,
-        recaptcha: null,
-        subscription: true,
-        avatar: this.user.avatar,
-        bg: this.user.bg,
-        social: {
-          facebook: this.user.facebook,
-          //'google-plus': this.user.google-plus,
-          instagram: this.user.instagram,
-          linkedin: this.user.linkedin,
-          twitter: this.user.twitter,
-          youtube: this.user.youtube,
-          pinterest: this.user.pinterest,
-          rss: this.user.rss,
-        },
+      }).catch(
+        (error) => {
+          console.log('error logout');
       });
-
     }
   },
   computed: {

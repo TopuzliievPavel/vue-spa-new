@@ -27,10 +27,12 @@
           )
   .edit-btn-wrap
     div
-      button.btn.btn--gray(type="button") Cancel
+      button.btn.btn--gray(type="button"
+        @click="loadUser()"
+      ) Cancel
     div
       button.btn.btn--primary(type="button"
-
+        @click.privent="saveUser"
       )
         span(v-if="!sendForm") Save
         .spinner(v-if="sendForm")

@@ -5,7 +5,7 @@ import VueAgile from 'vue-agile'
 import App from './App.vue'
 import router from './router'
 
-Vue.config.productionTip = true;
+Vue.config.productionTip = false;
 
 Vue.use(VueFire);
 Vue.use(VueAgile);

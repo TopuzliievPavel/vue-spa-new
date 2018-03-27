@@ -19,6 +19,16 @@ export default {
     }
   },
   methods: {
+    sendVerifire () {
+      var user = Firebase.auth().currentUser;
+
+      user.sendEmailVerification().then(function() {
+        console.log('Email sent');
+      }).catch(function(error) {
+        console.log(error);
+      });
+
+    },
     createUser(uid) {
       console.log("create new user");
       db.ref('users/' + uid).set(
@@ -51,6 +61,7 @@ export default {
           .then(
             (user) => {
               this.createUser(user.uid);
+              this.sendVerifire();
               localStorage.setItem('userId', user.uid);
               this.$router.replace('/user-profile');
             },

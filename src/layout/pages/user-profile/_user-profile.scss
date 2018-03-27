@@ -1,9 +1,12 @@
 @import '../../../scss/base';
 
 .profile_head {
-  background: #707070  repeat 0 0;
+  background-image: url();
   height: 300px;
   display: flex;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .user_info {
