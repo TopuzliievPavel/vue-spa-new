@@ -1,0 +1,71 @@
+.content-wrap.content-indent
+  .header_row.header_row--main
+    .head-main_col.head-main_col--logo
+      router-link(to="/" tabindex="1")
+        img(src="https://cdn3.housetipster.com/static-img/Housetipster_logo-new-big.png" width="186" height="auto").medium-show
+        img(src="https://cdn2.housetipster.com/Housetipster_logo-new.svg" width="186" height="auto").medium-hide
+
+    .head-main_col.head-main_col--search
+      .header_search-holder(
+      :class="{'active': autocomplete.isShowInput}"
+      )
+        input.header_search(type="text", placeholder="Search for pros, galleries, products and more"
+        v-model="autocomplete.searchText"
+        @focus="autocomplete.isOpen = true"
+        @blur="autocomplete.isOpen = false"
+
+        )
+        button.fa.fa-search.header_search-btn.btn.btn--link( type="button"
+        v-on:click="autocomplete.isShowInput = !autocomplete.isShowInput"
+        )
+        //- --------------------- autocomplete start ---------------------- -//
+        -
+          var searchList = [
+          {"icon":"fa-cube", "section":"Virtual Rooms", "constant": "VIRTUAL_ROOMS_LIST"},
+          {"icon":"fa-book", "section":"Housetips", "constant": "HOUSE_TIPS_LIST"},
+          {"icon":"fa-television", "section":"Media List", "constant": "MEDIA_LIST"},
+          {"icon":"fa-star", "section":"Find a Pro", "constant": "FIND_PRO_ADVANCED"},
+          {"icon":"fa-picture-o", "section":"Gallery", "constant": "PHOTOS_LIST"}
+          ]
+
+        .search-autocomplete_wrapper(
+        :class="{'show-search': autocomplete.isOpen && autocomplete.searchText.length > 0}"
+        )
+          ul.search-autocomplete_list
+            each item in searchList
+              li
+                router-link.search-autocomplete_item(to="/search-page")
+                  .search-autocomplete_icon.medium-show
+                    i.fa(class=item.icon aria-hidden="true")
+                  .search-autocomplete_content
+                    p.search-autocomplete_search
+                      | {{autocomplete.searchText}}
+                      span &nbsp;in&nbsp;
+                      span.search-autocomplete_category=item.section
+        //- --------------------- autocomplete end ---------------------- -//
+    .head-main_col.head-main_col--reg
+      .header_options.head-main_reg
+        button(type="button"
+
+        ).btn.btn--link ARE YOU A PRO?
+        button(type="button" tabindex="2"
+        v-on:click="openSignIn = !openSignIn"
+        ).btn.btn--primary.logged-hidden
+          i.fa.fa-user
+          span.presmall-show &nbsp;&nbsp;Sign in
+
+        button.btn.btn--link-primary.logged-visible.my-profile(type="button"
+
+        )
+          i.fa.fa-user(aria-hidden="true")
+          | &nbsp;
+          span.medium-show MY PROFILE
+        .my-profile_drop
+          a.btn.btn--link-primary(href="#")  My Profile
+          a.btn.btn--link-primary.disable(href="#")  Notifications
+          a.btn.btn--link-primary(href="#")  Edit Profile
+          a.btn.btn--link-primary(href="#")  Sign out
+      button.nav-opener(type="button"
+      v-on:click="openBurgerMenu = !openBurgerMenu"
+      )
+        span

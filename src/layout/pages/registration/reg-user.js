@@ -27,6 +27,8 @@ export default {
           lastName: this.user.lastName,
           email: this.user.email,
           confirm: false,
+          avatar: '',
+          bg: '',
           social: {
             facebook: '',
             'google-plus': '',

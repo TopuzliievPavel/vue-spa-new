@@ -40,3 +40,7 @@ iframe, video {
     transform: translateX(-50%) scale(0.9);
   }
 }
+
+[v-cloak] {
+  display: none;
+}

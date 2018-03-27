@@ -6,14 +6,15 @@
           .user-ava-block
             .avatar
               a.avatar_pic(href='/profile/geger5a8828b236a5122fae59ac2d')
-                img(src='https://cdn3.housetipster.com/resize_200x0--crop_413-603x0-603/other-loaded-files%2F4yallare0es0000000000_wallpaper_hitman_contracts_06_1600.jpg')
+                img(:src="user.avatar")
             .edit-button
+              input(type="file"
+              @change="pushAvatar")
               button.btn.btn--link(type="button")
                 i.fa.fa-camera(aria-hidden="true") &nbsp;
                 | Edit
               button.btn.btn--link(type="button")
                 i.fa.fa-trash(aria-hidden="true")
-
           .user-info-wrapper.business
             .user-info-block
               .name-wrapper
