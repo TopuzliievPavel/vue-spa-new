@@ -13,6 +13,7 @@
     "firebase": "^4.11.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-wysiwyg": "^1.7.0",
     "vuefire": "^1.4.5"
   },
   "devDependencies": {

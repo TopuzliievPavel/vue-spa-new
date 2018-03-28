@@ -1,4 +1,3 @@
-//import Firebase from 'firebase'
 import { db, Firebase } from '../../../core/dataBase';
 
 export default {

@@ -1,15 +1,9 @@
 <template lang="pug">
-  //:class="{\
-    : false,\
-    'signin-show'
-    'logged': false,\
-    'min': false,\
-    'beta-hidden': false\
-    }"
   header.page_header(
       :class="{\
         'menu-show': openBurgerMenu,\
-        'signin-show': openSignIn\
+        'signin-show': openSignIn,\
+        'logged': userIsLogin\
         }"
     )
     section.header_signin

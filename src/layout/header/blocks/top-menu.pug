@@ -46,26 +46,24 @@
     .head-main_col.head-main_col--reg
       .header_options.head-main_reg
         button(type="button"
-
+        my-profile_drop
         ).btn.btn--link ARE YOU A PRO?
-        button(type="button" tabindex="2"
-        v-on:click="openSignIn = !openSignIn"
-        ).btn.btn--primary.logged-hidden
+        button.btn.btn--primary.logged-hidden(type="button" tabindex="2"
+          @:click="openSignIn = !openSignIn"
+          )
           i.fa.fa-user
           span.presmall-show &nbsp;&nbsp;Sign in
 
         button.btn.btn--link-primary.logged-visible.my-profile(type="button"
-
+          @:click="openProfile = !openProfile"
         )
           i.fa.fa-user(aria-hidden="true")
           | &nbsp;
           span.medium-show MY PROFILE
         .my-profile_drop
-          a.btn.btn--link-primary(href="#")  My Profile
-          a.btn.btn--link-primary.disable(href="#")  Notifications
-          a.btn.btn--link-primary(href="#")  Edit Profile
-          a.btn.btn--link-primary(href="#")  Sign out
+          router-link.btn.btn--link-primary(to="/user-profile") My Profile
+          button.btn.btn--link-primary(type="button" @click="logoutUser")  Sign out
       button.nav-opener(type="button"
-      v-on:click="openBurgerMenu = !openBurgerMenu"
+        @:click="openBurgerMenu = !openBurgerMenu"
       )
         span

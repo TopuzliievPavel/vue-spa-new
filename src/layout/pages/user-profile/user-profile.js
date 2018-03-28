@@ -43,23 +43,19 @@ export default {
           .then(
             (s)=>{
               if (s.val()) {
-                console.log('s=' + s);
                 this.user = s.val();
               }
               else {
-                console.log('null');
                 localStorage.setItem('userId', false);
                 this.returnToLogin();
               }
         });
       }
       else {
-        console.log('return');
         this.returnToLogin();
       }
     },
     saveUser () {
-      console.log('save');
       this.sendForm = true;
       db.ref('users/' + this.ID).set({
         firstName: this.user.firstName,
