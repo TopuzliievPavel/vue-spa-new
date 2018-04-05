@@ -45,17 +45,15 @@
         //- --------------------- autocomplete end ---------------------- -//
     .head-main_col.head-main_col--reg
       .header_options.head-main_reg
-        button(type="button"
-        my-profile_drop
-        ).btn.btn--link ARE YOU A PRO?
+        button(type="button").btn.btn--link ARE YOU A PRO?
         button.btn.btn--primary.logged-hidden(type="button" tabindex="2"
-          @:click="openSignIn = !openSignIn"
+          v-on:click="openSignIn = !openSignIn"
           )
           i.fa.fa-user
           span.presmall-show &nbsp;&nbsp;Sign in
 
         button.btn.btn--link-primary.logged-visible.my-profile(type="button"
-          @:click="openProfile = !openProfile"
+          v-on:click="openProfile = !openProfile"
         )
           i.fa.fa-user(aria-hidden="true")
           | &nbsp;
@@ -64,6 +62,6 @@
           router-link.btn.btn--link-primary(to="/user-profile") My Profile
           button.btn.btn--link-primary(type="button" @click="logoutUser")  Sign out
       button.nav-opener(type="button"
-        @:click="openBurgerMenu = !openBurgerMenu"
+        v-on:click="openBurgerMenu = !openBurgerMenu"
       )
         span

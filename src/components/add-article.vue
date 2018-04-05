@@ -14,37 +14,39 @@
       textarea(placeholder="Lead paragraph" v-model="article.info.leadPar")
     .input-holder
       wysiwyg(v-model="article.content")
-    .d-flex
-      select(multiple
-        v-model="article.info.tags"
+    .form-row
+      label.input-holder
+        select(multiple
+          v-model="article.info.tags"
+          )
+          option(v-for="tag in allTags" ) {{ tag }}
+      label.input-holder
+        input(type="text" placeholder="Add new tag"
+          v-model="newTag"
         )
-        option(v-for="tag in allTags" ) {{ tag }}
-
-      input(type="text" placeholder="Add new tag"
-        v-model="newTag"
-      )
-      button.btn.btn--primary(type="button"
-        @click="addNewTag") Add tag
+      .input-holder
+        button.btn.btn--primary(type="button"
+          @click="addNewTag") Add tag
     ul.tag-list
       li(v-for="selectTag in article.info.tags")
         span {{ selectTag }}
-        button.btn.btn--primary.fa.fa-times(type="button")
+        button.btn.btn--link.fa.fa-times(type="button")
     .edit-btn-wrap
-    div
-      button.btn.btn--gray(type="button"
-        @click="cancelArticle"
-      ) Cancel
-    div
-      button.btn.btn--primary(type="button"
-      @click.privent="saveArticle"
-      )
-        span(v-if="!sendForm") Save
-        .spinner(v-if="sendForm")
-          .rect1
-          .rect2
-          .rect3
-          .rect4
-          .rect5
+      div
+        button.btn.btn--gray(type="button"
+          @click="cancelArticle"
+        ) Cancel
+      div
+        button.btn.btn--primary(type="button"
+        @click.privent="saveArticle"
+        )
+          span(v-if="!sendForm") Save
+          .spinner(v-if="sendForm")
+            .rect1
+            .rect2
+            .rect3
+            .rect4
+            .rect5
 </template>
 
 <script>
@@ -170,6 +172,28 @@ export default {
 
 <style lang="scss">
   @import '../scss/base';
+  .edit-btn-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tag-list {
+    list-style: none;
+    margin: 0 0 1em;
+    padding: 0;
+    display: flex;
+    li {
+      border: 1px solid $col-border;
+      font-size: .75em;
+      padding: 0 .5em;
+      + li {
+        margin-left: .3em;
+      }
+      .fa {
+        margin-left: .5em;
+      }
+    }
+  }
+  /*editor*/
   .editr {
     border: 2px solid $col-border;
     width: 100%;
@@ -281,4 +305,5 @@ export default {
   .form label {
     margin-right: 1rem;
   }
+  /*end editor*/
 </style>

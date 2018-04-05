@@ -1,23 +1,20 @@
-import { db, Firebase } from '../../core/dataBase';
+import { Firebase } from '../../core/dataBase';
 import UserLogin from '../../components/user-login.vue'
 
 
 export default {
   name: 'PageHeader',
-  created: function () {
-    this.checkLoginUser();
-  },
   data () {
     return {
       openBurgerMenu: false,
       openSignIn: false,
       openProfile: false,
+      userIsLogin: false,
       autocomplete: {
         isOpen: false,
         isShowInput: false,
         searchText: ''
       },
-      userIsLogin: false,
     }
   },
   methods: {
@@ -33,8 +30,7 @@ export default {
     checkLoginUser () {
       Firebase.auth().onAuthStateChanged(
         (user) => {
-          console.log(user);
-          if (user) {
+          if (user && user !== null) {
             this.userIsLogin = true;
           } else {
             this.userIsLogin = false;
