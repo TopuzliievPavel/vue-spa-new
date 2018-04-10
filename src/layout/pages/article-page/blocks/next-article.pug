@@ -1,21 +1,6 @@
-//-
-   Created by anton.stetsenko on 1/31/2018.
 
-if article.randNextArticleUrl
-  .article_next-article
-    span Next:&nbsp;
-    a(href='/media-article/#{article.parentSubcategory.parentCategory.url_key}/#{article.randNextArticleUrl.url_key}')
-      | #{article.randNextArticleUrl.title}&nbsp;
-      i.fa.fa-angle-right(aria-hidden="true")
-
-if article.tags.length
-  .article_tags
-    span Tags:&nbsp;
-    ul.article_tags-list
-      -var tagsArray = article.tags;
-      each tag in tagsArray
-        li
-          button.article_tags-btn(type="button"
-            search-tag=tag
-            search-category='MEDIA_LIST'
-          ) #{tag}
+.article_tags
+  span Tags:&nbsp;
+  ul.article_tags-list
+      li(v-for="tag in content.info.tags")
+        button.article_tags-btn(type="button") {{ tag }}

@@ -3,21 +3,21 @@
     h2 Add new Article
     .form-row
       label.input-holder
-        input(type="text" placeholder="Title" v-model="article.info.title"
+        input(type="text" placeholder="Title" v-model="article.title"
         )
       label.input-holder
         input(type="file"
           @change="addArticleImg")
-        img(:src="article.info.image")
+        img(:src="article.image")
 
     label.input-holder
-      textarea(placeholder="Lead paragraph" v-model="article.info.leadPar")
+      textarea(placeholder="Lead paragraph" v-model="article.leadPar")
     .input-holder
       wysiwyg(v-model="article.content")
     .form-row
       label.input-holder
         select(multiple
-          v-model="article.info.tags"
+          v-model="article.tags"
           )
           option(v-for="tag in allTags" ) {{ tag }}
       label.input-holder
@@ -28,7 +28,7 @@
         button.btn.btn--primary(type="button"
           @click="addNewTag") Add tag
     ul.tag-list
-      li(v-for="selectTag in article.info.tags")
+      li(v-for="selectTag in article.tags")
         span {{ selectTag }}
         button.btn.btn--link.fa.fa-times(type="button")
     .edit-btn-wrap
@@ -57,7 +57,7 @@ export default {
   created: function () {
     this.loadArticleId();
     this.loadTags ();
-    this.article.info.authorID = localStorage.getItem('userId');
+    this.article.authorID = localStorage.getItem('userId');
 
     const date = new Date();
     const options = {
@@ -65,21 +65,19 @@ export default {
       month: 'short',
       day: 'numeric',
     };
-    this.article.info.time = date.toLocaleString("en-US", options);
+    this.article.time = date.toLocaleString("en-US", options);
   },
   data () {
     return {
       article: {
-        info: {
-          title: '',
-          leadPar: '',
-          image: '',
-          date: '',
-          tags: [],
-          authorID: '',
-          slug: '',
-          articleId: ''
-        },
+        title: '',
+        leadPar: '',
+        image: '',
+        date: '',
+        tags: [],
+        authorID: '',
+        slug: '',
+        articleId: '',
         content: '',
       },
       allTags: [],
@@ -90,18 +88,18 @@ export default {
   },
   methods: {
     cancelArticle () {
-      this.article.info.title = '';
-      this.article.info.leadPar = '';
-      this.article.info.image = '';
-      this.article.info.tags = [];
-      this.article.info.slug = '';
+      this.article.title = '';
+      this.article.leadPar = '';
+      this.article.image = '';
+      this.article.tags = [];
+      this.article.slug = '';
       this.article.content = '';
     },
 
     loadArticleId () {
       db.ref('dataPages/media/currentId').once('value')
         .then((s) => {
-          this.article.info.articleId = s.val();
+          this.article.articleId = s.val();
       });
     },
     loadTags () {
@@ -117,7 +115,7 @@ export default {
 
       e.preventDefault();
       let img = e.target.files[0];
-      let uploadTask = Firebase.storage().ref('articles/' + this.article.info.articleId + '.jpg').put(img, metadata);
+      let uploadTask = Firebase.storage().ref('articles/' + this.article.articleId + '.jpg').put(img, metadata);
 
       uploadTask.on('state_changed', function(snapshot){
           var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -134,34 +132,34 @@ export default {
           // Handle unsuccessful uploads
         },
         () => {
-          this.article.info.image = uploadTask.snapshot.downloadURL;
+          this.article.image = uploadTask.snapshot.downloadURL;
         });
     },
     saveArticle () {
-      this.article.info.slug = this.article.info.title + '-' + this.article.info.articleId;
+      this.article.slug = this.article.title + '-' + this.article.articleId;
       this.sendForm = true;
-      db.ref('dataPages/media/listItems').push().set({
-        info: {
-          title: this.article.info.title,
-          leadPar: this.article.info.leadPar,
-          image: this.article.info.image,
-          date: this.article.info.date,
-          tags: this.article.info.tags,
-          authorID: this.article.info.authorID,
-          slug: this.article.info.slug,
-        },
-        content: this.article.content,
-      });
+      var newPostKey = db.ref().child('dataPages/media/listItems').push().key;
+      console.log(newPostKey);
+      // db.ref('dataPages/media/listItems').push().key.set({
+      //   title: this.article.title,
+      //   leadPar: this.article.leadPar,
+      //   image: this.article.image,
+      //   date: this.article.date,
+      //   tags: this.article.tags,
+      //   authorID: this.article.authorID,
+      //   slug: this.article.slug,
+      //   content: this.article.content,
+      // });
       db.ref('dataPages/media/listPage/tags')
         .push()
         .set(this.newTags);
-      this.article.info.articleId = this.article.info.articleId + 1;
+      this.article.articleId = this.article.articleId + 1;
       db.ref('dataPages/media/currentId')
-        .set(this.article.info.articleId);
+        .set(this.article.articleId);
     },
 
     addNewTag () {
-      this.article.info.tags.push(this.newTag);
+      this.article.tags.push(this.newTag);
       this.newTags.push(this.newTag);
       this.newTag = '';
     }

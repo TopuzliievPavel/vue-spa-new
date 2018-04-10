@@ -8,7 +8,7 @@
       main.page_content
 
         button.btn.btn--outline.hide-for-xlarge.show-sidebar-btn(type="button"
-
+          @click="showSidebar = !showSidebar"
         )
           i.fa.fa-filter(aria-hidden="true")
           | &nbsp;
@@ -16,31 +16,20 @@
 
         .page_title
           h1.h2 Media
-          router-link.nav-list_link(to="/media-page") media-page
         //-include ./blocks/settings.pug
         //-include ./blocks/filters.pug
 
         //-no-search-result(ng-if="mediaCtrl.houseTips && !mediaCtrl.houseTips.length")
 
-        //-.articles-list(
-          ng-if="mediaCtrl.houseTips.length"
+        .articles-list(
+          v-if="true"
           )
           article.articles-list_item(
-          ng-repeat="tip in mediaCtrl.houseTips"
-          ng-switch="tip.type"
-          ng-class="{\
-                       'commercial-article': tip.type == 'sponsored',\
-                       'commercial-img': tip.type == 'banner'\
-                       }"
+            v-for="article in content.listItems"
           )
-            .article-item_container(ng-if="tip.type !== 'banner'")
-              include blocks/media-article
+            .article-item_container()
+              include blocks/media-article.pug
 
-            site-entity-banner(
-            ng-if="tip.type == 'banner'"
-            ng-switch-when="banner"
-            banners="tip"
-            )
 
         //-include ./blocks/pagination
 
@@ -53,10 +42,10 @@
           ng-click="showPopup = true"
           ) Contact us
 
-      //-aside.page_sidebar.page_sidebar--left.category-sidebar(
-        ng-class="{'active': showSidebar, 'invisible': !mediaCtrl.leftMenuTree.length}"
+      aside.page_sidebar.page_sidebar--left.category-sidebar(
+        :class="{'active': showSidebar, 'invisible': !content.listPage.tags.length}"
         )
-        include ./blocks/sidebar.pug
+        include blocks/sidebar.pug
 
     //-.popup.animate-fade(ng-class="{'active-popup': showPopup}")
       .popup_overlay(ng-click='showPopup = false')

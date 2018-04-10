@@ -2,10 +2,9 @@
   .page_main.page_main--article
     .page_content-wrap.content-wrap.content-indent
       main.page_content
-        article.article_box.content-indent
+        article.article_box.content-indent(v-if="false")
           header.article_header
-            h1 article
-            router-link.nav-list_link(to="/media-edit") media-edit
+            router-link.nav-list_link(to="/media-list") media-edit
             .article_meta
               //include ./blocks/breadcrumbs.pug
 
@@ -13,30 +12,22 @@
                 i.fa.fa-clock-o(aria-hidden="true")
                 | &nbsp;
                 //- TODO Need add timedate=""
-                //-time #{(article.date)}
+                time {{ content.info.date }}
 
-            //h1 #{article.title}
-            //h2 #{article.tagLine}
+            h1 {{ content.info.title }}
+            h2 {{ content.info.leadPar }}
 
-          //-aside.article_social-section
+          aside.article_social-section
             include ./blocks/social-block.pug
 
-          //-images-for-popup-container(
-            ck-editor-gallery="true"
-            )
-            .article_content!= article.content
+          .article_content(
+            v-html="content.content"
+          )
 
-          //-footer.article_footer
+          footer.article_footer
             include ./blocks/next-article.pug
             .article_social-section
               include ./blocks/social-block.pug
-
-        //-section#comments.article_box.content-indent
-          comments(
-          show-count="3"
-          id="'#{article._id}'"
-          type="'article'"
-          )
 
       //-aside.page_sidebar
         article-sidebar(
