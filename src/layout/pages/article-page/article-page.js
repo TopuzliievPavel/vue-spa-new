@@ -14,10 +14,16 @@ export default {
   },
   methods: {
     readArticle() {
+      console.log('read Article');
       let self = this;
       db.ref('dataPages/media/listItems').limitToFirst(1).once('value').then(function(s){
         self.content = s.val();
       });
     },
+  },
+  watch: {
+    '$route' (to, from) {
+      this.readArticle();
+    }
   }
 }

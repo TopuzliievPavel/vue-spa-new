@@ -4,9 +4,8 @@
       slider-entity.banners_slider(
       slider-type="mediaSlides"
       )
-    .page_content-wrap.content-wrap
+    .page_content-wrap.content-wrap(v-if="content")
       main.page_content
-
         button.btn.btn--outline.hide-for-xlarge.show-sidebar-btn(type="button"
           @click="showSidebar = !showSidebar"
         )
@@ -43,7 +42,8 @@
           ) Contact us
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
-        :class="{'active': showSidebar, 'invisible': !content.listPage.tags.length}"
+        v-if="content.listPage"
+        :class="{'active': showSidebar}"
         )
         include blocks/sidebar.pug
 

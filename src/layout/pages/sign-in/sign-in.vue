@@ -13,11 +13,12 @@
         form(name="loginForm")
           label.input-holder
             input(type="email" placeholder="E-mail"
-              v-model="email"
+              v-model="userEmail"
             )
           .input-holder
             input(type="password" placeholder="Password"
-              v-model="pass"
+              v-model="userPass"
+              @keyup.enter="loginUser"
             )
             router-link.input_link(to="/restore-password") Forgot password?
 
@@ -31,7 +32,7 @@
 
 
           button.btn.btn--primary(type="button"
-            @click="loginUser()"
+            @click="loginUser"
           ) Sign in
 
         p By signing in, I acknowledge and agree to

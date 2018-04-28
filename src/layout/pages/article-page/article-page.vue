@@ -2,6 +2,12 @@
   .page_main.page_main--article
     .page_content-wrap.content-wrap.content-indent
       main.page_content
+        p {{ content }}
+        p {{ $route.params.slug}}
+        p {{ $route.path  + ' path'}}
+        p {{$route.fullPath + ' fullPath'}}
+        p {{$route.name + ' name'}}
+        router-link.nav-list_link(to="/media/123") go to
         article.article_box.content-indent(v-if="false")
           header.article_header
             router-link.nav-list_link(to="/media-list") media-edit

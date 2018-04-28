@@ -28,9 +28,10 @@
               router-link.nav-list_link(to="/some-link" exact) FIND A PRO
             li
               router-link.nav-list_link(to="/some-link" exact) CONTACT
+
           ul.header_options.header_nav-secondary
             li
-              router-link.nav-list_link(to="/media-list")
+              router-link.nav-list_link(to="/media")
                 span MEDIA
             li
               router-link.nav-list_link(to="/some-link")

@@ -16,7 +16,7 @@
 
         )
         button.fa.fa-search.header_search-btn.btn.btn--link( type="button"
-        v-on:click="autocomplete.isShowInput = !autocomplete.isShowInput"
+        @click="autocomplete.isShowInput = !autocomplete.isShowInput"
         )
         //- --------------------- autocomplete start ---------------------- -//
         -
@@ -47,13 +47,13 @@
       .header_options.head-main_reg
         button(type="button").btn.btn--link ARE YOU A PRO?
         button.btn.btn--primary.logged-hidden(type="button" tabindex="2"
-          v-on:click="openSignIn = !openSignIn"
+          @click="openSignIn = !openSignIn"
           )
           i.fa.fa-user
           span.presmall-show &nbsp;&nbsp;Sign in
 
         button.btn.btn--link-primary.logged-visible.my-profile(type="button"
-          v-on:click="openProfile = !openProfile"
+          @click="openProfile = !openProfile"
         )
           i.fa.fa-user(aria-hidden="true")
           | &nbsp;
@@ -62,6 +62,6 @@
           router-link.btn.btn--link-primary(to="/user-profile") My Profile
           button.btn.btn--link-primary(type="button" @click="logoutUser")  Sign out
       button.nav-opener(type="button"
-        v-on:click="openBurgerMenu = !openBurgerMenu"
+        @click="openBurgerMenu = !openBurgerMenu"
       )
         span

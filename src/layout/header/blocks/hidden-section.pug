@@ -21,9 +21,9 @@
 
           router-link.btn.btn--outline(to="/registration") Create an Account
 
-      user-login
+      include user-login
 
       button.head-signin_close(type="button"
-      v-on:click="openSignIn = !openSignIn"
+        @click="openSignIn = !openSignIn"
       )
         i.fa.fa-close

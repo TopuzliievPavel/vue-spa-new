@@ -1,7 +1,6 @@
 @import '../../../scss/base';
 
 .profile_head {
-  background-image: url();
   height: 300px;
   display: flex;
   background-size: cover;
@@ -13,14 +12,15 @@
   padding: 50px;
   flex: 1;
   display: flex;
+  &:hover {
+    .edit-button {
+      opacity: 1;
+    }
+  }
   .user-ava-block {
     padding-right: 20px;
     position: relative;
-    &:hover {
-      .edit-button {
-        opacity: 1;
-      }
-    }
+
     .edit-button {
       position: absolute;
       left: 50%;
@@ -28,20 +28,19 @@
       transform: translateX(-50%);
     }
   }
-  .avatar {
+  .avatar_pic {
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid $white;
     width: 180px;
     height: 180px;
-  }
-  .user-info-wrapper {
-    &:hover {
-      .edit-button {
-        opacity: 1;
-      }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
+
   .name {
     color: $white;
     font-size: 32px;
@@ -142,6 +141,7 @@
       background-color: $white;
       box-shadow: 0 2px 1px 1px rgba($black, 0.2);
       padding: 2px 10px;
+      cursor: pointer;
       &:hover {
         color: $white;
         background-color: $col-primary;

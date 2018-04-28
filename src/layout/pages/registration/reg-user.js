@@ -1,4 +1,4 @@
-import { db, Firebase } from '../../../core/dataBase';
+import { db, Auth } from '../../../core/dataBase';
 
 export default {
   name: 'RegUser',
@@ -14,12 +14,15 @@ export default {
         subscription: true,
       },
       error: '',
-      sendForm: false
+      sendForm: false,
+      validName: false,
+      validEmail: false,
+      validPass: false
     }
   },
   methods: {
     sendVerifire () {
-      var user = Firebase.auth().currentUser;
+      let user = Auth.currentUser;
 
       user.sendEmailVerification().then(function() {
         console.log('Email sent');
@@ -55,7 +58,7 @@ export default {
     regUser() {
       if (!this.validName && !this.validEmail && !this.validPass && !this.recaptcha) {
         this.sendForm = true;
-        Firebase.auth()
+        Auth
           .createUserWithEmailAndPassword(this.user.email, this.user.pass)
           .then(
             (user) => {
@@ -69,18 +72,19 @@ export default {
               this.error = error.message;
           });
       }
-    }
+    },
+    isValidName() {
+      this.validName = (this.user.firstName.length > 1 && this.user.lastName.length > 1) ? false : true;
+    },
+    isValidEmail() {
+      let emailRegular = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+      this.validEmail = !emailRegular.test(this.user.email);
+    },
+    isValidPass() {
+      this.validPass = (this.user.pass.length >= 6 && (this.user.pass === this.user.repass)) ? false : true;
+    },
   },
   computed: {
-    validName() {
-      return (this.user.firstName.length > 1 && this.user.lastName.length > 1) ? false : true;
-    },
-    validEmail() {
-      let emailRegular = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      return !emailRegular.test(this.user.email);
-    },
-    validPass() {
-      return (this.user.pass.length >= 6 && (this.user.pass === this.user.repass)) ? false : true;
-    },
+
   }
 }

@@ -1,6 +1,7 @@
 <template lang="pug">
   div
     h2 Add new Article
+    time Created date: {{ article.date }}
     .form-row
       label.input-holder
         input(type="text" placeholder="Title" v-model="article.title"
@@ -9,6 +10,7 @@
         input(type="file"
           @change="addArticleImg")
         img(:src="article.image")
+        p {{ article.image }}
 
     label.input-holder
       textarea(placeholder="Lead paragraph" v-model="article.leadPar")
@@ -50,7 +52,7 @@
 </template>
 
 <script>
-import {db, Firebase} from "../core/dataBase";
+import {db, Firebase, Storage} from "../core/dataBase";
 
 export default {
   name: "AddArticle",
@@ -65,7 +67,7 @@ export default {
       month: 'short',
       day: 'numeric',
     };
-    this.article.time = date.toLocaleString("en-US", options);
+    this.article.date = date.toLocaleString("en-US", options);
   },
   data () {
     return {
@@ -115,21 +117,21 @@ export default {
 
       e.preventDefault();
       let img = e.target.files[0];
-      let uploadTask = Firebase.storage().ref('articles/' + this.article.articleId + '.jpg').put(img, metadata);
+      let uploadTask = Storage.ref('articles/' + this.article.articleId + '.jpg').put(img, metadata);
 
       uploadTask.on('state_changed', function(snapshot){
           var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case Firebase.storage.TaskState.PAUSED: // or 'paused'
-              console.log('Upload is paused');
-              break;
-            case Firebase.storage.TaskState.RUNNING: // or 'running'
-              console.log('Upload is running');
-              break;
-          }
+          // switch (snapshot.state) {
+          //   case Firebase.storage.TaskState.PAUSED: // or 'paused'
+          //     console.log('Upload is paused');
+          //     break;
+          //   case Firebase.storage.TaskState.RUNNING: // or 'running'
+          //     console.log('Upload is running');
+          //     break;
+          // }
         }, function(error) {
-          // Handle unsuccessful uploads
+          console.log(error);
         },
         () => {
           this.article.image = uploadTask.snapshot.downloadURL;

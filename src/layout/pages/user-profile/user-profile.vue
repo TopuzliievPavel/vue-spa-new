@@ -2,20 +2,22 @@
   main.page_main
     .content-wrap.content-indent(v-if="user")
       .profile_head(
-        v-bind:style="'background-image: url('+ user.bg + ');'"
+        :style="userBgImg"
       )
         .user_info
           .user-ava-block
             .avatar
               .avatar_pic
-                img(:src="user.avatar")
+                img(:src="[user.avatar || 'https://cdn3.housetipster.com/resize_300x0/default_userpic.png']")
             .edit-button
               label.btn.btn--link
                 input.invisible(type="file"
                   @change="pushUserAvatar")
                 i.fa.fa-camera(aria-hidden="true") &nbsp;
                 | Edit
-              button.btn.btn--link(type="button")
+              button.btn.btn--link(type="button"
+                @click="deleteUserAvatar"
+                )
                 i.fa.fa-trash(aria-hidden="true")
           .user-info-wrapper.business
             .user-info-block
@@ -38,7 +40,9 @@
                   @change="pushUserBg")
                   i.fa.fa-camera(aria-hidden="true") &nbsp;
                   | Edit Background
-                button.btn.btn--link(type="button")
+                button.btn.btn--link(type="button"
+                  @click="deleteUserBg"
+                  )
                   i.fa.fa-trash(aria-hidden="true")
 
 
@@ -48,7 +52,7 @@
               button.btn.btn--link(type="button"
                 @click="tabs = ''"
               ) My profile
-            li
+            //-li
               button.btn.btn--link(type="button"
                 @click="tabs = 'add-article'"
               ) Add article

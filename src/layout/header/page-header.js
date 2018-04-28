@@ -1,6 +1,4 @@
-import { Firebase } from '../../core/dataBase';
-import UserLogin from '../../components/user-login.vue'
-
+import { loginUser, logoutUser, checkLoginUser } from '../../core/loginUser';
 
 export default {
   name: 'PageHeader',
@@ -15,28 +13,17 @@ export default {
         isShowInput: false,
         searchText: ''
       },
+      userEmail: '',
+      userPass: '',
     }
   },
+  created: function () {
+    this.checkLoginUser();
+  },
   methods: {
-    logoutUser () {
-      Firebase.auth().signOut()
-        .then(() => {
-          localStorage.setItem('userId', false);
-        }).catch(
-        (error) => {
-          console.log('error logout');
-        });
-    },
-    checkLoginUser () {
-      Firebase.auth().onAuthStateChanged(
-        (user) => {
-          if (user && user !== null) {
-            this.userIsLogin = true;
-          } else {
-            this.userIsLogin = false;
-          }
-        });
-    }
+    loginUser,
+    logoutUser,
+    checkLoginUser
   },
   watch: {
     '$route' (to, from) {
@@ -46,8 +33,5 @@ export default {
       this.openSignIn = false;
       this.openProfile = false;
     }
-  },
-  components: {
-    UserLogin
   }
 }

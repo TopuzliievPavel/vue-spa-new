@@ -122,10 +122,14 @@ $padding-l: 17%;
 
 .err-combination,
 .success-valid {
+  padding: .25em .5em;
   text-align: left;
   color: $white;
   background-color: $col-error;
   font-weight: normal;
+  p {
+    margin-bottom: 0;
+  }
   li {
     padding: 2px 0;
   }

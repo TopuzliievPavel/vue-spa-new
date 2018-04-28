@@ -18,27 +18,37 @@
               input(type="text" placeholder="First name"
                 v-model="user.firstName"
                 :class="{error: validName}"
+                @focus="validName = false"
+                @blur="isValidName"
               )
             label.input-holder
               input(type="text" placeholder="Last name" required
                 v-model="user.lastName"
                 :class="{error: validName}"
+                @focus="validName = false"
+                @blur="isValidName"
               )
 
           label.input-holder
             input(type="email" placeholder="E-mail" required
               v-model="user.email"
               :class="{error: validEmail}"
+              @focus="validEmail = false"
+              @blur="isValidEmail"
             )
           label.input-holder
             input(type="password", placeholder="Password" required
               v-model="user.pass"
               :class="{error: validPass}"
+              @focus="validPass = false"
+              @blur="isValidPass"
             )
           label.input-holder
             input(type="password" placeholder="Repeat password" required
               v-model="user.repass"
               :class="{error: validPass}"
+              @focus="validPass = false"
+              @blur="isValidPass"
             )
           input(type="hidden"
             v-model="user.recaptcha"
