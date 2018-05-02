@@ -11,7 +11,7 @@
 
       )
     label.input-holder
-      input(type="email" placeholder="E-mail"
+      input(type="email" placeholder="E-mail" readonly
       v-model="user.email"
 
       )
@@ -28,16 +28,10 @@
   .edit-btn-wrap
     div
       button.btn.btn--gray(type="button"
-        @click="loadUser()"
+        @click="cancelUser"
       ) Cancel
     div
       button.btn.btn--primary(type="button"
         @click.privent="saveUser"
-      )
-        span(v-if="!sendForm") Save
-        .spinner(v-if="sendForm")
-          .rect1
-          .rect2
-          .rect3
-          .rect4
-          .rect5
+      ) Save
+

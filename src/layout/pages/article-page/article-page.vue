@@ -2,33 +2,26 @@
   .page_main.page_main--article
     .page_content-wrap.content-wrap.content-indent
       main.page_content
-        p {{ content }}
-        p {{ $route.params.slug}}
-        p {{ $route.path  + ' path'}}
-        p {{$route.fullPath + ' fullPath'}}
-        p {{$route.name + ' name'}}
-        router-link.nav-list_link(to="/media/123") go to
-        article.article_box.content-indent(v-if="false")
+        article.article_box.content-indent(v-if="content")
           header.article_header
-            router-link.nav-list_link(to="/media-list") media-edit
             .article_meta
-              //include ./blocks/breadcrumbs.pug
+              include ./blocks/breadcrumbs.pug
 
               .article_published
                 i.fa.fa-clock-o(aria-hidden="true")
                 | &nbsp;
                 //- TODO Need add timedate=""
-                time {{ content.info.date }}
+                time {{ content['-L9kQbhcWwyqbBvOXynK'].date }}
 
-            h1 {{ content.info.title }}
-            h2 {{ content.info.leadPar }}
+            h1 {{ content['-L9kQbhcWwyqbBvOXynK'].title }}
+            h2 {{ content['-L9kQbhcWwyqbBvOXynK'].leadPar }}
 
           aside.article_social-section
             include ./blocks/social-block.pug
 
           .article_content(
-            v-html="content.content"
-          )
+            v-html="content['-L9kQbhcWwyqbBvOXynK'].content"
+            )
 
           footer.article_footer
             include ./blocks/next-article.pug

@@ -26,7 +26,8 @@
           article.articles-list_item(
             v-for="article in content.listItems"
           )
-            .article-item_container()
+            .article-item_container
+              router-link(to="/media/dwdqwdqwd") dwdqwdqwd
               include blocks/media-article.pug
 
 

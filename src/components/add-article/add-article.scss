@@ -1,0 +1,163 @@
+@import '../../scss/base';
+
+.edit-btn-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag-list {
+  display: flex;
+  margin: 0 0 1em;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 0 .5em;
+    font-size: .75em;
+    border: 1px solid $col-border;
+
+     + li {
+      margin-left: .3em;
+    }
+
+    .fa {
+      margin-left: .5em;
+    }
+  }
+}
+
+/*editor*/
+.editr {
+  width: 100%;
+  border: 2px solid $col-border;
+}
+
+.editr--toolbar {
+  display: flex;
+  position: relative;
+  height: 32px;
+  border-bottom: 1px solid #e4e4e4;
+  background: #f6f6f6;
+}
+
+.editr--toolbar a {
+  display: inline-block;
+  width: 8vw;
+  max-width: 32px;
+  height: 32px;
+  line-height: 1;
+  text-align: center;
+  color: #333;
+  cursor: pointer;
+  fill: #333;
+}
+
+.editr--toolbar a:hover {
+  background: rgba(0,0,0,.1);
+}
+
+.editr--toolbar a:active {
+  background: rgba(0,0,0,.2);
+}
+
+.editr--toolbar a svg {
+  width: 16px;
+  height: 16px;
+  margin: 8px auto;
+}
+
+.editr--toolbar a svg path {
+  fill: inherit;
+}
+
+.editr--toolbar a.vw-btn-separator {
+  width: 1px;
+  margin: 0 8px;
+}
+
+.editr--toolbar a.vw-btn-separator:hover {
+  background: initial;
+  cursor: default;
+}
+
+.editr--toolbar a.vw-btn-separator i.vw-separator {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  border-left: 1px solid rgba(0,0,0,.1);
+}
+
+.editr--toolbar .dashboard {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  border: 1px solid #f6f6f6;
+  background: rgba(255,255,255,.95);
+}
+
+.editr--content {
+  overflow-y: auto;
+  min-height: 150px;
+  max-height: 100vh;
+  padding: 12px 8px 16px 8px;
+  font-family: inherit;
+  line-height: 1.33;
+  color: inherit;
+}
+
+.editr--content[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: rgba(0,0,0,.3);
+}
+
+.editr--content img {
+  max-width: 100%;
+}
+
+.editr--content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.editr--content table th {
+  text-align: left;
+}
+
+.editr--content table th,
+.editr--content table td {
+  padding: 2px;
+  border: 1px solid #ddd;
+}
+
+.editr--content:focus {
+  outline: 0;
+}
+
+.editr--content ul li,
+.editr--content ol li {
+  list-style-position: inside;
+}
+
+@media screen and (max-width: 320px) {
+  .editr--toolbar a {
+    margin: 0 2px;
+  }
+
+  .editr--toolbar a.vw-btn-separator {
+    display: none;
+  }
+}
+
+.form {
+  display: flex;
+  align-content: flex-end;
+}
+
+.form label {
+  margin-right: 1rem;
+}
+/*end editor*/

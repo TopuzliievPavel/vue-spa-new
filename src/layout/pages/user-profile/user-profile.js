@@ -1,10 +1,12 @@
-import AddArticle from '../../../components/add-article.vue'
-import {db, Firebase, Storage} from "../../../core/dataBase";
+import AddArticle from '../../../components/add-article/add-article.vue'
+import SpinnerBtn from '../../../components/spinner-btn'
+import {db, Storage} from "../../../core/dataBase";
 import { logoutUser } from '../../../core/loginUser';
 
 
 export default {
   name: 'UserProfile',
+
 
   data () {
     return {
@@ -37,7 +39,7 @@ export default {
     returnToLogin () {
       this.$router.replace('/sign-in');
     },
-    loadUser (){
+    loadUser(){
       let userID = localStorage.getItem('userId');
       if (userID) {
         this.ID = userID;
@@ -58,8 +60,7 @@ export default {
         this.returnToLogin();
       }
     },
-    saveUser () {
-      this.sendForm = true;
+    saveUser() {
       db.ref('users/' + this.ID).set({
         firstName: this.user.firstName,
         lastName: this.user.lastName,
@@ -77,6 +78,11 @@ export default {
           rss: this.user.social.rss,
         },
       });
+      this.tabs = "";
+    },
+    cancelUser() {
+      this.loadUser();
+      this.tabs = "";
     },
     pushUserAvatar (e) {
       const prefix = 'avatar';
@@ -150,6 +156,7 @@ export default {
     }
   },
   components: {
-    AddArticle
+    AddArticle,
+    SpinnerBtn
   }
 }

@@ -61,6 +61,10 @@ select {
   background-repeat: no-repeat;
   height: $input-height;
   padding: .45rem;
+  &[multiple] {
+    min-height: 5em;
+    resize: vertical;
+  }
 }
 
 textarea {

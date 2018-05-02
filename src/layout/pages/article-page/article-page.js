@@ -14,7 +14,8 @@ export default {
   },
   methods: {
     readArticle() {
-      console.log('read Article');
+      let slug = this.$route.params.slug;
+      console.log(slug);
       let self = this;
       db.ref('dataPages/media/listItems').limitToFirst(1).once('value').then(function(s){
         self.content = s.val();

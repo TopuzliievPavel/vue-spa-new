@@ -96,9 +96,9 @@
     background-color: rgba($black, 0.4);
     padding: 9px;
     margin: 5px 0;
-    text-align: center;
     max-width: 220px;
     .spoil-text {
+      text-align: center;
       display: inline-block;
       color: $white;
       //font-size: $smallest-font-size;

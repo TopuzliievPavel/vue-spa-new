@@ -1,15 +1,9 @@
-//-
-   Created by anton.stetsenko on 1/31/2018.
-
 nav
   ul.breadcrumbs
     li
-      a(href='{{"" | linkTo: "MEDIA_LIST"}}')
-        | Media
+      router-link.btn.btn--link(to="/media") Media
         | &nbsp;
         i.fa.fa-angle-right(aria-hidden="true")
-    if article.parentSubcategory.parentCategory
-      li
-        a(href=`{{'${article.parentSubcategory.parentCategory.url_key}' | linkTo: 'MEDIA_LIST'}}`)
-          | #{article.parentSubcategory.parentCategory.title}
-          //-i.fa.fa-angle-right(aria-hidden="true")
+    li
+      span {{ $route.params.slug}}
+

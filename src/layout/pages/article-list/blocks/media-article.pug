@@ -1,13 +1,13 @@
 
 .article-item_picture-holder
   .article-item_picture-box
-    img.media-item_picture(src="https://thumbnails-xsdo23s.s3.amazonaws.com/empty.jpg")
+    img.media-item_picture(:src="[article.image || 'https://thumbnails-xsdo23s.s3.amazonaws.com/empty.jpg']")
   a.article-item_hover-link(href='#')
 
 .article-item_details
   .media-item_details-body
-    h3.media-item_title.articleTitle
-      a(href='#') {{ article.title }}
+    h3.media-item_title.articleTitle {{ article.title }}
+      //router-link(:to="/media/:slug")
     .media-item_content
       p {{ article.leadPar }}
 
@@ -17,4 +17,4 @@
     .media-item_date
       i(aria-hidden="true").fa.fa-clock-o
       | &nbsp;
-      time(timedate="listItems") Time
+      time(timedate="listItems") {{ article.date }}

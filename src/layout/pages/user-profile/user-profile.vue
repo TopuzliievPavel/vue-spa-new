@@ -52,7 +52,7 @@
               button.btn.btn--link(type="button"
                 @click="tabs = ''"
               ) My profile
-            //-li
+            li
               button.btn.btn--link(type="button"
                 @click="tabs = 'add-article'"
               ) Add article
@@ -64,9 +64,10 @@
               button.btn.btn--link(type="button"
                 @click="logoutUser") Sign out
 
-      .page_content(v-if="tabs == 'edit-profile'")
+      .page_content(v-if="tabs === 'edit-profile'")
         include blocks/edit-profile.pug
-      .page_content(v-if="tabs == 'add-article'")
+
+      .page_content(v-if="tabs === 'add-article'")
         add-article
 
 </template>
