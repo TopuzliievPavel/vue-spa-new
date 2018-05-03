@@ -1,4 +1,6 @@
-1. Check and fix all login forms +
-2. Finish add article
-3. Create Article list + Article page
-4. Fix pagination
+1. Create Article list
+  - sorting
+  - pagination
+2. Article page
+  - sidebar article
+2. Fix pagination
