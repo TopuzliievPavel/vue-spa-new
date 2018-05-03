@@ -1,7 +1,8 @@
 import { db } from '../../../core/dataBase';
-import ListPagination from '../../../components/list-pagination.vue'
-import ListSorting from '../../../components/list-sorting.vue'
-//import SortService from '';
+//-import ListPagination from '../../../components/list-pagination.vue'
+//-import ListSorting from '../../../components/list-sorting.vue'
+export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination.vue');
+export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting.vue');
 
 const SortService = {
   sort: (a, b, direction) => {

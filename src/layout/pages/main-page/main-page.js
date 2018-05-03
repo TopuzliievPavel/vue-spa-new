@@ -1,4 +1,4 @@
-import { db, Firebase } from '../../../core/dataBase';
+import { db } from '../../../core/dataBase';
 
 
 export default {

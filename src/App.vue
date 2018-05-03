@@ -8,9 +8,10 @@
 </template>
 
 <script>
-  import PageHeader from './layout/header/page-header.vue'
-  import PageFooter from './layout/footer/page-footer.vue'
-  //export const PageFooter = () => import(/* webpackChunkName: 'footer' */ './layout/footer/page-footer.vue');
+  // import PageHeader from './layout/header/page-header.vue'
+  // import PageFooter from './layout/footer/page-footer.vue'
+  export const PageHeader = () => import(/* webpackChunkName: 'header' */ './layout/header/page-header.vue');
+  export const PageFooter = () => import(/* webpackChunkName: 'footer' */ './layout/footer/page-footer.vue');
 
   export default {
     name: 'App',
