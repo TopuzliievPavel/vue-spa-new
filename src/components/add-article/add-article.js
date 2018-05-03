@@ -77,20 +77,18 @@ export default {
           this.article.image = uploadTask.snapshot.downloadURL;
         });
     },
-    saveArticle () {
+    saveArticle() {
       this.sendForm = true;
-      this.article.slug = this.article.title + '-' + this.article.articleId;
-      db.ref('dataPages/media/listItems/' + this.article.slug).set(this.article);
-
-      // db.ref('dataPages/media/listPage/tags')
-      //   .push()
-      //   .set(this.newTags);
       this.article.articleId = this.article.articleId + 1;
-      db.ref('dataPages/media/currentId')
-        .set(this.article.articleId);
+      this.article.slug = this.article.slug + '-' + this.article.articleId;
+      let saveTag = this.allTags.concat(this.newTags);
+
+      db.ref('dataPages/media/listItems/' + this.article.slug).set(this.article);
+      db.ref('dataPages/media/listPage/tags').set(saveTag);
+      db.ref('dataPages/media/currentId').set(this.article.articleId);
     },
 
-    addNewTag () {
+    addNewTag() {
       this.article.tags.push(this.newTag);
       this.newTags.push(this.newTag);
       this.newTag = '';

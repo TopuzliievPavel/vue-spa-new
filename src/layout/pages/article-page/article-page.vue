@@ -11,16 +11,16 @@
                 i.fa.fa-clock-o(aria-hidden="true")
                 | &nbsp;
                 //- TODO Need add timedate=""
-                time {{ content['-L9kQbhcWwyqbBvOXynK'].date }}
+                time {{ content.date }}
 
-            h1 {{ content['-L9kQbhcWwyqbBvOXynK'].title }}
-            h2 {{ content['-L9kQbhcWwyqbBvOXynK'].leadPar }}
+            h1 {{ content.title }}
+            h2 {{ content.leadPar }}
 
           aside.article_social-section
             include ./blocks/social-block.pug
 
           .article_content(
-            v-html="content['-L9kQbhcWwyqbBvOXynK'].content"
+            v-html="content.content"
             )
 
           footer.article_footer
@@ -28,11 +28,8 @@
             .article_social-section
               include ./blocks/social-block.pug
 
-      //-aside.page_sidebar
-        article-sidebar(
-        rooms='#{article.rooms}'
-        news='#{article.news}'
-        )
+      aside.page_sidebar
+        include ./blocks/sidebar-block.pug
 
 </template>
 

@@ -4,9 +4,8 @@ export default {
   name: 'ArticlePage',
   data () {
     return {
-      content: {
-
-      },
+      content: { },
+      sidebarContent: []
     }
   },
   created: function () {
@@ -15,10 +14,21 @@ export default {
   methods: {
     readArticle() {
       let slug = this.$route.params.slug;
-      console.log(slug);
+      //let self = this;
+      db.ref('dataPages/media/listItems/' + slug).once('value')
+        .then(
+        (s)=> {
+          this.content = s.val();
+        },
+        (error)=> {
+          console.log(error);
+        }
+      );
+    },
+    readArticleList() {
       let self = this;
-      db.ref('dataPages/media/listItems').limitToFirst(1).once('value').then(function(s){
-        self.content = s.val();
+      db.ref('dataPages/media').limitToFirst(3).once('value').then(function(s){
+        self.sidebarContent = s.val();
       });
     },
   },
