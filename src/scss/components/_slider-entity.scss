@@ -1,5 +1,10 @@
 
-
+.banners_slide-block {
+  flex: 0 0 100%;
+  @supports ((object-fit: cover) or (-ms-object-fit: cover) or (-o-object-fit: cover)) {
+    flex: 1 1 auto;
+  }
+}
 
 .agile__dots {
   position: absolute;

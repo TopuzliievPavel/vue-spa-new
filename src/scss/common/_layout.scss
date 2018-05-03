@@ -27,15 +27,6 @@ body {
   /*End Fix for IE11*/
 }
 
-.header_heightfix {
-  height: 57px;
-  flex: 0 0 57px;
-  @include media('>=#{$collapse-menu}') {
-    height: 117px;
-    flex: 0 0 117px;
-  }
-}
-
 .content-indent {
   padding-left: 15px;
   padding-right: 15px;
@@ -75,15 +66,9 @@ body {
   width: 100%;
 }
 
-.page_main-wrap {
-  width: 100%;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-
 .page_main {
-  flex: 1;
+  flex: 1 1 auto;
+  //width: 100%;
   @include media('>=large') {
     padding-top: $vert-indent;
     padding-bottom: $vert-indent;
@@ -109,6 +94,8 @@ body {
 .page_sidebar {
   @include media('>=xlarge') {
     border: 1px solid $col-border;
+    margin-left: $sidebar-indent;
+    flex: 0 0 240px;
   }
   &--left {
     @include media('>=xlarge') {
@@ -122,8 +109,8 @@ body {
 .page_title {
   margin-bottom: 23px;
   color: $col-page_title;
-  text-transform: capitalize;
   .h2 {
+    text-transform: capitalize;
     font-weight: normal;
     margin-bottom: 0;
     &:not(:last-child) { margin-bottom: .75rem; }
