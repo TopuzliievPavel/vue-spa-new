@@ -7,11 +7,17 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+
 Vue.config.productionTip = false;
 
 Vue.use(VueFire);
 Vue.use(VueAgile);
 Vue.use(wysiwyg, {});
+
+
+import './components/global'
+import './directives'
+
 
 /* eslint-disable no-new */
 new Vue({

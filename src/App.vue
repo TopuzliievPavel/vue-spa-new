@@ -2,7 +2,6 @@
   #app.page
     page-header
     .header_heightfix
-    //-.page_main-wrap
     router-view
     page-footer
     load-spinner

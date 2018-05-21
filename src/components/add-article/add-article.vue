@@ -43,10 +43,13 @@
         ) Cancel
       div
         button.btn.btn--primary(type="button"
-        @click.privent="saveArticle"
-        )
-          span(v-if="!sendForm") Save
-          spinner-btn(v-if="sendForm")
+          @click.privent="saveArticle"
+          v-spinner
+        ) Save
+      div
+        button.btn.btn--primary(type="button"
+          @click="deleteCom"
+        ) del
 </template>
 
 <script src="./add-article.js"></script>

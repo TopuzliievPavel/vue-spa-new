@@ -9,7 +9,6 @@
       label.input-holder
         input(type="password" placeholder="Password"
           v-model="userPass"
-          @keyup.enter="loginUser"
         )
       .head-signin_form-action
         .custom-checkbox
@@ -21,6 +20,7 @@
     .header_flex-group
       button.btn.btn--outline(type="button"
         @click="loginUser"
+        v-spinner
       ) Sign In
   .head-signin_content
     p or You can sign in via:

@@ -78,7 +78,6 @@ export default {
         });
     },
     saveArticle() {
-      this.sendForm = true;
       this.article.articleId = this.article.articleId + 1;
       this.article.slug = this.article.slug + '-' + this.article.articleId;
       let saveTag = this.allTags.concat(this.newTags);
@@ -86,14 +85,19 @@ export default {
       db.ref('dataPages/media/listItems/' + this.article.slug).set(this.article);
       db.ref('dataPages/media/listPage/tags').set(saveTag);
       db.ref('dataPages/media/currentId').set(this.article.articleId);
-    },
 
+    },
+    deleteCom() {
+      console.log('del');
+      this.$destroy();
+    },
     addNewTag() {
       this.article.tags.push(this.newTag);
       this.newTags.push(this.newTag);
       this.newTag = '';
     }
   },
+
   computed: {
     createSlug() {
       let slug = this.article.title.replace(/ /g, "-");
