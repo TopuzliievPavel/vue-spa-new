@@ -5,6 +5,7 @@
     //-.page_main-wrap
     router-view
     page-footer
+    load-spinner
 </template>
 
 <script>
@@ -12,12 +13,14 @@
   // import PageFooter from './layout/footer/page-footer.vue'
   export const PageHeader = () => import(/* webpackChunkName: 'header' */ './layout/header/page-header.vue');
   export const PageFooter = () => import(/* webpackChunkName: 'footer' */ './layout/footer/page-footer.vue');
+  export const LoadSpinner = () => import(/* webpackChunkName: 'header' */'./components/load-spinner.vue');
 
   export default {
     name: 'App',
     components: {
       PageFooter,
-      PageHeader
+      PageHeader,
+      LoadSpinner
     }
   }
 </script>

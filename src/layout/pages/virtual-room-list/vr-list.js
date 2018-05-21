@@ -1,4 +1,5 @@
 import { db } from '../../../core/dataBase';
+import loadContent from '../../../core/loadFromDB';
 //-import ListPagination from '../../../components/list-pagination.vue'
 //-import ListSorting from '../../../components/list-sorting.vue'
 export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination.vue');
@@ -18,7 +19,7 @@ const SortService = {
 export default {
   name: 'VrList',
   created: function () {
-    this.readPageInfo();
+    loadContent('dataPages/vrList', this);
     this.readArticleList();
   },
   data () {
@@ -55,14 +56,8 @@ export default {
         this.activeFilter = index;
       }
     },
-    readPageInfo: function () {
-      let self = this;
-      db.ref('dataPages/vrList').once('value').then(function(s){
-        self.content = s.val();
-      });
 
-    },
-    readArticleList: function () {
+    readArticleList () {
       let self = this;
       db.ref('dataPages/vrList/items').limitToFirst(6).once('value').then(function(s){
         self.list = s.val();

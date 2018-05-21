@@ -1,4 +1,5 @@
 import { db } from '../../../core/dataBase';
+import loadContent from '../../../core/loadFromDB';
 
 export default {
   name: 'ArticlePage',
@@ -9,22 +10,10 @@ export default {
     }
   },
   created: function () {
-    this.readArticle();
+    loadContent('dataPages/media/listItems/' + this.$route.params.slug, this);
   },
   methods: {
-    readArticle() {
-      let slug = this.$route.params.slug;
-      //let self = this;
-      db.ref('dataPages/media/listItems/' + slug).once('value')
-        .then(
-        (s)=> {
-          this.content = s.val();
-        },
-        (error)=> {
-          console.log(error);
-        }
-      );
-    },
+
     readArticleList() {
       let self = this;
       db.ref('dataPages/media').limitToFirst(3).once('value').then(function(s){

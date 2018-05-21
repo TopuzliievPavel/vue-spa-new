@@ -1,17 +1,13 @@
-import { db } from '../../../core/dataBase';
-
+import loadContent from '../../../core/loadFromDB';
 
 export default {
   name: 'main-page',
-  beforeCreate: function () {
-    let self = this;
-    db.ref('dataPages/mainPage').once('value').then(function(s){
-      self.content = s.val();
-    });
+  created: function () {
+    loadContent('dataPages/mainPage', this);
   },
   data () {
     return {
       content: '',
     }
-  }
+  },
 }

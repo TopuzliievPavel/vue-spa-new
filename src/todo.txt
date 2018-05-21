@@ -4,6 +4,5 @@
 2. Article page
   - sidebar article
 3. Fix pagination
-4. Переписать все роуты на name
 5. Create global directive(load spiner, spinner load data)
 6. Add dynamic components in profile
