@@ -86,9 +86,9 @@ export default {
           this.updateArticleList([this.startArticle, this.stopArticle, this.currentPage]);
           break;
         case 'popular':
-          this.list.sort((a, b) => {
-            return SortService.sort(a.rating, b.rating)
-          });
+          // this.list.sort((a, b) => {
+          //   return SortService.sort(a.rating, b.rating)
+          // });
           break;
         case 'view':
           this.list.sort((a, b) => {

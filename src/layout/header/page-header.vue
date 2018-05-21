@@ -15,7 +15,7 @@
         .header_row.header_row--nav
           ul.header_nav-list
             li
-              router-link.nav-list_link(to="/vr-list" exact) VIRTUAL ROOMS
+              router-link.nav-list_link(:to="{name: 'VrList'}" exact) VIRTUAL ROOMS
             li
               router-link.nav-list_link(to="/some-link" exact ) GALLERY
             li
@@ -31,7 +31,7 @@
 
           ul.header_options.header_nav-secondary
             li
-              router-link.nav-list_link(to="/media")
+              router-link.nav-list_link(:to="{name: 'ArticleList'}")
                 span MEDIA
             li
               router-link.nav-list_link(to="/some-link")

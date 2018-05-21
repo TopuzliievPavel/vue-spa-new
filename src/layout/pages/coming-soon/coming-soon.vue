@@ -11,7 +11,7 @@
 
           button.btn.btn--primary(type="button") Send
 
-      router-link.btn.btn--outline(to="/")
+      router-link.btn.btn--outline(to="{name: 'MainPage'}")
         i(aria-hidden="true").fa.fa-angle-left
         |&ensp;
         | Go to Main page

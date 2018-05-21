@@ -15,7 +15,7 @@
 
         .page_title
           h1.h2 Media
-        //-include ./blocks/settings.pug
+        include ./blocks/settings.pug
         //-include ./blocks/filters.pug
 
         //-no-search-result(ng-if="mediaCtrl.houseTips && !mediaCtrl.houseTips.length")
@@ -30,16 +30,9 @@
               include blocks/media-article.pug
 
 
-        //-include ./blocks/pagination
+        list-pagination.category-list_settings(
 
-        //-.media_info-box
-          h3.info-box_title {{::mediaCtrl.staticContentModel.title}}
-          p.info-box_text(
-          ng-if="!mediaCtrl.staticContentModel.additionalTextVisibility && mediaCtrl.staticContentModel.additionalText"
-          ) {{::mediaCtrl.staticContentModel.additionalText}}
-          button.btn.btn--primary.info-box_btn-link(type="button"
-          ng-click="showPopup = true"
-          ) Contact us
+        )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         v-if="content.listPage"

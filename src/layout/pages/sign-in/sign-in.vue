@@ -56,7 +56,7 @@
     //-#signing-block
     div
       p Don't have an account?&nbsp;
-        router-link(to="/registration") Sign up.
+        router-link(:to="{name: 'RegUser'}") Sign up.
 
 </template>
 

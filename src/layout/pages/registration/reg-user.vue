@@ -90,7 +90,7 @@
 
     div
       p.text-center Already have an account? Please,&nbsp;
-        router-link(to="/sign-in") Sign in.
+        router-link(:to="{name: 'SignIn'}") Sign in.
 
 
 </template>

@@ -1,7 +1,5 @@
 .sidebar_controls.hide-for-xlarge
-  button.btn.btn--outline(type="button"
-
-  )
+  button.btn.btn--outline(type="button")
     i(aria-hidden="true").fa.fa-filter
     | &nbsp;
     | &nbsp;
@@ -15,4 +13,5 @@ ul.category-sidebar_list
   li.category-sidebar_item(
     v-for="tag in content.listPage.tags"
   )
-    button.category-sidebar_title(type="button") {{ tag }}
+    button.category-sidebar_title(type="button"
+     @click="filterArticle(tag)") {{ tag }}
