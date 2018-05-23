@@ -208,19 +208,20 @@
     @include media('>=medium') {
       margin: 0;
     }
-    .pagination_btn{
-      margin: 0 0.625rem;
-    }
   }
 
   .pagination {
     display: flex;
     align-items: center;
+    > * + * {
+      margin-left: 5px;
+    }
   }
 
   .pagination_list {
     list-style-type: none;
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 0;
     li {
       display: inline-block;

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-Vue.directive('spinner', (el, binding)=> {
+Vue.directive('btn-spinner', (el)=> {
   el.onclick = function () {
     this.innerHTML = "<div class='spinner'><div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div></div>";
   }

@@ -20,8 +20,8 @@
     .header_flex-group
       button.btn.btn--outline(type="button"
         @click="loginUser"
-        v-spinner
-      ) Sign In
+        v-btn-spinner="true"
+        ) Sign In
   .head-signin_content
     p or You can sign in via:
     router-link.btn.btn--social-login(to="/some-link")

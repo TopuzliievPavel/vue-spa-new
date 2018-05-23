@@ -23,7 +23,7 @@
           span.ht.view-1.view-icon
 
     .pagination-light(
-      v-show="content.pagination.pages > 2"
+      v-show="content.pagination.page > 2"
       )
       button.pagination_btn( type="button"
       v-show="content.pagination.page > 1"

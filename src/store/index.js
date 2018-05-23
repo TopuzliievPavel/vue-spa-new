@@ -9,6 +9,12 @@ const store = new Vuex.Store({
       id: '',
       isLogin: false,
     },
+    pagination: {
+      currentPage: '',
+      allItems: '',
+      showItem: '',
+      sort: '',
+    },
     visibleSpinner: false,
   },
   actions: {

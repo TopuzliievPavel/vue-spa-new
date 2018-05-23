@@ -44,7 +44,7 @@
       div
         button.btn.btn--primary(type="button"
           @click.privent="saveArticle"
-          v-spinner
+          v-btn-spinner="true"
         ) Save
       div
         button.btn.btn--primary(type="button"

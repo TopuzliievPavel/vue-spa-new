@@ -6,7 +6,9 @@
 
   .gallery-item_details
     .gallery-item_details-body
-      h3.gallery-item_title Autor: {{ item.user.name }}
+      .gallery-item_title Autor:
+        | &nbsp;
+        span.h3 {{ item.user.name }}
         //-router-link(:to='#')
       //-.gallery-item_views-details
         ul.article-item_counters-list
