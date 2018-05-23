@@ -1,0 +1,34 @@
+//- tips-paginator.jade
+
+.category-list_settings.settings-bottom
+  dl.sorting.show-for-medium
+    dt Show:
+    dd
+      select.sorting_select.select-num
+        option(value="6") 6
+        option(value="12") 12
+        option(value="24") 24
+  .pager
+    .pagination
+      button.btn.btn--link.show-for-medium(type="button"
+        :class="{'disable': content.pagination.page == 1}"
+      ) First
+      button.pagination_btn.pagination_btn--primary(type="button"
+        :class="{'invisible':content.pagination.page == 1}"
+      )
+        i(aria-hidden="true").fa.fa-angle-left
+      ul.pagination_list
+        li(
+        v-for='page in content.pagination.pages',
+        )
+          button(type="button"
+            :class="{'current': page == content.pagination.page}"
+            ) {{ page }}
+
+      button.pagination_btn.pagination_btn--primary(type="button"
+        :class="{'invisible': content.pagination.page == content.pagination.pages}"
+      )
+        i(aria-hidden="true").fa.fa-angle-right
+      button.btn.btn--link.show-for-medium(type="button"
+        :class="{'disable': content.pagination.page == content.pagination.pages}"
+      ) Last

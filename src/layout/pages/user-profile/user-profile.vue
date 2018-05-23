@@ -62,7 +62,8 @@
               ) Edit profile
             li
               button.btn.btn--link(type="button"
-                @click="logoutUser") Sign out
+                @click="logoutUser"
+                ) Sign out
 
       .page_content(v-if="tabs === 'edit-profile'")
         include blocks/edit-profile.pug

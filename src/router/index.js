@@ -14,6 +14,7 @@ import Router from 'vue-router'
 export const MainPage = () => import(/* webpackChunkName: 'MainPage' */ '@/layout/pages/main-page/main-page.vue');
 export const ComingSoon = () => import(/* webpackChunkName: 'ComingSoon' */ '@/layout/pages/coming-soon/coming-soon.vue');
 export const VrList = () => import(/* webpackChunkName: 'VrList' */ '@/layout/pages/virtual-room-list/vr-list.vue');
+export const GalleryList = () => import(/* webpackChunkName: 'VrList' */ '@/layout/pages/gallery-list/gallery-list.vue');
 export const SignIn = () => import(/* webpackChunkName: 'SignIn' */ '@/layout/pages/sign-in/sign-in.vue');
 export const RegUser = () => import(/* webpackChunkName: 'RegUser' */ '@/layout/pages/user-profile/user-profile.vue');
 export const UserProfile = () => import(/* webpackChunkName: 'UserProfile' */ '@/layout/pages/user-profile/user-profile.vue');
@@ -28,6 +29,7 @@ export default new Router({
   routes: [
     {path: '/',             name: 'MainPage',     component: MainPage},
     {path: '/virtual-room', name: 'VrList',       component: VrList},
+    {path: '/gallery',      name: 'GalleryList',  component: GalleryList},
     {path: '/registration', name: 'RegUser',      component: RegUser},
     {path: '/sign-in',      name: 'SignIn',       component: SignIn},
     {path: '/user-profile', name: 'UserProfile',  component: UserProfile},

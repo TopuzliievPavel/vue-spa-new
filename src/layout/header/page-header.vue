@@ -17,7 +17,7 @@
             li
               router-link.nav-list_link(:to="{name: 'VrList'}" exact) VIRTUAL ROOMS
             li
-              router-link.nav-list_link(to="/some-link" exact ) GALLERY
+              router-link.nav-list_link(:to="{name: 'GalleryList'}" exact ) GALLERY
             li
               router-link.nav-list_link(to="/some-link" exact) HOUSE TIPS
             li
