@@ -13,14 +13,14 @@
           h1.h2 {{ content.pageTitle.title }}
           p.h5 {{ content.pageTitle.description }}
 
-        include blocks/settings.pug
-
+        list-sorting
+        //:class="{'articles-list--album-view': listLayoutRow}"
         .articles-list(
           v-if="content.items.length"
-          :class="{'articles-list--album-view': listLayoutRow}"
+
           )
           article.articles-list_item(
-            v-for="room in list"
+            v-for="room in content.items"
             :key="room.id"
           )
             .article-item_container

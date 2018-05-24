@@ -18,22 +18,21 @@ const SortService = {
 
 export default {
   name: 'VrList',
-  created: function () {
+  created() {
     loadContent('dataPages/vrList', this);
-    this.readArticleList();
   },
-  data () {
+  data() {
     return {
       content: '',
       list: '',
       showSidebar: false,
       activeCategory: '',
-      listLayoutRow: false,
+      //listLayoutRow: false,
       activeTab: undefined,
       activeFilter: undefined,
-      sortParam: 'default',
-      startArticle: 0,
-      stopArticle: 5,
+      //sortParam: 'default',
+      //startArticle: 0,
+      //stopArticle: 5,
       currentPage: 1,
     }
   },
@@ -57,12 +56,6 @@ export default {
       }
     },
 
-    readArticleList () {
-      let self = this;
-      db.ref('dataPages/vrList/items').limitToFirst(6).once('value').then(function(s){
-        self.list = s.val();
-      });
-    },
     updateArticleList(e) {
       let self = this;
       let start = String(e[0]);

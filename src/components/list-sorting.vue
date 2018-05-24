@@ -5,24 +5,24 @@
         dt.show-for-large sort by:
         dd
           select.sorting_select
-            option(value="popular") Popular
             option(value="newest") Newest
             option(value="oldest") Oldest
+            option(value="popular") Popular
             option(value="title") Title
 
       ul.list_views.show-for-large
-        li(
-        :class="{'current': !listLayoutRow}"
-          @click="listLayoutRow = false"
-          ).list_views_item
+        li.list_views_item(
+          :class="{'current': listLayoutRow === false}"
+          @click="setListLayoutRow(false)"
+          )
           span.ht.view-2.view-icon
-        li(
-          :class="{'current': listLayoutRow}"
-          @click="listLayoutRow = true"
-          ).list_views_item
+        li.list_views_item(
+          :class="{'current': listLayoutRow === true}"
+          @click="setListLayoutRow(true)"
+          )
           span.ht.view-1.view-icon
 
-    .pagination-light(
+    //-.pagination-light(
       v-show="content.pagination.page > 2"
       )
       button.pagination_btn( type="button"
@@ -45,13 +45,35 @@
 </template>
 
 <script>
-export default {
-name: "ListSorting"
-}
+  export default {
+    name: "ListSorting",
+    data() {
+      return {
+        sd: 'asd'
+      }
+    },
+    created() {
+
+    },
+    computed: {
+      listLayoutRow: function() {
+        return this.$store.state.listPagination.listLayoutRow;
+      }
+    },
+    methods: {
+      init() {
+        console.log('init');
+      },
+      setListLayoutRow(action) {
+        this.$store.commit('listPagination/listLayoutRow', action)
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
   @import '../scss/base';
+
   .category-list_settings {
     display: flex;
     align-items: center;
