@@ -64,6 +64,8 @@
   visibility: hidden;
 }
 
+
+
 // Responsive visibility classes
 @each $name, $size in $breakpoint {
   @if $name != small {

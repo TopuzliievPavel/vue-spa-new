@@ -13,7 +13,9 @@
           h1.h2 {{ content.pageTitle.title }}
           p.h5 {{ content.pageTitle.description }}
 
-        list-sorting
+        list-sorting(
+          :pageName="content.pageTitle.title"
+        )
         .articles-list(
           v-if="content.items.length"
           :class="{'articles-list--album-view': listLayoutRow}"
@@ -27,9 +29,10 @@
 
         list-pagination.category-list_settings(
           :listLength="content.items.length"
-          :setPage="currentPage"
-          @rangeArticleList="updateArticleList($event)"
           )
+        //    :setPage="currentPage"
+            @rangeArticleList="updateArticleList($event)"
+            )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         :class="{'active': showSidebar}"

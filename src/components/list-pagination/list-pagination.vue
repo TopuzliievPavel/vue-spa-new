@@ -6,7 +6,7 @@
       dd
         select.sorting_select.select-num(
           v-model.number="selectVal"
-          @change="setRangeArticleList()"
+          @change="setShowItem()"
           )
           option(value="6") 6
           option(value="12") 12
@@ -15,32 +15,33 @@
     .pager
       .pagination
         button.btn.btn--link.show-for-medium(type="button"
-          @click="gotoFirstPage"
-          :class="{'disable': currentPage == 1}"
+          @click="setCurrentPage(1)"
+          :disabled="paginData.currentPage === 1"
+          :class="{'disable':paginData.currentPage === 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="reducePage"
-          :class="{'invisible':currentPage == 1}"
-        )
+          @click="setCurrentPage(paginData.currentPage - 1)"
+          :class="{'invisible':paginData.currentPage == 1}"
+          )
           i(aria-hidden="true").fa.fa-angle-left
         ul.pagination_list
-          li(
-          v-for="page in setPagesLength",
+          li(v-for="page in pagesLength",
           )
             button(type="button"
-              @click="thisPage(page)"
-              :class="{'current': page == currentPage}"
+              @click="setCurrentPage(page)"
+              :class="{'current': page == paginData.currentPage}"
             ) {{ page }}
 
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="addPage"
-          :class="{'invisible': currentPage == setPagesLength}"
-        )
+          @click="setCurrentPage(paginData.currentPage + 1)"
+          :class="{'invisible':paginData.currentPage == pagesLength}"
+          )
           i(aria-hidden="true").fa.fa-angle-right
         button.btn.btn--link.show-for-medium(type="button"
-          @click="gotoLastPage"
-          :class="{'disable': currentPage == setPagesLength}"
-        ) Last
+          @click="setCurrentPage(pagesLength)"
+          :disabled="paginData.currentPage === pagesLength"
+          :class="{'disable': paginData.currentPage === pagesLength}"
+          ) Last
 </template>
 
 <script src="./list-pagination.js" ></script>

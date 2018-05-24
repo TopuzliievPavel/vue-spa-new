@@ -1,9 +1,9 @@
 const listPagination = {
   namespaced: true,
   state: {
-    currentPage: '1',
-    allItems: '',
-    showItem: '6',
+    currentPage: 1,
+    allItems: 150,
+    showItem: 6,
     sort: 'Newest',
     listLayoutRow: false
   },
@@ -11,8 +11,20 @@ const listPagination = {
 
   },
   mutations: {
-    listLayoutRow(state, action) {
-      state.listLayoutRow = action;
+    setValue(state, param) {
+      state.param.key = param.value;
+    },
+    setListLayoutRow(state, value) {
+      state.listLayoutRow = value;
+    },
+    setListSort(state, value) {
+      state.sort = value;
+    },
+    setShowItem(state, value) {
+      state.showItem = value;
+    },
+    setCurrentPage(state, value) {
+      state.currentPage = value;
     },
   }
 };

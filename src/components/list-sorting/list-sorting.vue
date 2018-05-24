@@ -4,7 +4,10 @@
       dl.sorting
         dt.show-for-large sort by:
         dd
-          select.sorting_select
+          select.sorting_select(
+            v-model="sort"
+            @change="setListSort()"
+          )
             option(value="newest") Newest
             option(value="oldest") Oldest
             option(value="popular") Popular
@@ -22,23 +25,23 @@
           )
           span.ht.view-1.view-icon
 
-    //-.pagination-light(
-      v-show="content.pagination.page > 2"
+    .pagination-light(
+      v-show="paginData.currentPage > 0"
       )
       button.pagination_btn( type="button"
-      v-show="content.pagination.page > 1"
+      v-show="paginData.currentPage > 1"
       )
         i(aria-hidden="true").fa.fa-angle-left
       .pagination_text
-        | {{ (content.pagination.page * content.pagination.limit) - (content.pagination.limit - 1) }}
+        | {{ (paginData.currentPage * paginData.showItem) - (paginData.showItem - 1) }}
         span &nbsp;-&nbsp;
-        | {{ content.pagination.page * content.pagination.limit }}
+        | {{ paginData.currentPage * paginData.showItem }}
         span &nbsp;of&nbsp;
-        | {{ content.pagination.total }}
-        span.show-for-large &nbsp;{{ content.pagination.name }}
+        | {{ paginData.allItems }}
+        span.show-for-large &nbsp;{{ pageName }}
 
       button.pagination_btn(type="button"
-      v-show="content.pagination.page < content.pagination.pages"
+      v-show="paginData.currentPage < paginData.currentPages"
       )
         i(aria-hidden="true").fa.fa-angle-right
 

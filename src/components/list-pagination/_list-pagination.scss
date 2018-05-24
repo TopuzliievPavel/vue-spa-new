@@ -166,7 +166,9 @@
       background-color: $col-primary-hover;
     }
   }
-
+  &.invisible {
+    position: static;
+  }
   .fa {
     margin: auto;
     line-height: 21px; //- hack for IE11
