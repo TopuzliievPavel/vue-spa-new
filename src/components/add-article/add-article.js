@@ -1,5 +1,4 @@
 import {db, Storage} from "../../core/dataBase";
-import SpinnerBtn from '../../components/spinner-btn'
 
 export default {
   name: "AddArticle",
@@ -104,8 +103,5 @@ export default {
       this.article.slug = slug;
       return slug
     }
-  },
-  components: {
-    SpinnerBtn
   }
 }

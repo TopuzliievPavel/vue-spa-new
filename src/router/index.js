@@ -16,7 +16,7 @@ export const ComingSoon = () => import(/* webpackChunkName: 'ComingSoon' */ '@/l
 export const VrList = () => import(/* webpackChunkName: 'VrList' */ '@/layout/pages/virtual-room-list/vr-list.vue');
 export const GalleryList = () => import(/* webpackChunkName: 'VrList' */ '@/layout/pages/gallery-list/gallery-list.vue');
 export const SignIn = () => import(/* webpackChunkName: 'SignIn' */ '@/layout/pages/sign-in/sign-in.vue');
-export const RegUser = () => import(/* webpackChunkName: 'RegUser' */ '@/layout/pages/user-profile/user-profile.vue');
+export const RegUser = () => import(/* webpackChunkName: 'RegUser' */ '@/layout/pages/registration/reg-user.vue');
 export const UserProfile = () => import(/* webpackChunkName: 'UserProfile' */ '@/layout/pages/user-profile/user-profile.vue');
 export const ArticleList = () => import(/* webpackChunkName: 'ArticleList' */ '@/layout/pages/article-list/article-list.vue');
 export const ArticlePage = () => import(/* webpackChunkName: 'ArticlePage' */ '@/layout/pages/article-page/article-page.vue');

@@ -1,7 +1,7 @@
 //import { db } from '../../../core/dataBase';
 import loadContent from '../../../core/loadFromDB';
-export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination.vue');
-export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting.vue');
+export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination/list-pagination.vue');
+export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting/list-sorting.vue');
 
 export default {
   name: 'ArticleList',

@@ -14,10 +14,9 @@
           p.h5 {{ content.pageTitle.description }}
 
         list-sorting
-        //:class="{'articles-list--album-view': listLayoutRow}"
         .articles-list(
           v-if="content.items.length"
-
+          :class="{'articles-list--album-view': listLayoutRow}"
           )
           article.articles-list_item(
             v-for="room in content.items"

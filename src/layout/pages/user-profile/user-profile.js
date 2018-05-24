@@ -1,9 +1,8 @@
 //-import AddArticle from '../../../components/add-article/add-article.vue'
-//-import SpinnerBtn from '../../../components/spinner-btn'
+
 import {db, Storage} from "../../../core/dataBase";
 import { logoutUser } from '../../../core/loginUser';
 export const AddArticle = () => import(/* webpackChunkName: 'AddArticle' */ '../../../components/add-article/add-article.vue');
-export const SpinnerBtn = () => import(/* webpackChunkName: 'SpinnerBtn' */ '../../../components/spinner-btn');
 
 export default {
   name: 'UserProfile',
@@ -157,7 +156,6 @@ export default {
     }
   },
   components: {
-    AddArticle,
-    SpinnerBtn
+    AddArticle
   }
 }

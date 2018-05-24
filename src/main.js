@@ -17,8 +17,6 @@ Vue.use(VueAgile);
 Vue.use(wysiwyg, {});
 
 
-import './components/global'
-
 import './directives'
 
 

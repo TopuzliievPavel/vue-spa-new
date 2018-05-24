@@ -1,0 +1,174 @@
+@import '../../scss/base';
+
+.category-list_settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+
+  &.settings-bottom {
+    margin: 1.875rem 0 3.125rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   Sorting
+   ---------------------------------------------------------*/
+
+.sorting {
+  display: flex;
+  align-items: center;
+  max-width: 375px;
+  margin: 0;
+  text-transform: capitalize;
+  @include media('>=presmall') {
+    margin: 0 30px 0 0;
+  }
+
+  dt {
+    @include media('>=medium') {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.sorting_select {
+  min-width: 100px;
+  height: 27px;
+  margin-bottom: 0;
+  padding: 0 .3rem 0 .2rem;
+  font-weight: 300;
+  background-color: transparent;
+
+  &.select-num {
+    min-width: 50px;
+    font-size: .875rem;
+  }
+}
+
+/* ---------------------------------------------------------
+   Views
+   ---------------------------------------------------------*/
+
+.flex-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.list_views {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.list_views_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 27px;
+  font-size: .75rem;
+  color: rgba(0,0,0,.4);
+  border: 2px solid #c6c6c6;
+  border-left: none;
+  cursor: pointer;
+  transition: color .3s, border-color .3s, background .3s;
+
+  &:first-child {
+    border: {
+      right: none;
+      left: 2px solid #c6c6c6;
+    }
+  }
+
+  &.current {
+    color: #fff;
+    border-color: #ea7925;
+    background: #ea7925;
+  }
+}
+
+/* ---------------------------------------------------------
+   Pagination
+   ---------------------------------------------------------*/
+.pager {
+  display: block;
+  margin: 0 auto;
+  @include media('>=medium') {
+    margin: 0;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+
+   > * + * {
+    margin-left: 5px;
+  }
+}
+
+.pagination_list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+    margin: 0 .125rem;
+    vertical-align: top;
+  }
+
+  button {
+    padding: 0 .4375rem;
+    font-size: .875rem;
+    line-height: 27px;
+    background: transparent;
+
+    &:hover,
+    &.current {
+      color: $white;
+      background: #ccc;
+    }
+  }
+}
+
+/*----- Pagination BTN -----*/
+.pagination_btn {
+  display: flex;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  text-align: center;
+  border: $default-border;
+  background-color: transparent;
+
+  &:hover {
+    color: $white;
+    border-color: $col-primary;
+    background-color: $col-primary;
+  }
+
+  &--primary {
+    color: $white;
+    border-color: $col-primary;
+    background-color: $col-primary;
+
+    &:hover {
+      border-color: $col-primary-hover;
+      background-color: $col-primary-hover;
+    }
+  }
+
+  .fa {
+    margin: auto;
+    line-height: 21px; //- hack for IE11
+  }
+}

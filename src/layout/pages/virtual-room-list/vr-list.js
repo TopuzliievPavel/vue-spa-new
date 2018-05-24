@@ -2,8 +2,8 @@ import { db } from '../../../core/dataBase';
 import loadContent from '../../../core/loadFromDB';
 //-import ListPagination from '../../../components/list-pagination.vue'
 //-import ListSorting from '../../../components/list-sorting.vue'
-export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination.vue');
-export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting.vue');
+export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination/list-pagination.vue');
+export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting/list-sorting.vue');
 
 const SortService = {
   sort: (a, b, direction) => {
@@ -27,16 +27,16 @@ export default {
       list: '',
       showSidebar: false,
       activeCategory: '',
-      //listLayoutRow: false,
       activeTab: undefined,
       activeFilter: undefined,
-      //sortParam: 'default',
-      //startArticle: 0,
-      //stopArticle: 5,
       currentPage: 1,
     }
   },
-
+  computed: {
+    listLayoutRow() {
+      return this.$store.state.listPagination.listLayoutRow;
+    }
+  },
   methods: {
     setActiveTab: function (index) {
       if(this.activeTab == index) {
