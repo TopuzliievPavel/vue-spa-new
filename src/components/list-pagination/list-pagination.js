@@ -31,6 +31,9 @@ export default {
         end = all;
         start = all - width;
       }
+      if (start < 1) {
+        start = 1;
+      }
 
       for(var i = start; i <= end; i++) {
         arr.push(i);
