@@ -12,11 +12,11 @@
         .page_title
           h1.h2 Media
 
-        list-sorting(
+        //-list-sorting(
           v-if="content.listItems"
-          :listLength="listLength"
-          :listViews="false"
-        )
+          //:listLength="listLength"
+          //:listViews="false"
+          )
         .articles-list(
           v-if="content.listItems"
           )
@@ -27,10 +27,10 @@
               include blocks/media-article.pug
 
 
-        list-pagination.category-list_settings(
+        //-list-pagination.category-list_settings(
           v-if="content.listItems"
-          :listLength="listLength"
-        )
+          //:listLength="listLength"
+          )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         v-if="content.listPage"

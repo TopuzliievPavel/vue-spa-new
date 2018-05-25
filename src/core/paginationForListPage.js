@@ -1,39 +1,40 @@
 import {SortService} from "./helpers";
 
-const listData = {
+const paginListData = {
   sortingList: [],
   showList: [],
 };
 
-const listWatch = {
+const paginListWatch = {
   'content.items'() {
-    this.sortingList = this.content.items;
+    this.paginListData.sortingList = this.content.items;
   },
+
   'paginationData.currentPage'() {
     this.displayList();
   },
   'paginationData.showItem'() {
     this.displayList();
   },
-  sortingList() {
-    this.displayList();
-  },
   'paginationData.sort'() {
     this.sortList(this.paginationData.sort);
+  },
+
+  'paginListData.sortingList'() {
+    this.displayList();
   }
 };
 
-const listComputed = {
+const paginListComputed = {
   paginationData() {
     return this.$store.state.listPagination;
   }
 };
 
-const listMethods = {
+const paginListMethods = {
   sortList(value) {
-    let sortArr = this.sortingList;
+    let sortArr = this.paginListData.sortingList;
     let originArr = this.content.items;
-    console.log(value);
     switch(value) {
       case 'newest':
         sortArr = originArr;
@@ -52,20 +53,20 @@ const listMethods = {
         sortArr = originArr.sort((a, b) => {
           return SortService.sort(a.title, b.title, 'reverse')
         });
-        break;
+      break;
     }
   },
 
   displayList() {
     let qty = this.paginationData.showItem;
     let currPage = this.paginationData.currentPage;
-    let itemList = this.sortingList;
+    let itemList = this.paginListData.sortingList;
 
     let start = currPage * qty - qty;
     let end = currPage * qty;
 
-    this.showList = itemList.slice(start, end);
+    this.paginListData.showList = itemList.slice(start, end);
   }
 };
 
-export {listData, listWatch, listComputed, listMethods}
+export {paginListData, paginListWatch, paginListComputed, paginListMethods}

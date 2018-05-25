@@ -25,7 +25,7 @@
           )
           i(aria-hidden="true").fa.fa-angle-left
         ul.pagination_list
-          li(v-for="page in pagesLength",
+          li(v-for="page in rangeList",
           )
             button(type="button"
               @click="setCurrentPage(page)"

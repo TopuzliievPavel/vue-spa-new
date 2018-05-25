@@ -22,7 +22,7 @@
           :class="{'articles-list--album-view': paginationData.listLayoutRow}"
           )
           article.articles-list_item(
-            v-for="room in showList"
+            v-for="room in paginListData.showList"
             :key="room.id"
           )
             .article-item_container
