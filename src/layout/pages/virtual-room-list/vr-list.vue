@@ -19,10 +19,10 @@
         )
         .articles-list(
           v-if="content.items.length"
-          :class="{'articles-list--album-view': listLayoutRow}"
+          :class="{'articles-list--album-view': paginationData.listLayoutRow}"
           )
           article.articles-list_item(
-            v-for="room in content.items"
+            v-for="room in showList"
             :key="room.id"
           )
             .article-item_container

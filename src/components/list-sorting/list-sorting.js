@@ -1,14 +1,21 @@
 export default {
   name: "ListSorting",
+
   props: {
     pageName: {
-      type: String
+      type: String,
+      default: 'items'
     },
     listLength: {
       type: Number,
       default: 0
+    },
+    listViews: {
+      type: Boolean,
+      default: true
     }
   },
+
   data() {
     return {
       sort: 'newest',
@@ -16,39 +23,31 @@ export default {
     }
   },
 
-  // Hooks
-  created() {
-    //this.init();
-  },
-
-  // Functions
   computed: {
-    paginData() {
+    paginationData() {
       return this.$store.state.listPagination;
     },
     startNumberItem() {
-      return (this.paginData.currentPage * this.paginData.showItem) - (this.paginData.showItem - 1)
+      return (this.paginationData.currentPage * this.paginationData.showItem) - (this.paginationData.showItem - 1)
     },
     stopNumberItem() {
-      let stop = this.paginData.currentPage * this.paginData.showItem;
+      let stop = this.paginationData.currentPage * this.paginationData.showItem;
       return stop > this.listLength ? this.listLength : stop
     },
     pagesLength() {
-      return Math.ceil(this.listLength / this.paginData.showItem);
+      return Math.ceil(this.listLength / this.paginationData.showItem);
     },
   },
+
   methods: {
-    // init() {
-    //   this.$store.commit('listPagination/setListLayoutRow', action)
-    // },
     setListLayoutRow(action) {
       this.$store.commit('listPagination/setListLayoutRow', action)
     },
     setListSort() {
       this.$store.commit('listPagination/setListSort', this.sort);
     },
-    setCurrentPage(state, value) {
-      state.currentPage = value;
-    },
+    setCurrentPage(page) {
+      this.$store.commit('listPagination/setCurrentPage', page);
+    }
   }
 }

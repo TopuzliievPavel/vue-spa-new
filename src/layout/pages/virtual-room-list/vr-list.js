@@ -1,20 +1,12 @@
-import { db } from '../../../core/dataBase';
 import loadContent from '../../../core/loadFromDB';
+import { SortService } from '../../../core/helpers';
+//import { listData, listWatch, listComputed, listMethods} from '../../../core/paginationForListPage';
 //-import ListPagination from '../../../components/list-pagination.vue'
 //-import ListSorting from '../../../components/list-sorting.vue'
 export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination/list-pagination.vue');
 export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting/list-sorting.vue');
 
-const SortService = {
-  sort: (a, b, direction) => {
-    switch (direction) {
-      case "asc":
-        return a > b ? 1 : -1;
-      default:
-        return a < b ? 1 : -1;
-    }
-  }
-};
+
 
 export default {
   name: 'VrList',
@@ -24,20 +16,39 @@ export default {
   data() {
     return {
       content: '',
-      list: '',
+      sortingList: [],
+      showList: [],
       showSidebar: false,
       activeCategory: '',
       activeTab: undefined,
       activeFilter: undefined,
-      currentPage: 1,
+      //listData
     }
   },
   computed: {
-    listLayoutRow() {
-      return this.$store.state.listPagination.listLayoutRow;
+    paginationData() {
+      return this.$store.state.listPagination;
+    }
+  },
+  watch: {
+    'content.items'() {
+      this.sortingList = this.content.items;
+    },
+    'paginationData.currentPage'() {
+      this.displayList();
+    },
+    'paginationData.showItem'() {
+      this.displayList();
+    },
+    sortingList() {
+      this.displayList();
+    },
+    'paginationData.sort'() {
+      this.sortList(this.paginationData.sort);
     }
   },
   methods: {
+    /*sidebar*/
     setActiveTab: function (index) {
       if(this.activeTab == index) {
         this.activeTab = undefined;
@@ -55,41 +66,44 @@ export default {
         this.activeFilter = index;
       }
     },
-
-    updateArticleList(e) {
-      let self = this;
-      let start = String(e[0]);
-      let stop = String(e[1]);
-      this.startArticle = e[0];
-      this.stopArticle = e[1];
-      this.currentPage = e[2];
-      db.ref('dataPages/vrList/items').orderByKey().startAt(start).endAt(stop).once('value').then(function (s) {
-        const val = s.val();
-        self.list = Array.isArray(val) ? val.filter(val => val !== undefined) : val;
-      });
-    },
-    sortArticleList(value) {
+    /*list*/
+    sortList(value) {
+      let sortArr = this.sortingList;
+      let originArr = this.content.items;
+      console.log(value);
       switch(value) {
-        case 'default':
-          this.updateArticleList([this.startArticle, this.stopArticle, this.currentPage]);
+        case 'newest':
+          sortArr = originArr;
           break;
         case 'popular':
-          // this.list.sort((a, b) => {
-          //   return SortService.sort(a.rating, b.rating)
-          // });
+          sortArr = originArr.sort((a, b) => {
+            return SortService.sort(a.rating, b.rating)
+          });
           break;
-        case 'view':
-          this.list.sort((a, b) => {
+        case 'viewed':
+          sortArr = originArr.sort((a, b) => {
             return SortService.sort(a.viewsCount, b.viewsCount)
           });
           break;
         case 'title':
-          this.list.sort((a, b) => {
-            return SortService.sort(a.title, b.title)
+          sortArr = originArr.sort((a, b) => {
+            return SortService.sort(a.title, b.title, 'reverse')
           });
-          break;
+        break;
       }
+    },
+
+    displayList() {
+      let qty = this.paginationData.showItem;
+      let currPage = this.paginationData.currentPage;
+      let itemList = this.sortingList;
+
+      let start = currPage * qty - qty;
+      let end = currPage * qty;
+
+      this.showList = itemList.slice(start, end);
     }
+
   },
   components: {
     ListPagination,

@@ -1,9 +1,5 @@
 <template lang="pug">
   .page_main
-    //-section.content-wrap
-      slider-entity.banners_slider(
-      slider-type="mediaSlides"
-      )
     .page_content-wrap.content-wrap(v-if="content")
       main.page_content
         button.btn.btn--outline.hide-for-xlarge.show-sidebar-btn(type="button"
@@ -15,13 +11,14 @@
 
         .page_title
           h1.h2 Media
-        include ./blocks/settings.pug
-        //-include ./blocks/filters.pug
 
-        //-no-search-result(ng-if="mediaCtrl.houseTips && !mediaCtrl.houseTips.length")
-
+        list-sorting(
+          v-if="content.listItems"
+          :listLength="listLength"
+          :listViews="false"
+        )
         .articles-list(
-          v-if="true"
+          v-if="content.listItems"
           )
           article.articles-list_item(
             v-for="article in content.listItems"
@@ -31,7 +28,8 @@
 
 
         list-pagination.category-list_settings(
-
+          v-if="content.listItems"
+          :listLength="listLength"
         )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(

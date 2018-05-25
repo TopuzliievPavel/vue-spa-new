@@ -16,12 +16,12 @@
       .pagination
         button.btn.btn--link.show-for-medium(type="button"
           @click="setCurrentPage(1)"
-          :disabled="paginData.currentPage === 1"
-          :class="{'disable':paginData.currentPage === 1}"
+          :disabled="paginationData.currentPage === 1"
+          :class="{'disable':paginationData.currentPage === 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="setCurrentPage(--paginData.currentPage)"
-          :class="{'invisible':paginData.currentPage == 1}"
+          @click="setCurrentPage(paginationData.currentPage - 1)"
+          :class="{'invisible':paginationData.currentPage == 1}"
           )
           i(aria-hidden="true").fa.fa-angle-left
         ul.pagination_list
@@ -29,18 +29,18 @@
           )
             button(type="button"
               @click="setCurrentPage(page)"
-              :class="{'current': page == paginData.currentPage}"
+              :class="{'current': page == paginationData.currentPage}"
             ) {{ page }}
 
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="setCurrentPage(++paginData.currentPage)"
-          :class="{'invisible':paginData.currentPage == pagesLength}"
+          @click="setCurrentPage(paginationData.currentPage + 1)"
+          :class="{'invisible':paginationData.currentPage == pagesLength}"
           )
           i(aria-hidden="true").fa.fa-angle-right
         button.btn.btn--link.show-for-medium(type="button"
           @click="setCurrentPage(pagesLength)"
-          :disabled="paginData.currentPage === pagesLength"
-          :class="{'disable': paginData.currentPage === pagesLength}"
+          :disabled="paginationData.currentPage === pagesLength"
+          :class="{'disable': paginationData.currentPage === pagesLength}"
           ) Last
 </template>
 
