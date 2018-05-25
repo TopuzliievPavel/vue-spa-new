@@ -3,7 +3,7 @@ export default {
   props: {
     listLength: {
       type: Number,
-      default: 6
+      default: 0
     },
     // setPage:  {
     //   type: Number,

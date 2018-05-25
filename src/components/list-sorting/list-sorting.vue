@@ -25,23 +25,23 @@
           )
           span.ht.view-1.view-icon
 
-    .pagination-light(
-      v-show="paginData.currentPage > 0"
-      )
-      button.pagination_btn( type="button"
-      v-show="paginData.currentPage > 1"
+    .pagination-light
+      button.pagination_btn.btn.btn--outline( type="button"
+        @click="setCurrentPage(--paginData.currentPage)"
+        v-show="paginData.currentPage > 1"
       )
         i(aria-hidden="true").fa.fa-angle-left
       .pagination_text
-        | {{ (paginData.currentPage * paginData.showItem) - (paginData.showItem - 1) }}
+        | {{ startNumberItem }}
         span &nbsp;-&nbsp;
-        | {{ paginData.currentPage * paginData.showItem }}
+        | {{ stopNumberItem }}
         span &nbsp;of&nbsp;
-        | {{ paginData.allItems }}
+        | {{ listLength }}
         span.show-for-large &nbsp;{{ pageName }}
 
-      button.pagination_btn(type="button"
-      v-show="paginData.currentPage < paginData.currentPages"
+      button.pagination_btn.btn.btn--outline(type="button"
+        @click="setCurrentPage(++paginData.currentPage)"
+        v-show="paginData.currentPage < pagesLength"
       )
         i(aria-hidden="true").fa.fa-angle-right
 

@@ -20,7 +20,7 @@
           :class="{'disable':paginData.currentPage === 1}"
         ) First
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="setCurrentPage(paginData.currentPage - 1)"
+          @click="setCurrentPage(--paginData.currentPage)"
           :class="{'invisible':paginData.currentPage == 1}"
           )
           i(aria-hidden="true").fa.fa-angle-left
@@ -33,7 +33,7 @@
             ) {{ page }}
 
         button.pagination_btn.pagination_btn--primary(type="button"
-          @click="setCurrentPage(paginData.currentPage + 1)"
+          @click="setCurrentPage(++paginData.currentPage)"
           :class="{'invisible':paginData.currentPage == pagesLength}"
           )
           i(aria-hidden="true").fa.fa-angle-right

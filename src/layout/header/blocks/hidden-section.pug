@@ -1,29 +1,30 @@
-.content-wrap.content-indent
+section.header_signin
   .content-wrap.content-indent
-    .header_row.header_row--signin
-      .head-signin_content-col.xlarge-show
-        div
-          .head-signin_heading
-            h3.head-signin_title Quick tips
-          ul.head-signin_bullet-list
-            li: router-link(to="/some-link") How to use Virtual rooms
-            li: router-link(to="/some-link") How to find Pro
-            li: router-link(to="/some-link") How to become Pro
-            li: router-link(to="/some-link") How to buy goods
-            li: router-link(to="/some-link") How to sell goods
-      .head-signin_content-col
-        .head-signin_content.head-signin_content--reg
-          .head-signin_heading.medium-show
-            h3.head-signin_title Registration
-          p.medium-show Not a user yet?
-            br
-            | Create your account right now and start using House Tipster!
+    .content-wrap.content-indent
+      .header_row.header_row--signin
+        .head-signin_content-col.xlarge-show
+          div
+            .head-signin_heading
+              h3.head-signin_title Quick tips
+            ul.head-signin_bullet-list
+              li: router-link(to="/some-link") How to use Virtual rooms
+              li: router-link(to="/some-link") How to find Pro
+              li: router-link(to="/some-link") How to become Pro
+              li: router-link(to="/some-link") How to buy goods
+              li: router-link(to="/some-link") How to sell goods
+        .head-signin_content-col
+          .head-signin_content.head-signin_content--reg
+            .head-signin_heading.medium-show
+              h3.head-signin_title Registration
+            p.medium-show Not a user yet?
+              br
+              | Create your account right now and start using House Tipster!
 
-          router-link.btn.btn--outline(:to="{name: 'RegUser'}") Create an Account
+            router-link.btn.btn--outline(:to="{name: 'RegUser'}") Create an Account
 
-      include user-login
+        include user-login
 
-      button.head-signin_close(type="button"
-        @click="openSignIn = !openSignIn"
-      )
-        i.fa.fa-close
+button.head-signin_close(type="button"
+  @click="openSignIn = !openSignIn"
+)
+  i.fa.fa-close

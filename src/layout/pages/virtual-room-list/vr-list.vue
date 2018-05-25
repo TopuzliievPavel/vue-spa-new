@@ -14,6 +14,7 @@
           p.h5 {{ content.pageTitle.description }}
 
         list-sorting(
+          :listLength="content.items.length"
           :pageName="content.pageTitle.title"
         )
         .articles-list(
@@ -30,9 +31,6 @@
         list-pagination.category-list_settings(
           :listLength="content.items.length"
           )
-        //    :setPage="currentPage"
-            @rangeArticleList="updateArticleList($event)"
-            )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         :class="{'active': showSidebar}"

@@ -108,3 +108,37 @@
     color: $placeholder;
   }
 }
+/*----- Pagination BTN -----*/
+.pagination_btn {
+  display: flex;
+  width: 27px;
+  height: 27px;
+  padding: 0;
+  text-align: center;
+  border: $default-border;
+  background-color: transparent;
+
+  &:hover {
+    color: $white;
+    border-color: $col-primary;
+    background-color: $col-primary;
+  }
+
+  &--primary {
+    color: $white;
+    border-color: $col-primary;
+    background-color: $col-primary;
+
+    &:hover {
+      border-color: $col-primary-hover;
+      background-color: $col-primary-hover;
+    }
+  }
+  &.invisible {
+    position: static;
+  }
+  .fa {
+    margin: auto;
+    line-height: 21px; //- hack for IE11
+  }
+}

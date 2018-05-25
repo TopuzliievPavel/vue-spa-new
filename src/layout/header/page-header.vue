@@ -6,8 +6,8 @@
         'logged': userIsLogin\
         }"
     )
-    section.header_signin
-      include blocks/hidden-section.pug
+
+    include blocks/hidden-section.pug
     section.header_main
       include blocks/top-menu.pug
     nav.header_nav

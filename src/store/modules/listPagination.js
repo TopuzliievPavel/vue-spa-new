@@ -2,7 +2,6 @@ const listPagination = {
   namespaced: true,
   state: {
     currentPage: 1,
-    allItems: 150,
     showItem: 6,
     sort: 'Newest',
     listLayoutRow: false
@@ -11,9 +10,6 @@ const listPagination = {
 
   },
   mutations: {
-    setValue(state, param) {
-      state.param.key = param.value;
-    },
     setListLayoutRow(state, value) {
       state.listLayoutRow = value;
     },
