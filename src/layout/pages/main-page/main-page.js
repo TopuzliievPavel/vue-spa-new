@@ -10,4 +10,9 @@ export default {
       content: '',
     }
   },
+  computed: {
+    userIsLogin() {
+      return this.$store.state.auth.isLogin;
+    }
+  }
 }

@@ -1,8 +1,9 @@
 <template lang="pug">
   .page_main(v-if="content")
-    include ./blocks/slider.pug
+    div(v-if="!userIsLogin")
+      include ./blocks/slider.pug
     main.content-wrap.content-indent
-      section.main-features_section
+      section.main-features_section(v-if="!userIsLogin")
         include blocks/features-list.pug
 
       section.main_title-holder
@@ -14,7 +15,7 @@
       section.main-tile_section-list
         include blocks/tile-list.pug
 
-      section.main-roles_section
+      section.main-roles_section(v-if="!userIsLogin")
         include ./blocks/roles.pug
 </template>
 

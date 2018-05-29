@@ -23,15 +23,6 @@
           template(slot-scope="{item}")
             include blocks/media-article.pug
 
-        //-.articles-list(
-          v-if="content.listItems"
-          )
-          article.articles-list_item(
-            v-for="item in content.listItems"
-          )
-            .article-item_container
-              include blocks/media-article.pug
-
 
         //-list-pagination.category-list_settings(
           v-if="content.listItems"

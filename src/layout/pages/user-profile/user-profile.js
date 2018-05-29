@@ -1,7 +1,7 @@
 //-import AddArticle from '../../../components/add-article/add-article.vue'
 
 import {db, Storage} from "../../../core/dataBase";
-import { logoutUser } from '../../../core/loginUser';
+import { logoutUser, setUserLogin } from '../../../core/loginUser';
 export const AddArticle = () => import(/* webpackChunkName: 'AddArticle' */ '../../../components/add-article/add-article.vue');
 
 export default {
@@ -40,20 +40,19 @@ export default {
       this.$router.replace('/sign-in');
     },
     loadUser(){
-      let userID = localStorage.getItem('userId');
+      let userID = this.getUserId;
       if (userID) {
         this.ID = userID;
         db.ref('users/' + userID)
           .once('value')
-          .then(
-            (s)=>{
-              if (s.val()) {
-                this.user = s.val();
-              }
-              else {
-                localStorage.setItem('userId', false);
-                this.returnToLogin();
-              }
+          .then((s)=>{
+            if (s.val()) {
+              this.user = s.val();
+            }
+            else {
+              setUserLogin(false, '', this);
+              this.returnToLogin();
+            }
         });
       }
       else {
@@ -135,7 +134,8 @@ export default {
           this.saveUser();
       });
     },
-    logoutUser
+    logoutUser,
+    setUserLogin
   },
   computed: {
     isSocial() {
@@ -145,6 +145,9 @@ export default {
         }
       }
       return false
+    },
+    getUserId() {
+      return this.$store.state.auth.userId;
     },
     userBgImg() {
       if(this.user.bg) {

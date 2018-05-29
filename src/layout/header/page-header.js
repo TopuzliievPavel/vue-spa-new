@@ -7,7 +7,7 @@ export default {
       openBurgerMenu: false,
       openSignIn: false,
       openProfile: false,
-      userIsLogin: false,
+      //userIsLogin: false,
       autocomplete: {
         isOpen: false,
         isShowInput: false,
@@ -17,13 +17,13 @@ export default {
       userPass: '',
     }
   },
-  created: function () {
+  created () {
     this.checkLoginUser();
   },
-  methods: {
-    loginUser,
-    logoutUser,
-    checkLoginUser
+  computed: {
+    userIsLogin() {
+      return this.$store.state.auth.isLogin;
+    }
   },
   watch: {
     '$route' (to, from) {
@@ -34,5 +34,10 @@ export default {
       this.openProfile = false;
       this.$store.commit('listPagination/setCurrentPage', 1);
     }
-  }
+  },
+  methods: {
+    loginUser,
+    logoutUser,
+    checkLoginUser
+  },
 }

@@ -1,10 +1,17 @@
 import { Auth } from '../core/dataBase';
 
+const setUserLogin = function(value, id, ctx) {
+  ctx.$store.commit('auth/setIsLogin', {
+    userId: id,
+    isLogin: value,
+  });
+};
+
+
 const loginUser = function() {
   Auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
     .then((user)=> {
-        this.userIsLogin = true;
-        localStorage.setItem('userId', user.uid);
+        setUserLogin(true, user.uid, this);
         this.$router.replace('/user-profile');
       })
     .catch((error)=> {
@@ -19,8 +26,7 @@ const loginUser = function() {
 const logoutUser = function () {
   Auth.signOut()
     .then(() => {
-      localStorage.setItem('userId', false);
-      this.userIsLogin = false;
+      setUserLogin(false, '', this);
       this.$router.replace('/');
     })
     .catch((error) => {
@@ -34,11 +40,11 @@ const checkLoginUser = function() {
   Auth.onAuthStateChanged(
     (user) => {
       if (user && user !== null) {
-        this.userIsLogin = true;
+        setUserLogin(true, user.uid, this);
       } else {
-        this.userIsLogin = false;
+        setUserLogin(false, '', this);
       }
     });
   };
 
-export { loginUser, logoutUser, checkLoginUser };
+export { loginUser, logoutUser, checkLoginUser, setUserLogin };

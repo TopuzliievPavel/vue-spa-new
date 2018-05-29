@@ -1,19 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import listPagination from './modules/listPagination'
+import auth from './modules/authentication'
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   modules: {
-    listPagination
+    listPagination,
+    auth
   },
   state: {
-    auth: {
-      id: '',
-      isLogin: false,
-    },
     visibleSpinner: false,
   },
   actions: {

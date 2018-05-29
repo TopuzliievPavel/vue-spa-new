@@ -7,9 +7,7 @@ import Router from 'vue-router'
 // import SignIn       from '@/layout/pages/sign-in/sign-in.vue'
 // import RegUser      from '@/layout/pages/registration/reg-user.vue'
 // import UserProfile  from '@/layout/pages/user-profile/user-profile.vue'
-// import ArticleList  from '@/layout/pages/article-list/article-list.vue'
-// import ArticlePage  from '@/layout/pages/article-page/article-page.vue'
-// import ArticleEdit  from '@/layout/pages/article-edit/article-edit.vue'
+
 
 export const MainPage = () => import(/* webpackChunkName: 'MainPage' */ '@/layout/pages/main-page/main-page.vue');
 export const ComingSoon = () => import(/* webpackChunkName: 'ComingSoon' */ '@/layout/pages/coming-soon/coming-soon.vue');
