@@ -17,16 +17,12 @@
           :listLength="content.items.length"
           :pageName="content.pageTitle.title"
         )
-        .articles-list(
-          v-if="content.items.length"
-          :class="{'articles-list--album-view': paginationData.listLayoutRow}"
-          )
-          article.articles-list_item(
-            v-for="room in paginListData.showList"
-            :key="room.id"
-          )
-            .article-item_container
-              include blocks/article-item.pug
+        list-articles(
+          :listSource="paginListData.showList"
+          :listLayout="paginationData.listLayoutRow"
+        )
+          template(slot-scope="{room}")
+            include blocks/article-item.pug
 
         list-pagination.category-list_settings(
           :listLength="content.items.length"

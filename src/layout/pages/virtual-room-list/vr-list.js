@@ -8,6 +8,7 @@ import {  paginListData,
 //-import ListSorting from '../../../components/list-sorting.vue'
 export const ListPagination = () => import(/* webpackChunkName: 'ListPagination' */ '../../../components/list-pagination/list-pagination.vue');
 export const ListSorting = () => import(/* webpackChunkName: 'ListSorting' */ '../../../components/list-sorting/list-sorting.vue');
+export const ListArticles = () => import(/* webpackChunkName: 'ListArticles' */ '../../../components/list-articles/list-articles.vue');
 
 
 
@@ -63,7 +64,8 @@ export default {
 
   components: {
     ListPagination,
-    ListSorting
+    ListSorting,
+    ListArticles
   }
 }
 

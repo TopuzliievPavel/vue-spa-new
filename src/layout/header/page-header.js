@@ -32,6 +32,7 @@ export default {
       this.openBurgerMenu = false;
       this.openSignIn = false;
       this.openProfile = false;
+      this.$store.commit('listPagination/setCurrentPage', 1);
     }
   }
 }

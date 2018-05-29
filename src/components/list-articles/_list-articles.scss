@@ -1,0 +1,70 @@
+@import '../../scss/base';
+
+$line-height-detail: 1.2;
+$item-indent: 10px;
+
+
+/* ---------------------------------------------------------
+   Layout
+   ---------------------------------------------------------*/
+.articles-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 (-$item-indent);
+  .navigation-filters {
+    margin: 0 $item-indent;
+    padding: 36px 0;
+    width: 100%;
+    border-bottom: 1px solid $col-border;
+
+  }
+}
+
+.articles-list_item {
+  padding: $item-indent;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  @include media('>=medium') {
+    width: 50%;
+  }
+  .articles-list--album-view & {
+    @include media('>=large') {
+      width: 100%;
+    }
+  }
+  &.commercial-img {
+    width: 100%;
+    padding: 0 $item-indent;
+    .tips_banner-container {
+      display: flex;
+      align-items: center;
+    }
+    .bannerLink {
+      border: 1px solid $col-border;
+    }
+    a {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .banner-component_block {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.article-item_container {
+  width: 100%;
+  border: 1px solid $col-border;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  .articles-list--album-view & {
+    @include media('>=large') {
+      flex-flow: row nowrap;
+    }
+  }
+}

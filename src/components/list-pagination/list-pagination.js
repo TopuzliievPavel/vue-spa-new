@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       selectVal: 6,
-      pageRange: 2,
+      pageRange: 1,
     }
   },
 
@@ -41,6 +41,7 @@ export default {
 
       return arr
     },
+
     // rangeList(){
     //   let arr = [];
     //   let width = this.pageRange * 2 + 1;
