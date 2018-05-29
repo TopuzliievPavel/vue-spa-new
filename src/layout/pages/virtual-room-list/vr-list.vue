@@ -17,16 +17,17 @@
           :listLength="content.items.length"
           :pageName="content.pageTitle.title"
         )
+
         list-articles(
-          :listSource="paginListData.showList"
+          :listSource="showList"
           :listLayout="paginationData.listLayoutRow"
         )
-          template(slot-scope="{room}")
+          template(slot-scope="{item}")
             include blocks/article-item.pug
 
         list-pagination.category-list_settings(
           :listLength="content.items.length"
-          )
+        )
 
       aside.page_sidebar.page_sidebar--left.category-sidebar(
         :class="{'active': showSidebar}"

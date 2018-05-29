@@ -1,8 +1,5 @@
 import loadContent from '../../../core/loadFromDB';
-import {  paginListData,
-          paginListWatch,
-          paginListComputed,
-          paginListMethods } from '../../../core/paginationForListPage';
+import mixinPaginationList from '../../../mixins/mixinPaginationForListPage'
 
 //-import ListPagination from '../../../components/list-pagination.vue'
 //-import ListSorting from '../../../components/list-sorting.vue'
@@ -14,7 +11,7 @@ export const ListArticles = () => import(/* webpackChunkName: 'ListArticles' */ 
 
 export default {
   name: 'VrList',
-
+  mixins: [ mixinPaginationList ],
   created() {
     loadContent('dataPages/vrList', this);
   },
@@ -26,16 +23,7 @@ export default {
       activeCategory: '',
       activeTab: undefined,
       activeFilter: undefined,
-      paginListData
     }
-  },
-
-  computed: {
-    ...paginListComputed
-  },
-
-  watch: {
-    ...paginListWatch
   },
 
   methods: {
@@ -57,9 +45,6 @@ export default {
         this.activeFilter = index;
       }
     },
-    /*pagination*/
-    ...paginListMethods
-
   },
 
   components: {

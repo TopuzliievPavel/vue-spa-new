@@ -17,11 +17,17 @@
           //:listLength="listLength"
           //:listViews="false"
           )
-        .articles-list(
+        list-articles(
+          :listSource="content.listItems"
+        )
+          template(slot-scope="{item}")
+            include blocks/media-article.pug
+
+        //-.articles-list(
           v-if="content.listItems"
           )
           article.articles-list_item(
-            v-for="article in content.listItems"
+            v-for="item in content.listItems"
           )
             .article-item_container
               include blocks/media-article.pug

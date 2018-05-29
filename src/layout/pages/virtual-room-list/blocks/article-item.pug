@@ -1,41 +1,41 @@
 
 .article-item_picture-holder
-  .commercial-banner.vr-360(v-if="room.is360View")
+  .commercial-banner.vr-360(v-if="item.is360View")
   .article-item_picture-box
     img.media-item_picture(
-      :src="room.thumbnail[0] || 'https://cdn3.housetipster.com/empty.jpg'"
+      :src="item.thumbnail[0] || 'https://cdn3.housetipster.com/empty.jpg'"
     )
-  router-link.article-item_hover-link(:to="room.link")
+  router-link.article-item_hover-link(:to="item.link")
 
 .article-item_details
   .article-item_details-body
     h3.article-item_title.articleTitle
-      router-link(:to='room.link') {{ room.title }}
+      router-link(:to='item.link') {{ item.title }}
     .article-item_views-details
       ul.article-item_counters-list
         li.counter-item
           i(aria-hidden="true").fa.fa-thumbs-up
           | &nbsp;
-          | {{ room.likesCount }}
+          | {{ item.likesCount }}
         li.counter-item
           i(aria-hidden="true").fa.fa-eye
           | &nbsp;
-          | {{ room.viewsCount }}
+          | {{ item.viewsCount }}
         li.counter-item
           i(aria-hidden="true").fa.fa-comment
           | &nbsp;
-          | {{ room.commentsCount }}
+          | {{ item.commentsCount }}
 
       .article-item_rating.rating-component
         .stars-holder
           i(aria-hidden="true"
             v-for="rating in [1,2,3,4,5]"
-            :class="{'empty': rating > room.rating}"
+            :class="{'empty': rating > item.rating}"
           ).fa.fa-star-o
-          | {{room.rating}}
+          | {{item.rating}}
 
-    .article-item_content(v-if="room.tagLine")
-      p {{ room.tagLine }}
+    .article-item_content(v-if="item.tagLine")
+      p {{ item.tagLine }}
 
   footer.article-item_details-footer
     ul.vr-card_components-list
@@ -43,25 +43,25 @@
         .vr_component-item
           i(aria-hidden="true").fa.fa-shopping-basket
           | &nbsp;
-          | {{ room.componentsCount }}
+          | {{ item.componentsCount }}
           | &nbsp;
           span.item-name components
       li
         .vr_component-item
           i(aria-hidden="true").fa.fa-user
           | &nbsp;
-          | {{ room.vendorsCount }}
+          | {{ item.vendorsCount }}
           | &nbsp;
           span.item-name vendors
     .show-for-album.features-list_holder
       ul.vr-card_features-list
-        li(:class="{'disabled': !room.features.human}")
+        li(:class="{'disabled': !item.features.human}")
           i(aria-hidden="true").ht.chick
-        li(:class="{'disabled': !room.features.panorama}")
+        li(:class="{'disabled': !item.features.panorama}")
           i(aria-hidden="true").ht.vr-rotate
-        li(:class="{'disabled': !room.features.video}")
+        li(:class="{'disabled': !item.features.video}")
           i(aria-hidden="true").ht.vr-play
-        li(:class="{'disabled': !room.features.virtualRoom}")
+        li(:class="{'disabled': !item.features.virtualitem}")
           i(aria-hidden="true").ht.vr-face
-        li(:class="{'disabled': !room.features.labels}")
+        li(:class="{'disabled': !item.features.labels}")
           i(aria-hidden="true").ht.vr-label

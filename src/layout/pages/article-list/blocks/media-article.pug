@@ -1,20 +1,20 @@
 
 .article-item_picture-holder
   .article-item_picture-box
-    img.media-item_picture(:src="[article.image || 'https://thumbnails-xsdo23s.s3.amazonaws.com/empty.jpg']")
-  router-link.article-item_hover-link(:to="{name: 'ArticlePage', params: { slug: article.slug }}")
+    img.media-item_picture(:src="[item.image || 'https://thumbnails-xsdo23s.s3.amazonaws.com/empty.jpg']")
+  router-link.article-item_hover-link(:to="{name: 'ArticlePage', params: { slug: item.slug }}")
 
 .article-item_details
   .media-item_details-body
     h3.media-item_title.articleTitle
-      router-link(:to="{name: 'ArticlePage', params: { slug: article.slug }}") {{ article.title }}
+      router-link(:to="{name: 'ArticlePage', params: { slug: item.slug }}") {{ item.title }}
     .media-item_content
-      p {{ article.leadPar }}
+      p {{ item.leadPar }}
 
   footer.media-item_details-footer
-    router-link(:to="{name: 'ArticlePage', params: { slug: article.slug }}")
+    router-link(:to="{name: 'ArticlePage', params: { slug: item.slug }}")
       span Full story
     .media-item_date
       i(aria-hidden="true").fa.fa-clock-o
       | &nbsp;
-      time(timedate="listItems") {{ article.date }}
+      time(timedate="listItems") {{ item.date }}
