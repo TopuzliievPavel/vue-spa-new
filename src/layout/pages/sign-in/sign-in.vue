@@ -18,7 +18,6 @@
           .input-holder
             input(type="password" placeholder="Password"
               v-model="userPass"
-              @keyup.enter="loginUser"
             )
             router-link.input_link(to="/restore-password") Forgot password?
 
@@ -30,13 +29,10 @@
               span.checkbox-text Remember me
               span.checkbox-description.show-for-medium Protect your account. Uncheck this box if you use public or shared device
 
-          #recaptcha.g-recaptcha
-          button#submit( type="button" @click="validate") capcha
-
-          button.btn.btn--primary(type="button"
-            @click="loginUser"
-            v-btn-spinner="sendForm"
-          ) Sign in
+          google-recapcha(
+            :spinnerOn="sendForm"
+            @userValid="loginUser"
+          ) Sign In
 
         p By signing in, I acknowledge and agree to
           br

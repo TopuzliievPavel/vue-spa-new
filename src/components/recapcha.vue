@@ -1,46 +1,71 @@
 <template lang="pug">
-  div(id="g-recaptcha" class="g-recaptcha"
-    :data-sitekey="sitekey"
-  ) reca
+  div
+    #recaptcha.g-recaptcha
+    button.btn.btn--primary( type="button"
+      @click="validate"
+      v-btn-spinner="spinnerOn || validating"
+      )
+      slot
+
 </template>
 
 <script>
-  export default {
-    name: "GoogleRecapcha",
-    data () {
-      return {
-        sitekey: '6LdnUlwUAAAAAE4ugZE0dgu7XRHaKN-GmnzCQ-Nu',
-        widgetId: 0
-      }
+export default {
+  name: "GoogleRecapcha",
+  props: {
+    spinnerOn: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-      execute () {
-        window.grecaptcha.execute(this.widgetId)
-      },
-      reset () {
-        window.grecaptcha.reset(this.widgetId)
-      },
-      render () {
-        if (window.grecaptcha) {
-          console.log('response');
-          this.widgetId = window.grecaptcha.render('g-recaptcha', {
-            sitekey: this.sitekey,
-            size: 'invisible',
-            // the callback executed when the user solve the recaptcha
-            callback: (response) => {
-              console.log(response);
-              // emit an event called verify with the response as payload
-              this.$emit('verify', response)
-              // reset the recaptcha widget so you can execute it again
-              this.reset()
-            }
-          })
-        }
-      }
-    },
-    mounted () {
-      // render the recaptcha widget when the component is mounted
-      this.render()
+
+  },
+  data () {
+    return {
+      publicKey: '6LdnUlwUAAAAAE4ugZE0dgu7XRHaKN-GmnzCQ-Nu',
+      validating: false,
     }
-  }
+  },
+  methods: {
+    initReCaptcha() {
+      setTimeout(()=> {
+        if(typeof grecaptcha === 'undefined') {
+          this.initReCaptcha();
+        }
+        else {
+          grecaptcha.render('recaptcha', {
+            sitekey: this.publicKey,
+            badge: 'inline',
+            size: 'invisible',
+            callback: this.submit,
+            'error-callback': this.err
+          });
+        }
+      }, 100);
+    },
+    validate: function() {
+      this.validating = true;
+      grecaptcha.execute();
+    },
+    submit: function(token) {
+      this.$emit('userValid');
+      grecaptcha.reset();
+      console.log(token);
+      this.validating = false;
+    },
+    err: function(err) {
+      console.log(err);
+    }
+  },
+  mounted: function() {
+    this.initReCaptcha();
+  },
+}
 </script>
+
+<style lang="scss" scoped>
+  .btn--primary {
+    margin-top: 36px;
+    font-weight: normal;
+    padding: 9px 35px;
+  }
+</style>

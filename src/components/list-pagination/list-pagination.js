@@ -42,15 +42,6 @@ export default {
       return arr
     },
 
-    // rangeList(){
-    //   let arr = [];
-    //   let width = this.pageRange * 2 + 1;
-    //   for(var i = 1; i <= this.pagesLength; i++) {
-    //     arr.push(i);
-    //   }
-    //
-    //   return arr.splice(this.rangeStart, width)
-    // },
     paginationData() {
       return this.$store.state.listPagination;
     },
