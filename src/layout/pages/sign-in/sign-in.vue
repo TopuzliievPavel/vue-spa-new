@@ -30,6 +30,8 @@
               span.checkbox-text Remember me
               span.checkbox-description.show-for-medium Protect your account. Uncheck this box if you use public or shared device
 
+          #recaptcha.g-recaptcha
+          button#submit( type="button" @click="validate") capcha
 
           button.btn.btn--primary(type="button"
             @click="loginUser"

@@ -2,9 +2,6 @@
   @include multi-transition (color, background-color);
   padding: 5px 13px;
   text-decoration: none;
-  &:focus {
-    outline: 5px solid #000;
-  }
   &--link {
     background-color: transparent;
     padding: 0;
