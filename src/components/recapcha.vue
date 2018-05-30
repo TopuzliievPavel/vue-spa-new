@@ -34,7 +34,6 @@ export default {
         else {
           grecaptcha.render('recaptcha', {
             sitekey: this.publicKey,
-            badge: 'inline',
             size: 'invisible',
             callback: this.submit,
             'error-callback': this.err
@@ -49,7 +48,6 @@ export default {
     submit: function(token) {
       this.$emit('userValid');
       grecaptcha.reset();
-      console.log(token);
       this.validating = false;
     },
     err: function(err) {

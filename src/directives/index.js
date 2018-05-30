@@ -2,14 +2,13 @@ import Vue from 'vue'
 
 Vue.directive('btn-spinner', {
   bind: (el)=> {
-    let bgColor = getComputedStyle(el).backgroundColor;
     let newDiv = document.createElement('div');
     let spinner = el.appendChild(newDiv);
     el.style.position = 'relative';
     spinner.setAttribute('class', 'spinner');
+    spinner.style.backgroundColor = '#ea7925';
     spinner.innerHTML = "<div class='rect1'></div><div class='rect2'></div><div class='rect3'></div><div class='rect4'></div><div class='rect5'></div>";
 
-    (bgColor === 'rgba(0, 0, 0, 0)') ? (spinner.style.backgroundColor = '#ea7925') : spinner.style.backgroundColor = bgColor;
     el.onclick = function() {
         this.blur();
     }
