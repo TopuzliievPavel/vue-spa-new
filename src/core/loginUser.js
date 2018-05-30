@@ -9,15 +9,18 @@ const setUserLogin = function(value, id, ctx) {
 
 
 const loginUser = function() {
+  this.sendForm = true;
   Auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
     .then((user)=> {
         setUserLogin(true, user.uid, this);
         this.$router.replace('/user-profile');
+        this.sendForm = false;
       })
     .catch((error)=> {
         if (error.code) {
           this.error = error.message;
           this.$router.replace('/sign-in');
+          this.sendForm = false;
         }
       }
     );

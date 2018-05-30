@@ -33,6 +33,7 @@
 
           button.btn.btn--primary(type="button"
             @click="loginUser"
+            v-btn-spinner="sendForm"
           ) Sign in
 
         p By signing in, I acknowledge and agree to

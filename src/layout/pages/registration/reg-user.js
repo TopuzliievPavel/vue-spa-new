@@ -64,8 +64,8 @@ export default {
             (user) => {
               this.createUser(user.uid);
               this.sendVerifire();
-              localStorage.setItem('userId', user.uid);
               this.$router.replace('/user-profile');
+              this.sendForm = false;
             },
             (error) => {
               this.sendForm = false;

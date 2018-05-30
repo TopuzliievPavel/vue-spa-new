@@ -7,7 +7,7 @@ export default {
       openBurgerMenu: false,
       openSignIn: false,
       openProfile: false,
-      //userIsLogin: false,
+      sendForm: false,
       autocomplete: {
         isOpen: false,
         isShowInput: false,

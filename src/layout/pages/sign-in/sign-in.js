@@ -6,7 +6,8 @@ export default {
     return {
       userEmail: '',
       userPass: '',
-      error: ''
+      error: '',
+      sendForm: false
     }
   },
   methods: {

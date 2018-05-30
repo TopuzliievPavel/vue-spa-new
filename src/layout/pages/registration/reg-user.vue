@@ -69,14 +69,9 @@
           button.btn.btn--primary.main-slide_popup-send(type="button"
             @click.prevent="regUser()"
             :disabled ="sendForm"
-          )
-            span(v-if="!sendForm") Sign Up
-            .spinner(v-if="sendForm")
-              .rect1
-              .rect2
-              .rect3
-              .rect4
-              .rect5
+            v-btn-spinner="sendForm"
+          ) Sign Up
+
 
       footer.reg_footer
         h4.h4 OR USE SOCIAL MEDIA ACCOUNT FOR REGISTRATION
