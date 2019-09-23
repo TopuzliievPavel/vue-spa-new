@@ -1,6 +1,7 @@
 
 import Vue from 'vue'
-import VueFire from 'vuefire'
+// import VueFire from 'vuefire'
+import { firestorePlugin }  from 'vuefire'
 import VueAgile from 'vue-agile'
 import wysiwyg from "vue-wysiwyg"
 import App from './App.vue'
@@ -12,7 +13,7 @@ import axios from 'axios'
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = axios;
-Vue.use(VueFire);
+Vue.use(firestorePlugin);
 Vue.use(VueAgile);
 Vue.use(wysiwyg, {});
 
