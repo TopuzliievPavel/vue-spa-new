@@ -1,0 +1,87 @@
+/* ---------------------------------------------------------
+   1. Main slider
+   ---------------------------------------------------------*/
+.slider--main {
+  height: 385px;
+  @include media('>=presmall') {
+    height: 500px;
+  }
+  @include media('>=medium') {
+    height: 605px;
+  }
+  @include media('>=large') {
+    margin-top: -20px;
+  }
+}
+
+.banners_slide-link {
+  z-index: 3;
+}
+
+//.slider--main,
+//.banners_slide-block {
+//  height: auto !important;
+//}
+
+.banners_slide-img {
+  height: auto;
+  width: 100%;
+  position: static;
+}
+
+.slide_text-block {
+  color: $white;
+  background-color: rgba(#000, .4);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 25px 20px;
+  width: calc(100% - 40px);
+  text-align: center;
+  margin: 0 auto;
+  @include media('>=medium') {
+    max-width: 960px;
+    padding: 13px 45px 55px;
+  }
+}
+
+.banners_slide-title {
+  text-align: center;
+  .h1 {
+    text-transform: capitalize;
+    font-size: 35px;
+    @include media('>=medium') {
+      font-size: 64px;
+    }
+  }
+  .h2 {
+    font-weight: normal;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    @include media('>=medium') {
+      font-size: 40px;
+    }
+  }
+}
+
+.main-slide_popup-btn {
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: .45em 3.5em;
+  z-index: 15;
+  font-size: .875rem;
+  box-shadow: 0 0 5px rgba(#000, .25);
+  white-space: nowrap;
+  @include media('>=presmall') {
+    bottom: 50px;
+  }
+  @include media('>=medium') {
+    bottom: 100px;
+    font-size: 1.25rem;
+  }
+}

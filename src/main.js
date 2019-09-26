@@ -1,6 +1,5 @@
 
 import Vue from 'vue'
-// import VueFire from 'vuefire'
 import { firestorePlugin }  from 'vuefire'
 import VueAgile from 'vue-agile'
 import wysiwyg from "vue-wysiwyg"

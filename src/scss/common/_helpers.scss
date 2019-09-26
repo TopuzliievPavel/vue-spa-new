@@ -216,7 +216,7 @@ $Width: 100, 50, 25;
 // loop!
 @each $w-grid in $Width {
   .w-#{$w-grid} {
-    width: $w-grid+%;
+    width: $w-grid+"%";
   }
 }
 

@@ -1,0 +1,133 @@
+@import '../../../../src/scss/base';
+@import '../../../../src/scss/pages/shop';
+@import '../../../../src/scss/components/product-item';
+@import '../../../../src/scss/components/slider-entity';
+@import '../../../../src/scss/repeating-blocks/products-carousel';
+@import '../../../../src/scss/components/slider-top';
+@import '../../../scss/components/department-section';
+@import '../../../scss/components/promo-section';
+
+
+.products-carousel { margin-bottom: -15px; }
+.banners_slides-wrapper { margin-bottom: 30px; }
+
+.shop_section { margin-bottom: 30px; }
+.shop-section_header {
+  padding-top: 0;
+  margin-bottom: 30px;
+  @include media('>=premedium') {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+.shop-section_actions {
+  display: none;
+  @include media('>=premedium') {
+    display: block;
+    flex: 0 0 100px;
+    text-align: right;
+    .btn {
+      padding: 2px 2px;
+      width: 27px;
+      height: 27px;
+      margin-left: 10px;
+    }
+  }
+}
+.shop-section_title {
+  position: relative;
+  @include media('>=premedium') {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 74px;
+    background-color: $col-primary;
+    @include media('>=premedium') {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .h2 {
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+}
+
+.depart_btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: .5em;
+  .btn {
+    color: $col-primary;
+  }
+}
+
+
+
+/* ---------------------------------------------------------
+   5. Rooms section
+   ---------------------------------------------------------*/
+
+.shop-room_list {
+  display: flex;
+  flex-flow: row wrap;
+}
+.shop-room_tile {
+  padding: 0 5px 10px;
+  .room-tile_box { width: 100%; }
+}
+.room-tile_box {
+  @include multi-transition(color, box-shadow);
+  border: 1px solid #d9d9d9;
+  color: #444;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  &:hover {
+    color: $col-primary;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.22);
+  }
+}
+.room-tile_img {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 1 1 0%;
+  width: 100%;
+  .img-wrapper {
+    padding: 0 50% 56.25%;
+    position: relative;
+    width: 100%;
+  }
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+  }
+}
+.room-tile_title {
+  border-top: 1px solid #d9d9d9;
+  align-items: center;
+  display: flex;
+  flex: 0 0 55px;
+  justify-content: center;
+  max-height: 55px;
+  p {
+    font-size: 1.125rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+
+

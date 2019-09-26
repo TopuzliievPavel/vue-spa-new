@@ -1,0 +1,56 @@
+section.shop_section(
+  carousel
+  elements-per-carousel="4"
+  v-if="storeFrontCtrl.productsList.length"
+)
+  .shop-section_header
+    .shop-section_actions
+    .shop-section_title
+      h2.h2 Products featured
+    .shop-section_actions
+      button.btn.btn--outline.fa.fa-angle-left(
+        type="button"
+        v-show="storeFrontCtrl.productsList.length > 4"
+        @click="carouselController.scrollLeft()"
+      )
+      button.btn.btn--outline.fa.fa-angle-right(
+        type="button"
+        v-show="storeFrontCtrl.productsList.length > 4"
+        @click="carouselController.scrollRight()"
+      )
+
+  .shop-carousel_mask.products-carousel
+    ul.shop_list(
+      carousel-elems-container
+    )
+      li.shop-tile_wrap(
+        carousel-elem
+        v-for="product in storeFrontCtrl.productsList"
+      )
+        .shop-tile
+          router-link.product-tile_photo-wrap(:to="product.link")
+            .product-tile_label-wrap(v-if="product.newPrice")
+              span Sale
+            img.product-tile_photo(
+              :alt="product.title"
+              :src="product.thumbnail || product.defaultImage"
+            )
+
+          .product-tile_details-wrap
+            h4.product-tile_name
+              router-link.product-item-link(:to="product.link")
+                | {{ product.title }}
+
+            .product-tile_details-inner
+              .product-tile_price
+                span.price {{ `${product.newPrice || product.price }$` }}
+                span.old-price(v-if="product.newPrice") {{ product.price }}
+
+            .product-tile_btn-inner
+              button.btn.btn--link(
+                type="button"
+                login-messenger
+                @click="storeFrontCtrl.addToCart(product)"
+              )
+                i.fa.fa-shopping-cart(aria-hidden="true")
+                | Add to cart

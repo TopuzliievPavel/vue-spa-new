@@ -1,0 +1,31 @@
+agile.banners_slides-wrapper.slider--main(
+  v-if="storeFrontCtrl.slidesList.length"
+  :arrows="false"
+  :autoplaySpeed="5000"
+  :speed="2000"
+  :fade="true"
+  :autoplay="true"
+  :pauseOnHover="false"
+)
+  .banners_slide-block(
+    v-for="slideItem in storeFrontCtrl.slidesList"
+    :key="slideItem.id"
+  )
+    a.banners_slide-link(
+      target="_blank"
+      :href="slideItem.link"
+      v-if="slideItem.link"
+    )
+
+    img.banners_slide-img(
+      :src="slideItem.slideImage"
+      alt="slider picture"
+    )
+
+    .slide_text-block(v-if="slideItem.slideTitle || slideItem.slideText")
+      .banners_slide-title
+        h1.h1 {{ slideItem.slideTitle }}
+        p.h2  {{ slideItem.slideText }}
+
+  .doted-controlls-holder(v-if="storeFrontCtrl.slidesList.length > 1")
+    span.doted-controlls-holder_ctrls

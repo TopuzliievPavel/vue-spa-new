@@ -1,0 +1,29 @@
+section.shop_section
+  .shop-section_header
+    .shop-section_title
+      h2.h2 shop by departments
+  ul.shop_list
+    li.shop-tile_wrap.depart_tile-wrap(
+      v-for="category in storeFrontCtrl.categories"
+      :key="category.id"
+      v-if="category.id <= 8"
+    )
+      router-link.shop-tile.depart_tile(:to="{name: 'ShopList'}")
+        h4.depart_title {{ category.title }}
+        img.depart_img(
+          :src="category.thumbnail"
+          alt="category picture"
+        )
+      .depart_subcategory
+        ul.depart_list
+          li.animate-slide(
+            v-for="subcategory in category.children"
+          )
+            router-link(:to="{name: 'ShopList'}") {{ subcategory.title }}
+          li.animate-slide
+            button.btn.btn--link.text-primary(type="button") MORE&nbsp;
+              i.fa.fa-angle-right
+
+  .depart_btn-wrap
+    router-link.btn.btn--link(:to="{name: 'DepartmentList'}") View More&nbsp;
+      i.fa.fa-angle-right(aria-hidden="true")

@@ -1,0 +1,45 @@
+/* ---------------------------------------------------------
+   1. Promo section
+   ---------------------------------------------------------*/
+.promo_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include media('>=presmall') {
+    columns: 2;
+    column-gap: 0;
+    margin: 0 (-$product-layout-padding) 35px;
+    //padding-top: 10px;
+  }
+  @include media('>=premedium') {
+    columns: 3;
+  }
+  > li {
+    padding: $product-layout-padding;
+    &:first-child,
+    &:last-child {
+      .promo_img-holder { padding: 0 50% 136.71%; }
+    }
+  }
+}
+.promo_img-holder {
+  display: block;
+  border: 1px solid $col-border;
+  transition: border-color .3s;
+  padding: 0 50% 66.7%;
+  position: relative;
+  &.set-hover:hover { border-color: $col-primary; }
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+  }
+  .promo_link {
+    @include sizes(100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

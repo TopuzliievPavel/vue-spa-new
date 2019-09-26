@@ -7,7 +7,6 @@ export const AddArticle = () => import(/* webpackChunkName: 'AddArticle' */ '../
 export default {
   name: 'UserProfile',
 
-
   data () {
     return {
       user: {
@@ -37,7 +36,7 @@ export default {
   },
   methods: {
     returnToLogin () {
-      this.$router.replace('/sign-in');
+      // this.$router.replace('/sign-in');
     },
     loadUser(){
       let userID = this.getUserId;
@@ -45,7 +44,7 @@ export default {
         this.ID = userID;
         db.ref('users/' + userID)
           .once('value')
-          .then((s)=>{
+          .then((s) => {
             if (s.val()) {
               this.user = s.val();
             }

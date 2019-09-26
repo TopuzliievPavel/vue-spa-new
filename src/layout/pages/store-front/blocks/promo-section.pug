@@ -1,0 +1,32 @@
+section.shop_section
+  ul.promo_list
+    li(
+      v-for="banner in storeFrontCtrl.content.banners"
+      :key="banner.id"
+    )
+      .promo_img-holder(:class="{'set-hover': banner.link}")
+        img(:src="banner.thumbnail" alt="img description")
+        router-link.promo_link(
+          :to="banner.link"
+          v-if="banner.link"
+        )
+
+  .depart-banner(v-if="storeFrontCtrl.content.singleBanner.thumbnail")
+    .depart-banner-wrapper
+      img(
+        :src="storeFrontCtrl.content.singleBanner.thumbnail"
+        alt="img description"
+      )
+      .depart-banner_content-wrap(
+        v-if="storeFrontCtrl.content.singleBanner.title.length || storeFrontCtrl.content.singleBanner.text.length"
+      )
+        .depart-banner_content
+          p.left {{ storeFrontCtrl.content.singleBanner.title }}
+          strong {{ storeFrontCtrl.content.singleBanner.text }}
+          p(v-if="storeFrontCtrl.content.singleBanner.link")
+            router-link.right.btn--link(:to="storeFrontCtrl.content.singleBanner.link") Show more&nbsp;
+            i.fa.fa-angle-right
+      router-link.depart-banner_link(
+        :to="storeFrontCtrl.content.singleBanner.link"
+        v-if="storeFrontCtrl.content.singleBanner.link"
+      ) {{ storeFrontCtrl.content.singleBanner.linkTitle }}

@@ -19,7 +19,7 @@
             li
               router-link.nav-list_link(:to="{name: 'GalleryList'}" exact ) GALLERY
             li
-              router-link.nav-list_link(to="/some-link" exact) HOUSE TIPS
+              router-link.nav-list_link(:to="{name: 'StoreFront'}" exact) STORE FRONT
             li
               router-link.nav-list_link(to="/some-link" exact) MARKETPLACE
             li
