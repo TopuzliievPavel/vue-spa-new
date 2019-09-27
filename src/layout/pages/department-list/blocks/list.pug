@@ -1,0 +1,28 @@
+.shop_section
+  .shop-section_header
+    .shop-section_title
+      h2.h2 Departments List
+  ul.shop_list
+    li.shop-tile_wrap(
+      v-for="category in departmentsCtrl.categories.children"
+      v-model="category.limit = 6"
+    )
+      .shop-tile
+        .shop-category_content
+          router-link(:to="{name: 'ShopList'}")
+            strong.shop-category_title {{ category.title }}
+          ul.shop-category_subcategory
+            li.animate-slide(
+              v-for="(subcategory, id) in category.children"
+              :key="id"
+            )
+              div
+                router-link(:to="{name: 'ShopList'}") {{ subcategory.title }}
+            li.animate-slide(
+              v-if="category.limit === 6 && category.children.length > 6"
+            )
+              button.btn.btn--link(type="button") Show more >
+        .shop-category_img
+          img(
+            :src="category.thumbnail || category.defaultImage"
+          )

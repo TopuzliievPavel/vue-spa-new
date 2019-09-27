@@ -4,12 +4,12 @@ export default {
     return {
       storeFrontCtrl: {
         addToCart(item) {
-          return console.log(item);
+          console.log(item);
         },
         categories: [
           {
             id: 1,
-            title: 'category',
+            title: 'Porsche',
             thumbnail: require('../../../assets/img/store-front-page/porsche.jpg'),
             visible: true,
             children: [
@@ -21,7 +21,7 @@ export default {
           },
           {
             id: 2,
-            title: 'category',
+            title: 'Church',
             thumbnail: require('../../../assets/img/store-front-page/church.jpg'),
             visible: true,
             children: [
@@ -33,25 +33,25 @@ export default {
           },
           {
             id: 3,
-            title: 'category',
+            title: 'Work',
             thumbnail: require('../../../assets/img/store-front-page/work.jpg'),
             visible: true
           },
           {
             id: 4,
-            title: 'category',
+            title: 'Nature',
             thumbnail: require('../../../assets/img/store-front-page/nature.jpg'),
             visible: true
           },
           {
             id: 5,
-            title: 'category',
+            title: 'Motorcycle',
             thumbnail: require('../../../assets/img/store-front-page/motorcycle.jpg'),
             visible: true
           },
           {
             id: 6,
-            title: 'category',
+            title: 'Factory',
             thumbnail: require('../../../assets/img/store-front-page/factory.jpg'),
             visible: true,
             children: [
@@ -63,18 +63,30 @@ export default {
           },
           {
             id: 7,
-            title: 'category',
+            title: 'Mountain',
             thumbnail: require('../../../assets/img/store-front-page/mountains.jpg'),
             visible: true
           },
           {
             id: 8,
-            title: 'category',
+            title: 'Waterfalls',
             thumbnail: require('../../../assets/img/store-front-page/waterfalls.jpg'),
             visible: true,
             children: [
               {
                 id: 12,
+                title: 'Link to shop list'
+              }
+            ]
+          },
+          {
+            id: 9,
+            title: 'Waterfalls',
+            thumbnail: require('../../../assets/img/store-front-page/waterfalls.jpg'),
+            visible: true,
+            children: [
+              {
+                id: 13,
                 title: 'Link to shop list'
               }
             ]
@@ -139,7 +151,7 @@ export default {
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/bathoil-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'bath-oil'
+            title: 'Bath-oil'
           },
           {
             price: 60,
@@ -147,15 +159,15 @@ export default {
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/office-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'office'
+            title: 'Office'
           },
           {
             price: 40,
-            newPrice: '',
+            newPrice: 20,
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/board-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'board'
+            title: 'Board'
           },
           {
             price: 20,
@@ -163,15 +175,15 @@ export default {
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/iphone-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'iphone'
+            title: 'Iphone'
           },
           {
             price: 90,
-            newPrice: '',
+            newPrice: 60,
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/technology-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'technology'
+            title: 'Technology'
           },
           {
             price: 75,
@@ -179,15 +191,15 @@ export default {
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/visa-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'visa'
+            title: 'Visa'
           },
           {
             price: 65,
-            newPrice: '',
+            newPrice: 50,
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/premium-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'premium'
+            title: 'Premium'
           },
           {
             price: 100,
@@ -195,13 +207,13 @@ export default {
             link: '/some-link',
             thumbnail: require('../../../assets/img/store-front-page/idea-popular.jpg'),
             defaultImage: require('../../../assets/img/store-front-page/technology-popular.jpg'),
-            title: 'idea'
+            title: 'Idea'
           }
         ],
         roomsCategoriesList: {
           children: [
             {
-              title: 'category',
+              title: 'Computer',
               thumbnail: require('../../../assets/img/store-front-page/computer-rooms.jpg'),
               children: [
                 {
@@ -210,7 +222,7 @@ export default {
               ]
             },
             {
-              title: 'category',
+              title: 'Conference',
               thumbnail: require('../../../assets/img/store-front-page/conference-rooms.jpg'),
               children: [
                 {
@@ -219,7 +231,7 @@ export default {
               ]
             },
             {
-              title: 'category',
+              title: 'Couch',
               thumbnail: require('../../../assets/img/store-front-page/couch-rooms.jpg'),
               children: [
                 {
@@ -228,7 +240,7 @@ export default {
               ]
             },
             {
-              title: 'category',
+              title: 'Chairs',
               thumbnail: require('../../../assets/img/store-front-page/chairs-rooms.jpg'),
               children: [
                 {
@@ -237,7 +249,7 @@ export default {
               ]
             },
             {
-              title: 'category',
+              title: 'Apartment',
               thumbnail: ''
             },
             {
@@ -250,11 +262,11 @@ export default {
               ]
             },
             {
-              title: 'category',
+              title: 'Dining',
               thumbnail: require('../../../assets/img/store-front-page/dining-rooms.jpg')
             },
             {
-              title: 'category',
+              title: 'Furniture',
               thumbnail: require('../../../assets/img/store-front-page/furniture-rooms.jpg')
             }
           ]

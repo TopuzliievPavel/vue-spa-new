@@ -39,7 +39,7 @@ export default new Router({
     {path: '/media/:slug',  name: 'ArticlePage',  component: ArticlePage},
     {path: '/media-edit',   name: 'ArticleEdit',  component: ArticleEdit},
     {path: '/department-list', name: 'DepartmentList',  component: DepartmentList},
-    {path: '/shop-list', name: 'ShopList',  component: ShopList},
+    {path: '/shop-list',    name: 'ShopList',  component: ShopList},
     {path: '/coming-soon',  name: 'ComingSoon',   component: ComingSoon},
     {path: '*',             redirect: '/coming-soon'}
   ]

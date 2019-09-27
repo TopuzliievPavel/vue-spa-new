@@ -1,0 +1,65 @@
+@import '../../../../src/scss/base';
+@import '../../../../src/scss/pages/shop';
+@import '../../../../src/scss/components/product-item';
+@import '../../../../src/scss/components/slider-entity';
+@import '../../../../src/scss/repeating-blocks/products-carousel';
+
+
+.shop_section,
+.banners_slides-wrapper {
+  margin-bottom: 30px;
+  &.carousel-section { margin-bottom: 20px; }
+}
+.shop-section_header {
+  margin-bottom: 30px;
+  padding-top: 0;
+}
+.shop_list {
+  text-transform: capitalize;
+}
+
+.shop-tile {
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.shop-category_img {
+  img {
+    width: 100%;
+  }
+}
+.shop-category_content {
+  padding: .75em 7%;
+  @include media('>=large') {
+    padding: 1.75em 15%;
+  }
+}
+.shop-category_title {
+  display: inline-block;
+  font-size: 1.25em;
+  margin-bottom: .35em;
+  transition: color .3s;
+  font-weight: normal;
+  color: $col-page_title;
+}
+.shop-category_subcategory {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: $dark-gray;
+  //font-size: .875em;
+  li {
+    div {
+      padding-bottom: .54em;
+    }
+    button:hover {
+      color: $col-primary;
+    }
+  }
+  a {
+    color: inherit;
+    &:hover {
+      color: $col-primary;
+    }
+  }
+}

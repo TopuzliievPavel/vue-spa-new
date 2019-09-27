@@ -1,8 +1,13 @@
 <template lang="pug">
   .page_main
     .content-wrap.content-indent
-      .department-list
-        h1 This is department list page
+
+
+      include blocks/list.pug
+      include blocks/products-carousel.pug
+      include blocks/single-banner.pug
+
+
 </template>
 
 <script src="./department-list.js"></script>

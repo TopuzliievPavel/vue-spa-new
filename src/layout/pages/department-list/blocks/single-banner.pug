@@ -1,0 +1,16 @@
+.shop_section
+  .depart-banner(v-if="departmentsCtrl.data.singleBanner.thumbnail")
+    .depart-banner-wrapper
+      img(:src="departmentsCtrl.data.singleBanner.thumbnail" alt="img description")
+      .depart-banner_content-wrap(
+        v-if="departmentsCtrl.data.singleBanner.title.length || departmentsCtrl.data.singleBanner.text.length"
+      )
+        .depart-banner_content
+          p.left {{ departmentsCtrl.data.singleBanner.title }}
+          strong {{ departmentsCtrl.data.singleBanner.text }}
+          p.right(v-if="departmentsCtrl.data.singleBanner.link") Show more&nbsp;
+            i.fa.fa-angle-right
+      router-link.depart-banner_link(
+        :to="departmentsCtrl.data.singleBanner.link"
+        v-if="departmentsCtrl.data.singleBanner.link"
+      )
