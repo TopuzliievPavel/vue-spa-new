@@ -1,0 +1,54 @@
+.shop-tile_wrap-large {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.owl-carousel,
+.owl-carousel .owl-stage-outer {
+  position: static;
+}
+
+.shop_section--position {
+  position: relative;
+}
+
+.owl-theme {
+  .owl-nav {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    margin: 0;
+    [class*='owl-'] {
+      width: 27px;
+      height: 27px;
+      padding: 0;
+      margin-left: 10px;
+      background: none;
+      border-radius: 0;
+      border: 2px solid $col-border;
+      color: inherit;
+      transition: border .3s, background .3s;
+
+      .fa {
+        font-size: 16px;
+      }
+
+      &:hover {
+        background: $col-primary;
+        border-color: $col-primary;
+      }
+    }
+  }
+
+  .owl-dots {
+    .owl-dot {
+      outline: 0;
+
+      &.active {
+        span {
+          background: $col-primary;
+        }
+      }
+    }
+  }
+}
