@@ -1,6 +1,4 @@
 section.shop_section.carousel-section(
-  carousel
-  elements-per-carousel="4"
   v-if="departmentsCtrl.data.sliderContent.length"
 )
   .shop-section_header
@@ -8,21 +6,16 @@ section.shop_section.carousel-section(
     .shop-section_title
       h2.h2 Products featured
     .shop-section_actions
-      button.btn.btn--outline.fa.fa-angle-left(type="button"
-        v-show="departmentsCtrl.data.sliderContent.length > 4"
-        @click="carouselController.scrollLeft()"
-      )
-      button.btn.btn--outline.fa.fa-angle-right(type="button"
-        v-show="departmentsCtrl.data.sliderContent.length > 4"
-        @click="carouselController.scrollRight()"
-      )
 
-  .shop-carousel_mask.products-carousel
-    ul.shop_list(
-      carousel-elems-container
+  .products-carousel
+    carousel.shop_list(
+      :autoplay="true"
+      :autoplayTimeout="5000"
+      :items="4"
+      :navText="navText"
+      :responsive="{0: {items: 1, nav: false, dots: true}, 480: {items: 2, nav: false }, 768: { nav: true, dots: false }, 992: {items: 4, dots: false} }"
     )
-      li.shop-tile_wrap(
-        carousel-elem
+      li.shop-tile_wrap.shop-tile_wrap--large(
         v-for="(product, id) in departmentsCtrl.data.sliderContent"
         :key="id"
       )
@@ -30,7 +23,8 @@ section.shop_section.carousel-section(
           router-link.product-tile_photo-wrap(:to="product.link")
             .product-tile_label-wrap.product-tile_label(v-if="product.newPrice")
               span Sale
-            img.product-tile_photo(:alt="product.title"
+            img.product-tile_photo(
+              :alt="product.title"
               :src="product.thumbnail || product.defaultImage"
             )
 
@@ -41,13 +35,13 @@ section.shop_section.carousel-section(
 
             .product-tile_details-inner
               .product-tile_price
-                span.old-price(v-if="product.newPrice") {{ product.price + "$" }}
-                span.price(v-show="product.price") {{ (product.newPrice || product.price) + "$" }}
+                span.old-price(v-if="product.newPrice") {{ product.price | currency }}
+                span.price(v-show="product.price") {{ product.newPrice || product.price | currency }}
 
             .product-tile_btn-inner
               button.btn.btn--link(
                 type="button"
-                @click="storeFrontCtrl.addToCart(product)"
+                @click="addToCart(product)"
               )
                 i.fa.fa-shopping-cart(aria-hidden="true")
                 | Add to cart

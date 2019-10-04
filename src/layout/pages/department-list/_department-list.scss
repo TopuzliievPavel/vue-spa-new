@@ -1,14 +1,18 @@
-@import '../../../../src/scss/base';
-@import '../../../../src/scss/pages/shop';
-@import '../../../../src/scss/components/product-item';
-@import '../../../../src/scss/components/slider-entity';
-@import '../../../../src/scss/repeating-blocks/products-carousel';
+@import '../../../scss/base';
+@import '../../../scss/pages/shop';
+@import '../../../scss/components/product-item';
+@import '../../../scss/components/slider-entity';
+@import '../../../scss/repeating-blocks/products-carousel';
+@import '../../../scss/repeating-blocks/slider-shop-list';
 
 
 .shop_section,
 .banners_slides-wrapper {
   margin-bottom: 30px;
-  &.carousel-section { margin-bottom: 20px; }
+  &.carousel-section {
+    margin-bottom: 20px;
+    position: relative;
+  }
 }
 .shop-section_header {
   margin-bottom: 30px;
@@ -21,6 +25,7 @@
 .shop-tile {
   overflow: hidden;
   justify-content: space-between;
+  min-height: 245px;
 }
 
 .shop-category_img {

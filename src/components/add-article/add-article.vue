@@ -43,7 +43,7 @@
         ) Cancel
       div
         button.btn.btn--primary(type="button"
-          @click.privent="saveArticle"
+          @click.prevent="saveArticle"
           v-btn-spinner="true"
         ) Save
       div

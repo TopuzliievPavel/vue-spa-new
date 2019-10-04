@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     returnToLogin () {
-      // this.$router.replace('/sign-in');
+      this.$router.replace('/sign-in');
     },
     loadUser(){
       let userID = this.getUserId;
@@ -47,6 +47,7 @@ export default {
           .then((s) => {
             if (s.val()) {
               this.user = s.val();
+              console.log(this.user)
             }
             else {
               setUserLogin(false, '', this);

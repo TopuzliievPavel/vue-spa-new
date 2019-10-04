@@ -6,8 +6,7 @@
   margin: 0;
   padding: 0;
   @include media('>=presmall') {
-    columns: 2;
-    column-gap: 0;
+
     margin: 0 (-$product-layout-padding) 35px;
     //padding-top: 10px;
   }
@@ -16,10 +15,6 @@
   }
   > li {
     padding: $product-layout-padding;
-    &:first-child,
-    &:last-child {
-      .promo_img-holder { padding: 0 50% 136.71%; }
-    }
   }
 }
 .promo_img-holder {

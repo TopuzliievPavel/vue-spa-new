@@ -2,7 +2,6 @@
   .page_main
     .content-wrap.content-indent
 
-
       include blocks/list.pug
       include blocks/products-carousel.pug
       include blocks/single-banner.pug

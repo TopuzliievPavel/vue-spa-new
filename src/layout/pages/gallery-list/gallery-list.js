@@ -10,7 +10,6 @@ export default {
       list: '',
     }
   },
-
   methods: {
     loadPhoto() {
       let options = {

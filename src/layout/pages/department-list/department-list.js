@@ -1,7 +1,17 @@
+import carousel from 'vue-owl-carousel'
+import { storeFront } from '../../pages/store-front/store-front'
+
 export default {
   name: "DepartmentList",
+  components: {
+    carousel
+  },
   data () {
     return {
+      navText: [
+        '<i class="fa fa-angle-left"></i>',
+        '<i class="fa fa-angle-right"></i>'
+      ],
       departmentsCtrl: {
         categories: {
           children: [
@@ -65,7 +75,7 @@ export default {
               title: 'Venice',
               link: '/some-link',
               price: 18,
-              newPrice: '',
+              newPrice: null,
               thumbnail: require('../../../assets/img/department-list/venice.jpg'),
               defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
             },
@@ -73,7 +83,7 @@ export default {
               title: 'Sunset',
               link: '/some-link',
               price: 38,
-              newPrice: '',
+              newPrice: 0,
               thumbnail: require('../../../assets/img/department-list/sunset.jpg'),
               defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
             },
@@ -88,9 +98,9 @@ export default {
             {
               title: '',
               link: '/some-link',
-              price: 0,
-              newPrice: '',
-              thumbnail: '',
+              price: 140,
+              newPrice: 0,
+              thumbnail: require('../../../assets/img/department-list/startup.jpg'),
               defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
             },
             {
@@ -135,5 +145,5 @@ export default {
         }
       }
     }
-  }
+  },
 }

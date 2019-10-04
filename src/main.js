@@ -8,7 +8,6 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
-
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = axios;
@@ -18,6 +17,7 @@ Vue.use(wysiwyg, {});
 
 
 import './directives'
+import './filters'
 
 
 /* eslint-disable no-new */

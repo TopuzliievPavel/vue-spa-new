@@ -7,7 +7,6 @@ const setUserLogin = function(value, id, ctx) {
   });
 };
 
-
 const loginUser = function() {
   this.sendForm = true;
   Auth.signInWithEmailAndPassword(this.userEmail, this.userPass)
@@ -36,8 +35,6 @@ const logoutUser = function () {
       console.log(error);
     });
   };
-
-
 
 const checkLoginUser = function() {
   Auth.onAuthStateChanged(

@@ -1,12 +1,13 @@
 //@import '../../../scss/common';
-@import '../../../../src/scss/base';
-@import '../../../../src/scss/pages/shop';
-@import '../../../../src/scss/components/product-item';
-@import '../../../../src/scss/components/slider-entity';
-@import '../../../../src/scss/repeating-blocks/products-carousel';
-@import '../../../../src/scss/components/slider-top';
+@import '../../../scss/base';
+@import '../../../scss/pages/shop';
+@import '../../../scss/components/product-item';
+@import '../../../scss/components/slider-entity';
+@import '../../../scss/repeating-blocks/products-carousel';
+@import '../../../scss/components/slider-top';
 @import '../../../scss/components/department-section';
 @import '../../../scss/components/promo-section';
+@import '../../../scss/repeating-blocks/slider-shop-list';
 
 
 .products-carousel { margin-bottom: -15px; }
@@ -130,5 +131,8 @@
   }
 }
 
-
-
+#slide {
+  overflow: hidden;
+  display: flex;
+  padding: 0;
+}

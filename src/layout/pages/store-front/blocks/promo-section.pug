@@ -21,11 +21,8 @@ section.shop_section
         v-if="storeFrontCtrl.content.singleBanner.title.length || storeFrontCtrl.content.singleBanner.text.length"
       )
         .depart-banner_content
-          p.left {{ storeFrontCtrl.content.singleBanner.title }}
-          strong {{ storeFrontCtrl.content.singleBanner.text }}
-          p(v-if="storeFrontCtrl.content.singleBanner.link")
-            router-link.right.btn--link(:to="storeFrontCtrl.content.singleBanner.link") Show more&nbsp;
-            i.fa.fa-angle-right
+          router-link.right.btn--link(:to="storeFrontCtrl.content.singleBanner.link") Show more&nbsp;
+          i.fa.fa-angle-right
       router-link.depart-banner_link(
         :to="storeFrontCtrl.content.singleBanner.link"
         v-if="storeFrontCtrl.content.singleBanner.link"

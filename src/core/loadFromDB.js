@@ -4,7 +4,7 @@ function loadContent(path, ctx) {
   ctx.$store.commit('visibleSpinner', true);
 
   db.ref(path).once('value')
-    .then((data)=>{
+    .then((data) =>{
       ctx.content = data.val();
       ctx.$store.commit('visibleSpinner', false)
     })

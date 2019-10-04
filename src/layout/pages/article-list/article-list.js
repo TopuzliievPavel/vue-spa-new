@@ -22,7 +22,7 @@ export default {
     listLength() {
       let qnt = Object.keys(this.content.listItems);
       return qnt.length
-    },
+    }
   },
 
 
