@@ -1,0 +1,32 @@
+@import '../../../scss/base';
+@import '../../../scss/pages/shop';
+
+.shop-cart_btn {
+  @include media(">=premedium") {
+    margin-left: 10px;
+  }
+  @include media(">=xlarge") {
+    margin-left: 0;
+  }
+}
+
+.cart-table_row {
+ @include media(">=premedium") {
+   display: flex;
+   justify-content: space-between;
+ }
+}
+
+.cart-item_img {
+  @include media(">=medium") {
+    max-width: 300px;
+  }
+}
+
+.shop-cart_btn-wrap {
+  display: flex;
+  justify-content: space-around;
+  @include media(">=medium") {
+    display: block;
+  }
+}

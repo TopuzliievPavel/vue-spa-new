@@ -47,4 +47,8 @@ const checkLoginUser = function() {
     });
   };
 
-export { loginUser, logoutUser, checkLoginUser, setUserLogin };
+const addToCart = function (item) {
+  console.log(item)
+};
+
+export { loginUser, logoutUser, checkLoginUser, setUserLogin, addToCart };

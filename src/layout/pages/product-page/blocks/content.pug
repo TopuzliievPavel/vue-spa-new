@@ -1,0 +1,135 @@
+article.product
+  section.product_gallery(
+    carousel
+    elements-per-carousel="4"
+  )
+    .gallery_container(
+    )
+      img.gallery_main-img.invisible(
+
+      )
+      .gallery_main-video.no-animate(
+      )
+        span.fa.fa-play.video_play-btn
+      button.prevButton.fa.fa-angle-left(
+        type="button"
+        v-if="productPageCtrl.media.length > 1"
+      )
+      button.nextButton.fa.fa-angle-right(
+        type="button"
+        v-if="productPageCtrl.media.length > 1"
+      )
+    .gallery_thumbnails-mask(style="overflow: hidden;")
+      .gallery_thumbnails(
+        carousel-elems-container
+      )
+        .thumbnail_wrap(
+          carousel-elem
+          v-for="(media,index) in productPageCtrl.media"
+          :key="index"
+        )
+          button.thumbnail_item(
+            type="button"
+            :class="{'active': productPageCtrl.mainMediaIndex === index}"
+          )
+            .thumbnail_item-indent(
+            )
+            img(alt="")
+  section.product_info-main
+    h1.product_name {{ productPageCtrl.product.title }}
+
+    .product_code
+      span
+        | Product code:
+        b {{ productPageCtrl.product.code }}
+
+    .product_info
+      rating(
+        rate-value="productPageCtrl.product.rating"
+        is-read-only="true"
+        is-hover-disable="true"
+      ).product_rating
+      a.product_reviews(href="#"
+        scroll-to-anchor=".reviews-title"
+        scroll-diffs="header&25"
+      ) ({{ productPageCtrl.product.totalReviews }})
+
+    .product_price
+      span.price ${{ productPageCtrl.product.newPrice[0] || 0}}
+        sup {{productPageCtrl.product.newPrice[1] || '00'}}
+      span.old-price(
+        style="display: none;"
+        v-if="productPageCtrl.product.oldPrice"
+      ) ${{productPageCtrl.product.oldPrice[0]}}
+        sup {{productPageCtrl.product.oldPrice[1]}}
+
+    .product_actions
+      .product_buy
+        label.product_buy-qty
+          span.product_attribute-label Quantity:
+          input(
+            type="number"
+            step="1"
+            min="1"
+            pattern="\\d+"
+            required
+            v-model="productPageCtrl.selectedOptions.qty"
+          )
+        button.product_buy-tocart.btn.btn--primary(
+          type="submit"
+          title="Add to Cart"
+        )
+          i.fa.fa-shopping-cart
+          | &ensp;
+          span Add to Cart
+
+      .product_options
+        .product_attribute(
+          v-for="optionsGroup in productPageCtrl.product.options"
+        )
+          span.product_attribute-label {{ optionsGroup.title }}:
+          ul.product_attribute-list
+            li.product_attribute-wrap(
+              v-for="option in optionsGroup.filterItems"
+              :class="{'selected': option.selected}"
+            )
+              button(
+                type="button"
+              ).product_attribute-option {{ option.title }}
+              span.product_attribute-tooltip
+                span(
+                ).product_attribute-tooltip-bg
+                span.product_attribute-tooltip-name {{ option.title }}
+
+        .product_options-buttons
+          a.product_options-button.towishlist(href="#"
+            unavailable
+          )
+            span.fa.fa-heart
+            span.label-info Add to Wish List
+          a.product_options-button.tocompare(href="#"
+            unavailable
+          )
+            span.fa.fa-exchange
+            span.label-info Add to Compare
+          a.product_options-button.tovr(href="#"
+            unavailable
+          )
+            span.fa.fa-cube
+            span.label-info More products in Virtual Room
+
+    .product_feature
+      span Preview Features
+      ul.product_feature-list
+        li.fa.fa-picture-o(
+          :class="{'active': productPageCtrl.product.images.length}"
+        )
+        li.ht.visualizer(
+          :class="{'active': productPageCtrl.product.hasVisualizer}"
+        )
+        li.ht.vr-rotate(
+          :class="{'active': productPageCtrl.product.is360}"
+        )
+        li.fa.fa-film(
+          :class="{'active': productPageCtrl.product.video.length}"
+        )

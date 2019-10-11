@@ -1,34 +1,18 @@
 import carousel from 'vue-owl-carousel'
-import {GalleryList} from "../../../router";
+import { addToCart } from "../../../core/loginUser";
+
 
 export default {
   name: 'StoreFront',
   components: {
     carousel,
   },
-  data () {
+  data() {
     return {
       navText: [
         '<i class="fa fa-angle-left"></i>',
         '<i class="fa fa-angle-right"></i>'
       ],
-      images: [
-        require('@/assets/img/photos-for-banner/city.jpg'),
-        require('@/assets/img/photos-for-banner/arch.jpg'),
-        require('@/assets/img/photos-for-banner/desk.jpg'),
-        require('@/assets/img/photos-for-banner/frankfurt.jpg'),
-        require('@/assets/img/photos-for-banner/glasses.jpg'),
-        require('@/assets/img/photos-for-banner/new-york.jpg'),
-        require('@/assets/img/photos-for-banner/frankfurt2.jpg'),
-        require('@/assets/img/photos-for-banner/ho-chi-minh.jpg'),
-        require('@/assets/img/photos-for-banner/iphone.jpg'),
-        require('@/assets/img/photos-for-banner/moscow.jpg'),
-        require('@/assets/img/photos-for-banner/mouse.jpg'),
-        require('@/assets/img/photos-for-banner/singapore.jpg'),
-      ],
-      count: 0,
-      direction: 'forward',
-      frame: 2,
       storeFrontCtrl: {
         categories: [
           {
@@ -118,25 +102,16 @@ export default {
         ],
         slidesList: [
           {
-            id: 1,
-            link: '',
-            resize: '',
             slideImage: require('@/assets/img/store-front-page/sliderImg_1.jpg'),
             slideText: 'This is slide text 1',
             slideTitle: 'This is slide title 1',
           },
           {
-            id: 2,
-            link: '',
-            resize: '',
             slideImage: require('@/assets/img/store-front-page/sliderImg_2.jpg'),
             slideText: 'This is slide text 2',
             slideTitle: 'This is slide title 2',
           },
           {
-            id: 3,
-            link: '',
-            resize: '',
             slideImage: require('@/assets/img/store-front-page/sliderImg_3.jpg'),
             slideText: 'This is slide text 3',
             slideTitle: 'This is slide title 3',
@@ -174,7 +149,7 @@ export default {
             newPrice: '',
             link: '/some-link',
             thumbnail: require('@/assets/img/store-front-page/bathoil-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
+            defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
             title: 'Bath-oil'
           },
           {
@@ -233,6 +208,15 @@ export default {
             defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
             title: 'Idea'
           }
+        ],
+        roomsList: [
+          require('@/assets/img/store-front-page/computer-rooms.jpg'),
+          require('@/assets/img/store-front-page/conference-rooms.jpg'),
+          require('@/assets/img/store-front-page/couch-rooms.jpg'),
+          require('@/assets/img/store-front-page/chairs-rooms.jpg'),
+          require('@/assets/img/store-front-page/apartment-rooms.jpg'),
+          require('@/assets/img/store-front-page/dining-rooms.jpg'),
+          require('@/assets/img/store-front-page/furniture-rooms.jpg')
         ],
         roomsCategoriesList: {
           children: [
@@ -303,77 +287,7 @@ export default {
       return this.$store.state.auth.isLogin;
     }
   },
-  created() {
-    const slide = setInterval(() => this.slideLoop(this.direction), 2000);
-  },
   methods: {
-    addToCart(item) {
-      return console.log(item);
-    },
-    slideLoop(pass) {
-      let steps = this.storeFrontCtrl.roomsCategoriesList.children.length - this.frame;
-      if(this.count >= steps && pass === "forward"){
-        this.direction = "backward";
-        this.previous();
-        return
-      }
-      if(this.count <= steps && pass === "backward"){
-        if(this.count <= 0){
-          this.count = 0;
-          this.direction = "forward";
-          this.next();
-          return
-        }
-        this.previous();
-        return
-      }
-      if(this.count < steps && pass === "forward"){
-        if(this.count < 0){
-          this.resetScroll();
-          return
-        } else if(this.count === 0){
-          this.next();
-          return
-        }
-        this.next();
-        return
-      }
-      this.resetScroll()
-    },
-    resetScroll(){
-      this.count = 0;
-      this.direction = "forward";
-      this.scroll("reset")
-    },
-    previous() {
-      this.count--;
-      this.scroll('previous');
-    },
-    next() {
-      this.count++;
-      this.scroll('next')
-    },
-    scroll(position) {
-      let el = document.getElementById('slide'),
-          pos = 0,
-          id = setInterval(frame, 5),
-          num = this.storeFrontCtrl.roomsCategoriesList.children.length - this.frame,
-          width = 250,
-          resize = num * width,
-          check = position === 'reset' ? resize : width;
-      function frame() {
-        if (pos === check) {
-          clearInterval(id);
-        } else {
-          pos += 5;
-          if (position === 'next') {
-            el.scrollLeft += 5;
-          } else {
-            el.scrollLeft -= 5;
-          }
-        }
-      }
-
-    }
+    addToCart
   }
 }

@@ -22,7 +22,7 @@
   border: 1px solid $col-border;
   color: inherit;
   overflow: hidden;
-  @include media('>=medium') {
+  @include media('>=xlarge') {
     padding-left: 40px;
   }
   &:hover {

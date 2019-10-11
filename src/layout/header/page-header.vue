@@ -21,9 +21,9 @@
             li
               router-link.nav-list_link(:to="{name: 'StoreFront'}" exact) STORE FRONT
             li
-              router-link.nav-list_link(to="/some-link" exact) MARKETPLACE
+              router-link.nav-list_link(:to="{name: 'CartPage'}" exact) MARKETPLACE
             li
-              router-link.nav-list_link(to="/some-link" exact) DESIGN DEN
+              router-link.nav-list_link(:to="{name: 'ProductPage'}" exact) PRODUCTS
             li
               router-link.nav-list_link(to="/some-link" exact) FIND A PRO
             li

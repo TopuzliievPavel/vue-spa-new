@@ -22,7 +22,7 @@
       width: 27px;
       height: 27px;
       padding: 0;
-      margin-left: 10px;
+      margin: 0 0 0 10px;
       background: none;
       border-radius: 0;
       border: 2px solid $col-border;
@@ -43,6 +43,12 @@
   .owl-dots {
     .owl-dot {
       outline: 0;
+
+      &:hover {
+        span {
+          background: $col-primary;
+        }
+      }
 
       &.active {
         span {

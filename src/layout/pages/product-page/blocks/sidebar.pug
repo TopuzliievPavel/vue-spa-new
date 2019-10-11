@@ -1,0 +1,8 @@
+.shop-aside_block.animate-fade(v-if="productPageCtrl.similarProducts.length")
+  .shop-sidebar_title
+    h3 Similar Products
+  ul.shop-sidebar_list
+    li(v-for="similarProduct in productPageCtrl.similarProducts")
+      product-item.shop-tile(
+        :product-similar="similarProduct"
+      )

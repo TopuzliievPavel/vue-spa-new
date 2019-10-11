@@ -22,6 +22,8 @@ export const ArticlePage = () => import(/* webpackChunkName: 'ArticlePage' */ '@
 export const ArticleEdit = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/article-edit/article-edit.vue');
 export const DepartmentList = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/department-list/department-list.vue');
 export const ShopList = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/shop-list/shop-list.vue');
+export const CartPage = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/cart-page/cart-page.vue');
+export const ProductPage = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/product-page/product-page.vue');
 
 Vue.use(Router);
 
@@ -40,6 +42,8 @@ export default new Router({
     {path: '/media-edit',   name: 'ArticleEdit',  component: ArticleEdit},
     {path: '/department-list', name: 'DepartmentList',  component: DepartmentList},
     {path: '/shop-list',    name: 'ShopList',  component: ShopList},
+    {path: '/cart-page',    name: 'CartPage',  component: CartPage},
+    {path: '/product-page',    name: 'ProductPage',  component: ProductPage},
     {path: '/coming-soon',  name: 'ComingSoon',   component: ComingSoon},
     {path: '*',             redirect: '/coming-soon'}
   ]

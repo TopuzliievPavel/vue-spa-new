@@ -8,14 +8,9 @@ agile.banners_slides-wrapper.slider--main(
   :pauseOnHover="false"
 )
   .banners_slide-block(
-    v-for="slideItem in storeFrontCtrl.slidesList"
-    :key="slideItem.id"
+    v-for="(slideItem, id) in storeFrontCtrl.slidesList"
+    :key="id"
   )
-    a.banners_slide-link(
-      target="_blank"
-      :href="slideItem.link"
-      v-if="slideItem.link"
-    )
 
     img.banners_slide-img(
       :src="slideItem.slideImage"
@@ -26,6 +21,3 @@ agile.banners_slides-wrapper.slider--main(
       .banners_slide-title
         h1.h1 {{ slideItem.slideTitle }}
         p.h2  {{ slideItem.slideText }}
-
-  .doted-controlls-holder(v-if="storeFrontCtrl.slidesList.length > 1")
-    span.doted-controlls-holder_ctrls

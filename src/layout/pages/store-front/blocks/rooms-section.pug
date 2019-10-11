@@ -1,37 +1,30 @@
 section.shop_section(
-  carousel
-  elements-per-carousel="4"
   v-if="storeFrontCtrl.roomsCategoriesList.children.length > 4"
 )
-  .shop-section_header
+  .shop-section_header.shop-section_actions--position
     .shop-section_actions
     .shop-section_title
       h2.h2 Shop by room
-    .shop-section_actions
-      button.btn.btn--outline.fa.fa-angle-left(
-        type="button"
-        v-show="storeFrontCtrl.roomsCategoriesList.children.length > 4"
-        @click="carouselController.scrollLeft()"
-      )
-      button.btn.btn--outline.fa.fa-angle-right(
-        type="button"
-        v-show="storeFrontCtrl.roomsCategoriesList.children.length > 4"
-        @click="carouselController.scrollRight()"
-      )
-  .shop-carousel_mask
-    ul.shop_list.shop-room_list(
-      carousel-elems-container
+    .shop-section_actions.shop-section_actions--show
+
+  .products-carousel
+    carousel.shop_list(
+      :loop="true"
+      :autoplay="true"
+      :autoplayTimeout="4000"
+      :dots="true"
+      :nav="false"
+      :responsive="{0: {items: 1}, 640: {items: 2}, 992: {items: 3} }"
     )
-      li.shop-tile_wrap.shop-room_tile(
-        carousel-elem
-        v-for="(category, id) in storeFrontCtrl.roomsCategoriesList.children"
-        :key="id"
+      li.shop-tile_wrap.shop-room_tile.shop-tile_wrap--large(
+        v-for="(category, index) in storeFrontCtrl.roomsCategoriesList.children"
+        :key="index"
       )
-        router-link.room-tile_box(to="/some-link")
+        router-link.room-tile_box.slider__slide(to="/some-link")
           .room-tile_img
             .img-wrapper
               img(
-                :src="category.thumbnail || 'https://cdn3.housetipster.com/empty.jpg'"
+                :src="category.thumbnail || 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'"
                 alt="description picture"
               )
           .room-tile_title

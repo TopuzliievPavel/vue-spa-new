@@ -42,7 +42,7 @@ section.shop_section.shop_section--position(
             .product-tile_btn-inner
               button.btn.btn--link(
                 type="button"
-                @click="addToCart(product)"
+                @click.prevent="addToCart(product)"
               )
                 i.fa.fa-shopping-cart(aria-hidden="true")
                 | Add to cart

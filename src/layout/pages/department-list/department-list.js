@@ -1,5 +1,5 @@
 import carousel from 'vue-owl-carousel'
-import { storeFront } from '../../pages/store-front/store-front'
+import { addToCart } from "../../../core/loginUser";
 
 export default {
   name: "DepartmentList",
@@ -18,8 +18,8 @@ export default {
             {
               id: 1,
               title: 'Lake',
-              thumbnail: require('../../../assets/img/department-list/lake.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg',
+              thumbnail: require('@/assets/img/department-list/lake.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
               limit: 0,
               children: [
                 {
@@ -31,8 +31,8 @@ export default {
             {
               id: 2,
               title: 'Bike',
-              thumbnail: require('../../../assets/img/department-list/bike.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg',
+              thumbnail: require('@/assets/img/department-list/bike.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
               limit: 0,
               children: [
                 {
@@ -44,8 +44,8 @@ export default {
             {
               id: 3,
               title: 'Sail-boats',
-              thumbnail: require('../../../assets/img/department-list/sail-boats.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg',
+              thumbnail: require('@/assets/img/department-list/sail-boats.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
               limit: 0,
               children: [
                 {
@@ -58,8 +58,8 @@ export default {
             {
               id: 4,
               title: 'Horses',
-              thumbnail: require('../../../assets/img/department-list/horse.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg',
+              thumbnail: require('@/assets/img/department-list/horse.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
               limit: 0,
               children: [
                 {
@@ -76,74 +76,77 @@ export default {
               link: '/some-link',
               price: 18,
               newPrice: null,
-              thumbnail: require('../../../assets/img/department-list/venice.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/venice.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'Sunset',
               link: '/some-link',
               price: 38,
               newPrice: 0,
-              thumbnail: require('../../../assets/img/department-list/sunset.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/sunset.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'Office team',
               link: '/some-link',
               price: 80,
               newPrice: 59,
-              thumbnail: require('../../../assets/img/department-list/team.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/team.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: '',
               link: '/some-link',
               price: 140,
               newPrice: 0,
-              thumbnail: require('../../../assets/img/department-list/startup.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/startup.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'Airplane',
               link: '/some-link',
               price: 110,
               newPrice: 60,
-              thumbnail: require('../../../assets/img/department-list/dc.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/dc.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'Water-fall',
               link: '/some-link',
               price: 150,
               newPrice: 0,
-              thumbnail: require('../../../assets/img/department-list/water-fall.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/water-fall.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'City space',
               link: '/some-link',
               price: 210,
               newPrice: 0,
-              thumbnail: require('../../../assets/img/department-list/cityspace.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/cityspace.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             },
             {
               title: 'Military raptor',
               link: '/some-link',
               price: 190,
               newPrice: 0,
-              thumbnail: require('../../../assets/img/department-list/military-raptor.jpg'),
-              defaultImage: 'https://cdn3.housetipster.com/empty.jpg'
+              thumbnail: require('@/assets/img/department-list/military-raptor.jpg'),
+              defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg'
             }
           ],
           singleBanner: {
             title: 'Single banner title',
             text: 'Single banner text',
             link: '',
-            thumbnail: require('../../../assets/img/department-list/snow.jpg')
+            thumbnail: require('@/assets/img/department-list/snow.jpg')
           }
         }
       }
     }
   },
+  methods: {
+    addToCart
+  }
 }
