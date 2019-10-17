@@ -109,7 +109,7 @@ export default {
       let uploadTask = Storage.ref('users/' + this.ID + '-' + prefix + '.jpg').put(img, metadata);
       uploadTask.on('state_changed',
         function(snapshot) {
-          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log('Upload is ' + progress + '% done');
           // switch (snapshot.state) {
           //   case Storage.TaskState.PAUSED: // or 'paused'
@@ -120,20 +120,23 @@ export default {
           //     break;
           // }
         },
-        function(error) {
+        (error) => {
           console.log(error);
         },
 
         () => {
-          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            if (prefix === 'avatar') {
+              this.user.avatar = downloadURL;
+            }
+            else if (prefix === 'bg') {
+              this.user.bg = downloadURL;
+            }
+            else {
+              this.user.bg = this.user.avatar = downloadURL;
+            }
             console.log('File available at', downloadURL);
           });
-        if (prefix === 'avatar') {
-          this.user.avatar = uploadTask.snapshot.downloadURL;
-        }
-        else {
-          this.user.bg = uploadTask.snapshot.downloadURL;
-        }
           this.saveUser();
       });
     },
