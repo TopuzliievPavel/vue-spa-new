@@ -1,0 +1,21 @@
+aside.shop.xlarge-3.large-1.columns
+  span.button-toggler-holder.sidebar-toggle
+    i.fa.fa-filter(aria-hidden="true") &times;
+
+  section.row.inner-content-holder.large-collapse
+    h1 Categories
+    hr
+
+    article.enviroment-group
+
+      //- var categoriesList = ['kitchen', 'dinning area', 'bathrooms', 'living rooms', 'bed rooms']
+      //each category in categoriesList
+      h2(
+        v-for="(category, id) in shopController.categoriesList"
+        :key="id"
+      )
+        a(
+          href="#"
+          @click="shopController.setActiveCategory(category.name)"
+          :class="{'active': category.name == shopController.activeCategory}"
+        ) {{ category.title }}

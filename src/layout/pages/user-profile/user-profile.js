@@ -107,9 +107,8 @@ export default {
       e.preventDefault();
       let img = e.target.files[0];
       let uploadTask = Storage.ref('users/' + this.ID + '-' + prefix + '.jpg').put(img, metadata);
-
       uploadTask.on('state_changed',
-        function(snapshot){
+        function(snapshot) {
           var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log('Upload is ' + progress + '% done');
           // switch (snapshot.state) {
@@ -124,7 +123,11 @@ export default {
         function(error) {
           console.log(error);
         },
+
         () => {
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            console.log('File available at', downloadURL);
+          });
         if (prefix === 'avatar') {
           this.user.avatar = uploadTask.snapshot.downloadURL;
         }

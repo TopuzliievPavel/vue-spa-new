@@ -7,6 +7,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import vueScrollTo from 'vue-scroll-to'
 
 Vue.config.productionTip = false;
 
@@ -14,6 +15,7 @@ Vue.prototype.$http = axios;
 Vue.use(firestorePlugin);
 Vue.use(VueAgile);
 Vue.use(wysiwyg, {});
+Vue.use(vueScrollTo);
 
 
 import './directives'

@@ -20,10 +20,10 @@ export const UserProfile = () => import(/* webpackChunkName: 'UserProfile' */ '@
 export const ArticleList = () => import(/* webpackChunkName: 'ArticleList' */ '@/layout/pages/article-list/article-list.vue');
 export const ArticlePage = () => import(/* webpackChunkName: 'ArticlePage' */ '@/layout/pages/article-page/article-page.vue');
 export const ArticleEdit = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/article-edit/article-edit.vue');
-export const DepartmentList = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/department-list/department-list.vue');
-export const ShopList = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/shop-list/shop-list.vue');
-export const CartPage = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/cart-page/cart-page.vue');
-export const ProductPage = () => import(/* webpackChunkName: 'ArticleEdit' */ '@/layout/pages/product-page/product-page.vue');
+export const DepartmentList = () => import(/* webpackChunkName: 'DepartmentList' */ '@/layout/pages/department-list/department-list.vue');
+export const ShopList = () => import(/* webpackChunkName: 'ShopList' */ '@/layout/pages/shop-list/shop-list.vue');
+export const CartPage = () => import(/* webpackChunkName: 'CartPage' */ '@/layout/pages/cart-page/cart-page.vue');
+export const ProductPage = () => import(/* webpackChunkName: 'ProductPage' */ '@/layout/pages/product-page/product-page.vue');
 
 Vue.use(Router);
 

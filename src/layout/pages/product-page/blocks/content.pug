@@ -1,40 +1,27 @@
 article.product
-  section.product_gallery(
-    carousel
-    elements-per-carousel="4"
-  )
-    .gallery_container(
-    )
-      img.gallery_main-img.invisible(
-
+  section.product_gallery
+    .gallery_wrap
+      .gallery_container(
+        :style="{'background-size': 'contain', 'background': `url(${productPageCtrl.media.img}) no-repeat center`}"
       )
-      .gallery_main-video.no-animate(
-      )
-        span.fa.fa-play.video_play-btn
-      button.prevButton.fa.fa-angle-left(
-        type="button"
-        v-if="productPageCtrl.media.length > 1"
-      )
-      button.nextButton.fa.fa-angle-right(
-        type="button"
-        v-if="productPageCtrl.media.length > 1"
-      )
-    .gallery_thumbnails-mask(style="overflow: hidden;")
-      .gallery_thumbnails(
-        carousel-elems-container
+    .gallery_thumbnails-mask(style="overflow: hidden;" )
+      Carousel.gallery_thumbnails(
+        :items="4"
+        :nav="false"
       )
         .thumbnail_wrap(
-          carousel-elem
-          v-for="(media,index) in productPageCtrl.media"
+          v-for="(media,index) in productPageCtrl.mediaThumbnails"
           :key="index"
         )
           button.thumbnail_item(
             type="button"
             :class="{'active': productPageCtrl.mainMediaIndex === index}"
+            @click.prevent="showImage(index)"
           )
             .thumbnail_item-indent(
+              :style="{'background': 'url(' + (media.image || media) + ') no-repeat center', 'background-size': 'contain'}"
             )
-            img(alt="")
+            img(:src="media.image" alt="image description")
   section.product_info-main
     h1.product_name {{ productPageCtrl.product.title }}
 
@@ -44,24 +31,22 @@ article.product
         b {{ productPageCtrl.product.code }}
 
     .product_info
-      rating(
-        rate-value="productPageCtrl.product.rating"
+      product-rating.product_rating(
+        :rate-value="productPageCtrl.product.rating"
         is-read-only="true"
         is-hover-disable="true"
-      ).product_rating
-      a.product_reviews(href="#"
-        scroll-to-anchor=".reviews-title"
-        scroll-diffs="header&25"
-      ) ({{ productPageCtrl.product.totalReviews }})
+      )
+      a.product_reviews(
+        v-scroll-to="'.reviews-title, 150px'"
+      ) ({{ reviewCount }})
 
     .product_price
-      span.price ${{ productPageCtrl.product.newPrice[0] || 0}}
-        sup {{productPageCtrl.product.newPrice[1] || '00'}}
+      span.price ${{ productPageCtrl.product.newPrice[0] || 0 }}
+        sup {{ productPageCtrl.product.newPrice[1] || '00' }}
       span.old-price(
-        style="display: none;"
         v-if="productPageCtrl.product.oldPrice"
-      ) ${{productPageCtrl.product.oldPrice[0]}}
-        sup {{productPageCtrl.product.oldPrice[1]}}
+      ) ${{ productPageCtrl.product.oldPrice[0] }}
+        sup {{ productPageCtrl.product.oldPrice[1] }}
 
     .product_actions
       .product_buy
@@ -76,8 +61,8 @@ article.product
             v-model="productPageCtrl.selectedOptions.qty"
           )
         button.product_buy-tocart.btn.btn--primary(
+          @click.prevent="addToCart"
           type="submit"
-          title="Add to Cart"
         )
           i.fa.fa-shopping-cart
           | &ensp;
@@ -85,34 +70,42 @@ article.product
 
       .product_options
         .product_attribute(
-          v-for="optionsGroup in productPageCtrl.product.options"
+          v-for="(optionsGroup, index) in productPageCtrl.product.options"
+          :key="index"
         )
           span.product_attribute-label {{ optionsGroup.title }}:
           ul.product_attribute-list
             li.product_attribute-wrap(
-              v-for="option in optionsGroup.filterItems"
+              v-for="(option, id) in optionsGroup.filterItems"
+              :key="id"
               :class="{'selected': option.selected}"
             )
-              button(
+              button.product_attribute-option(
                 type="button"
-              ).product_attribute-option {{ option.title }}
+                :class="{'color-option': optionIsColor}"
+                @click.prevent="option.selected = true"
+              ) {{ option.title }}
               span.product_attribute-tooltip
-                span(
-                ).product_attribute-tooltip-bg
+                span.product_attribute-tooltip-bg(
+                  :style="getOptionBackground(option)"
+                )
                 span.product_attribute-tooltip-name {{ option.title }}
 
         .product_options-buttons
-          a.product_options-button.towishlist(href="#"
+          router-link.product_options-button.towishlist(
+            to="/some-link"
             unavailable
           )
             span.fa.fa-heart
             span.label-info Add to Wish List
-          a.product_options-button.tocompare(href="#"
+          router-link.product_options-button.tocompare(
+            to="/some-link"
             unavailable
           )
             span.fa.fa-exchange
             span.label-info Add to Compare
-          a.product_options-button.tovr(href="#"
+          router-link.product_options-button.tovr(
+            :to="{name: 'VrList'}"
             unavailable
           )
             span.fa.fa-cube
@@ -133,3 +126,5 @@ article.product
         li.fa.fa-film(
           :class="{'active': productPageCtrl.product.video.length}"
         )
+  section.product_detailed
+    include detailed.pug

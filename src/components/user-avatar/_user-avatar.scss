@@ -1,0 +1,318 @@
+@import '../../scss/base';
+//TODO need refactoring
+
+$avatar-sizes:(
+  xl 190px 114px 50px 34px,
+  lg 89px 89px 34px 34px,
+  md 61px 61px 25px 25px,
+  sm 36px 36px 36px 36px
+);
+.avatar {
+  border-radius: 50%;
+  box-shadow: 0 1px 2px 0 rgba($black, 0.2);
+  display: inline-block;
+  position: relative;
+  @each $size in $avatar-sizes {
+
+    $className: #{nth($size, 1)};
+    $desctop-size: #{nth($size, 2)};
+    $mobile-size: #{nth($size, 3)};
+    $badge-size: #{nth($size, 4)};
+    $badge-mobile-size: #{nth($size, 5)};
+
+    &.#{$className} {
+      height: $desctop-size;
+      width: $desctop-size;
+      .role-badge {
+        height: $badge-size;
+        width: $badge-size;
+      }
+      @include media('<presmall') {
+        height: $mobile-size;
+        width: $mobile-size;
+        .role-badge {
+          height: $badge-mobile-size;
+          width: $badge-mobile-size;
+        }
+      }
+    }
+  }
+  &.xl {
+    .role-badge { bottom: 16px; }
+    .badge-img {
+      flex-direction: column;
+      padding: 3px 0;
+      .elite-txt { display: none; }
+    }
+    .seller-text { font-size: 12px; }
+    @include media('<large') {
+      .role-badge { bottom: 0; }
+      .badge-text { font-size: 12px; }
+      .badge-img {
+        .elite-txt { display: none; }
+      }
+    }
+
+    @include media('<presmall') {
+      .role-badge.seller-badge {
+        width: 46px;
+        height: 46px;
+        background-color: $white;
+        border: 2px solid $col-primary;
+      }
+      .badge-img {
+        .xl-elite-ico {
+          font-size: 9px;
+          line-height: 7px;
+        }
+        .elite-ico {
+          display: none;
+        }
+      }
+    }
+  }
+  &.lg, &.md {
+    .role-badge { bottom: 0; }
+    .badge-text,
+    .seller-text { font-size: 12px; }
+    .badge-img {
+      //padding: 7px;
+      .xl-elite-ico {
+        font-size: 9px;
+        line-height: 8px;
+      }
+      .elite-txt { display: none; }
+      .elite-ico { display: none; }
+    }
+    @include media('<large') {
+      &.lg {
+        .badge-img {
+          padding: 0;
+        }
+      }
+    }
+  }
+  &.lg {
+    .role-badge.seller-badge {
+      background-color: $white;
+      border: 2px solid $col-primary;
+      .seller-text {
+        color: $col-primary;
+        font-size: 10px;
+        line-height: 9px;
+        text-transform: none;
+        top: calc(50% - 2px);
+        font-weight: bold;
+        > span { font-weight: normal; }
+      }
+    }
+    &.sm-for-lg {
+      .role-badge.seller-badge {
+        background-color: $white;
+        border: 2px solid $col-primary;
+        .seller-text {
+          color: $col-primary;
+          font-size: 10px;
+          line-height: 9px;
+          text-transform: none;
+        }
+      }
+      @include media('<large') {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 20px;
+        .role-badge {
+          position: absolute;
+          top:40px;
+          left:50%;
+          transform: translateX(-50%);
+          border-radius: 0;
+          height: 16px;
+          padding: 3px 0;
+          text-align: center;
+          width: 36px;
+          &.elite-badge {
+            background-color: $white;
+            border: 1px solid $col-primary;
+            box-shadow: none;
+          }
+          &.seller-badge {
+            border: 1px solid $col-primary;
+            box-shadow: none;
+          }
+          .seller-text {
+            font-size: 10px;
+            font-weight: bold;
+            top: 50%;
+            > .show-for-medium { display: none; }
+          }
+        }
+        .badge-text { font-size: 10px; }
+        .badge-img {
+          .xl-elite-ico { display: none; }
+          .elite-txt { display: block; }
+          .elite-ico { display: none; }
+        }
+      }
+    }
+  }
+  &.md {
+    .role-badge {
+      border-radius: 0;
+      height: 16px;
+      padding: 3px 0;
+      text-align: center;
+      width: 36px;
+      &.elite-badge,
+      &.seller-badge {
+        background-color: $white;
+        border: 1px solid $col-primary;
+        box-shadow: none;
+      }
+      &.seller-badge {
+        border-radius: 0;
+        .seller-text {
+          color: $col-primary;
+          font-size: 10px;
+          line-height: 1;
+          text-transform: uppercase;
+        }
+        .show-for-medium { display: none; }
+      }
+    }
+    .badge-img {
+      padding: 0;
+      .xl-elite-ico { display: none; }
+      .elite-txt {
+        display: block;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+    }
+    .badge-text,
+    .seller-text { font-size: 10px; }
+  }
+  &.sm {
+    margin-bottom: 20px;
+    .role-badge {
+      position: absolute;
+      top:40px;
+      left:50%;
+      transform: translateX(-50%);
+      border-radius: 0;
+      height: 16px;
+      padding: 3px 0;
+      text-align: center;
+      width: 36px;
+      &.seller-badge {
+        background-color: $white;
+        border: 1px solid $col-primary;
+        box-shadow: none;
+      }
+      .seller-text {
+        font-size: 10px;
+        font-weight: bold;
+        color: $col-primary;
+        > .show-for-medium { display: none; }
+      }
+      &.elite-badge {
+        background-color: $white;
+        border: 1px solid $col-primary;
+        box-shadow: none;
+      }
+    }
+    .badge-text,
+    .seller-text { font-size: 10px; }
+    .badge-img {
+      .xl-elite-ico { display: none; }
+      .elite-txt { display: block; }
+      .elite-ico { display: none; }
+    }
+  }
+  .avatar_pic {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+  }
+}
+.avatar_pic {
+  border: 2px solid $white;
+  border-radius: 50%;
+  overflow: hidden;
+  a {
+    display: inline-block;
+    width: 100%;
+  }
+  img { width: 100%; }
+}
+
+.role-badge {
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  &.pro-badge {
+    background-color: $col-primary;
+    color: $white;
+    margin: 0;
+    .badge-img, .seller-text { display: none; }
+  }
+  &.elite-badge {
+    border: 2px solid $col-primary;
+    background-color: $white;
+    box-shadow: 0 1px 2px 0 rgba($black, .2);
+    .badge-text, .seller-text { display: none; }
+
+  }
+  &.seller-badge {
+    .badge-text,
+    .badge-img { display: none; }
+    background-color: $col-primary;
+    box-shadow: 0 1px 2px 0 rgba($black, .2);
+  }
+  .badge-text,
+  .seller-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .seller-text {
+    color: $white;
+    > span {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+    }
+    @include media('<presmall') {
+      color: $col-primary;
+    }
+  }
+  .badge-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .xl-elite-ico{
+      color: $col-primary;
+      display: inline-block;
+      font-size: 11px;
+      line-height: 9px;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+  }
+  .elite-txt {
+    color: $col-primary;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  img { max-height: 100%; }
+}

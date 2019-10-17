@@ -1,0 +1,121 @@
+ul.product_tab-list(v-model="activeTab")
+  li.product_tab-button(:class="{'active': activeTab === 1}")
+    button(
+      type="button"
+      @click="activeTab = 1"
+    ) Details
+  li.product_tab-button(:class="{'active': activeTab === 2}")
+    button(
+      type="button"
+      @click="activeTab = 2"
+    ) More Information
+  li.product_tab-button(:class="{'active': activeTab === 3}")
+    button(
+      type="button"
+      @click="activeTab = 3"
+    ) Seller Information
+.product_tab-content-wrap
+  .product_tab-content.animate-fade(
+    v-if="activeTab === 1"
+    v-html="productPageCtrl.product.description"
+  )
+  .product_tab-content.animate-fade(
+    v-if="activeTab === 2"
+  )
+    table.w-100
+      tbody
+        tr(
+          v-for="(attribute, id) in productPageCtrl.product.attrsList"
+          :key="id"
+        )
+          th.col(scope='row' width="100") {{ attribute.title }}
+          td.col {{ getSelectedFilter(attribute).title }}
+
+  .product_tab-content.animate-fade(
+    v-if="activeTab === 3"
+  )
+    .seller_box
+      .seller_img-wrap
+        user-avatar(
+          size="lg"
+          :user-avatar-info="productPageCtrl.product.sellerInfo"
+        )
+      .seller_info
+        p.seller_company {{ productPageCtrl.product.sellerInfo.proType }}
+        strong.seller_name {{ productPageCtrl.product.sellerInfo.userName }}
+        .product-reviews-summary
+          product-rating.product-tile_rating(
+            :rate-value="productPageCtrl.product.sellerInfo.rating"
+            :is-read-only="true"
+            :is-hover-disable="true"
+          )
+          router-link.product_reviews(:to='productPageCtrl.product.sellerInfo.id + "?tab=reviews"')
+            span Reviews
+            |  ({{ productPageCtrl.product.sellerInfo.reviewsCount }})
+        .seller_action
+          button.btn.btn--link.seller_action-item(
+            type="button"
+            actions-switcher="follow"
+            action-status="productPageCtrl.product.sellerInfo.isFollowed"
+            action-id="productPageCtrl.product.sellerInfo.id"
+          )
+            i.fa(
+              :class="{\
+                 'fa-check': productPageCtrl.product.sellerInfo.isFollowed,\
+                 'fa-user-plus': !productPageCtrl.product.sellerInfo.isFollowed\
+               }"
+            )
+            span {{ productPageCtrl.product.sellerInfo.isFollowed ? 'Following' : 'Follow'}}
+          button.btn.btn--link.seller_action-item(
+            type="button"
+            unavailable
+          )
+            i.fa.fa-envelope
+            span Send message
+      .seller_contacts
+        p.seller_contacts-item.seller_contacts-item--phone
+          a(href="tel:productPageCtrl.product.sellerInfo.phone") +3{{productPageCtrl.product.sellerInfo.phone }}
+        address.seller_contacts-item.seller_contacts-item--address
+          span {{ productPageCtrl.product.sellerInfo.address }}
+        p(v-if="productPageCtrl.product.sellerInfo.webSite && productPageCtrl.product.sellerInfo.webSite !== 'http://'")
+        .seller_contacts-item.seller_contacts-item--site
+          a(:href='productPageCtrl.product.sellerInfo.webSite' target="_blank") {{productPageCtrl.product.sellerInfo.webSite }}
+        ul.seller-social
+          li(
+            v-show="productPageCtrl.product.sellerInfo.facebookLink"
+          )
+            a.fa.fa-facebook-square(:href='productPageCtrl.product.sellerInfo.facebookLink' target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.googleLink"
+          )
+            a.fa.fa-google-plus-square(:href='productPageCtrl.product.sellerInfo.googleLink'
+              target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.instagramLink"
+          )
+            a.fa.fa-instagram(:href='productPageCtrl.product.sellerInfo.instagramLink' target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.linkedinLink"
+          )
+            a.fa.fa-linkedin-square(:href='productPageCtrl.product.sellerInfo.linkedinLink' target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.twitterLink"
+          )
+            a.fa.fa-twitter-square(:href='productPageCtrl.product.sellerInfo.twitterLink' target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.youtubeLink"
+          )
+            a.fa.fa-youtube-square(:href='productPageCtrl.product.sellerInfo.youtubeLink' target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.pinterestLink"
+          )
+            a.fa.fa-pinterest-square(:href='productPageCtrl.product.sellerInfo.pinterestLink'
+              target="_blank")
+          li(
+            v-show="productPageCtrl.product.sellerInfo.blog"
+          )
+            a.fa.fa-rss-square(:href="productPageCtrl.product.sellerInfo.blog" target="_blank")
+        .seller_links
+          router-link.btn.btn--outline(to="/some-link" unavailable) Shipping Policy
+          router-link.btn.btn--outline(to="/some-link" unavailable) Return Policy
+          router-link.btn.btn--outline(to="/some-link" unavailable) View Collection

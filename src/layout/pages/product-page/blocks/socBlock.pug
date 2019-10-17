@@ -1,0 +1,41 @@
+section.product_social
+  ul.product_social-list
+    li
+      a.facebook-bg(href='https://www.facebook.com/sharer/sharer.php?u=#{pageUrl}' target="_blank")
+        i.fa.fa-facebook
+    li
+      a.twitter-bg(data-url="#{pageUrl}" href='https://twitter.com/share' target="_blank")
+        i.fa.fa-twitter
+    li
+      a.google-bg(href='https://plus.google.com/share?url=#{pageUrl}' target="_blank")
+        i.fa.fa-google-plus
+    li
+      a.pinterest-bg(href='https://pinterest.com/pin/create/button/?url=#{pageUrl}' target="_blank")
+        i.fa.fa-pinterest-p(aria-hidden="true")
+    li
+      a.linkedin-bg(href='https://www.linkedin.com/shareArticle?mini=true&url=#{pageUrl}' target="_blank")
+        i.fa.fa-linkedin
+    //-li
+      a.tumblr-bg(href='')
+        i.fa.fa-tumblr
+    li
+      a.bg-primary(href="mailto:?subject=#{meta.metaTitle}&body=#{meta.metaDescription}%20%20%20%20Product:%20#{pageUrl}")
+        i.fa.fa-envelope
+
+  ul.product_social-info
+    li(
+      v-scroll-to="'.reviews-title, 150px'"
+    )
+      i.fa.fa-comment
+      | Reviews | {{ reviewCount }}
+    li(
+      :class="{'active': productPageCtrl.product.isLiked}"
+    )
+      i.fa.fa-thumbs-up
+      | {{ productPageCtrl.product.isLiked ? 'Liked' : 'Like'}} | {{ productPageCtrl.product.likes }}
+    li(
+      :class="{'active': productPageCtrl.product.isShared}"
+    )
+      i.ht.ic_share
+      | {{productPageCtrl.product.isShared ? 'Shared' : 'Share'}} | {{ productPageCtrl.product.shares }}
+

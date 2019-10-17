@@ -1,10 +1,12 @@
 @import '../../../scss/base';
-@import '../../../scss/components/rating';
-@import '../../../scss/components/user-avatar';
 @import '../../../scss/components/comments';
 @import '../../../scss/pages/shop';
+@import '../../../components/product-rating/product-rating';
 @import '../../../scss/components/product-item';
 @import '../../../components/user-review/user-review';
+@import '../../../components/user-avatar/user-avatar';
+@import '../../../scss/pages/article';
+
 
 
 .page_content {
@@ -130,6 +132,7 @@
 
 .product {
   overflow: hidden;
+  margin-bottom: 30px;
   @include media('>=medium') {
     display: flex;
     flex-wrap: wrap;
@@ -188,6 +191,7 @@
 }
 
 .product_reviews {
+  cursor: pointer;
   vertical-align: middle;
   margin-left: .25em;
   color: inherit;
@@ -766,7 +770,7 @@
     font-weight: normal;
     margin-bottom: 5px;
     &:hover {
-      color: $col-primary;
+      color: $white;
     }
   }
 }
@@ -834,6 +838,16 @@
 /* ---------------------------------------------------------
    CAROUSEL
    ---------------------------------------------------------*/
+
+.owl-theme {
+  .prev-arrow {
+    display: block;
+  }
+}
+
+
+
+
 .shop-carousel_section {
   border-top: 1px solid $col-border;
   padding: 1.5rem 0;

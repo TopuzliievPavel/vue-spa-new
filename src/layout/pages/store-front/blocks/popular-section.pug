@@ -15,7 +15,8 @@ section.shop_section.shop_section--position(
       :responsive="{0: {items: 1, nav: false, dots: true}, 480: {items: 2, nav: false }, 768: { nav: true, dots: false }, 992: {items: 4, dots: false} }"
     )
       li.shop-tile_wrap.shop-tile_wrap--large(
-        v-for="product in storeFrontCtrl.productsList"
+        v-for="(product, id) in storeFrontCtrl.productsList"
+        :key="id"
       )
         .shop-tile.banners_slide-products
           router-link.product-tile_photo-wrap(:to="product.link")

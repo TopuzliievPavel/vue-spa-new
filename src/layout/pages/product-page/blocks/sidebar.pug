@@ -2,7 +2,10 @@
   .shop-sidebar_title
     h3 Similar Products
   ul.shop-sidebar_list
-    li(v-for="similarProduct in productPageCtrl.similarProducts")
+    li(
+      v-for="(similarProduct, id) in productPageCtrl.similarProducts"
+      :key="id"
+    )
       product-item.shop-tile(
         :product-similar="similarProduct"
       )

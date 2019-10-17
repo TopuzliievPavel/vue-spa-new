@@ -1,0 +1,21 @@
+.categories-holder
+  ul.breadcrumbs
+    li
+      router-link.btn.btn--link(to="/some-link")
+        | Shop
+        i.fa.fa-angle-right(
+          aria-hidden="true"
+          v-show="shopCtrl.activeCategories.length"
+        )
+    li.no-animate(
+      v-for="(category, id) in shopCtrl.activeCategories"
+      :key="id"
+    )
+      router-link.no-animate.btn.btn--link(
+        to="/some-link"
+        @click="setActiveCategory"
+      )
+        | {{ category.title }}
+        i.fa.fa-angle-right(aria-hidden="true")
+      span.no-animate.text-primary
+        | {{ category.title }}
