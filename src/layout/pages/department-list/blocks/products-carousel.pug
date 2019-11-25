@@ -1,5 +1,5 @@
-section.shop_section.carousel-section(
-  v-if="departmentsCtrl.data.sliderContent.length"
+section.shop_section.carousel-section.shop_section--position(
+  v-if="departmentList.length"
 )
   .shop-section_header
     .shop-section_actions
@@ -15,8 +15,8 @@ section.shop_section.carousel-section(
       :navText="navText"
       :responsive="{0: {items: 1, nav: false, dots: true}, 480: {items: 2, nav: false }, 768: { nav: true, dots: false }, 992: {items: 4, dots: false} }"
     )
-      li.shop-tile_wrap.shop-tile_wrap--large(
-        v-for="(product, id) in departmentsCtrl.data.sliderContent"
+      li.shop-tile_wrap(
+        v-for="(product, id) in departmentList"
         :key="id"
       )
         .shop-tile
@@ -30,7 +30,7 @@ section.shop_section.carousel-section(
 
           .product-tile_details-wrap
             h4.product-tile_name
-              router-link.product-item-link(:to="product.link")
+              router-link.btn--link(:to="product.link")
                 | {{ product.title }}
 
             .product-tile_details-inner
@@ -39,9 +39,8 @@ section.shop_section.carousel-section(
                 span.price(v-show="product.price") {{ product.newPrice || product.price | currency }}
 
             .product-tile_btn-inner
-              button.btn.btn--link(
-                type="button"
-                @click.prevent="addToCart(product)"
+              add-to-cart.btn.btn--link(
+                @click-btn="addToCart(product)"
               )
                 i.fa.fa-shopping-cart(aria-hidden="true")
                 | Add to cart

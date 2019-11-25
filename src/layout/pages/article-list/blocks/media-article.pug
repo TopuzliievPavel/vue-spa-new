@@ -14,6 +14,7 @@
   footer.media-item_details-footer
     router-link(:to="{name: 'ArticlePage', params: { slug: item.slug }}")
       span Full story
+    button.btn.btn--primary(type="button") Delete article
     .media-item_date
       i(aria-hidden="true").fa.fa-clock-o
       | &nbsp;

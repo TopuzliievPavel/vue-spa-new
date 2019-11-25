@@ -1,9 +1,22 @@
 <template lang="pug">
-  .product-item
-    h1 {{ productSimilar.title }}
-
+  li.product-item_link
+    router-link.btn--link(:to="productSimilar.link")  {{ productSimilar.title }}
 </template>
 
-<script src="./product-item.js"></script>
+<script>
+  export default {
+    name: 'ProductItem',
+    props: {
+      productSimilar: {
+        type: Object
+      },
+      product: {
+        type: {
+          Array, Object
+        }
+      }
+    }
+  }
+</script>
 
 <style lang="scss" scoped> @import "./product-item";</style>

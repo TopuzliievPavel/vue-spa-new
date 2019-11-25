@@ -1,0 +1,8 @@
+.categories-holder
+  ul.breadcrumbs
+    li
+      router-link.btn.btn--link(:to="{name: 'StoreFront'}") StoreFront
+        | &nbsp;
+        i.fa.fa-angle-right(aria-hidden="true")
+    li
+      span.text-primary {{ product.title }}

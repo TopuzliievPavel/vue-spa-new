@@ -1,0 +1,9 @@
+.shop-aside_block.animate-fade
+  .shop-sidebar_title
+    h3 Similar Products
+  ul.shop-sidebar_list
+    product-item(
+      v-for="(similarProduct, id) in product.similarProducts"
+      :key="id"
+      :productSimilar="similarProduct"
+    )

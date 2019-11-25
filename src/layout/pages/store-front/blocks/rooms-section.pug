@@ -16,7 +16,7 @@ section.shop_section(
       :nav="false"
       :responsive="{0: {items: 1}, 640: {items: 2}, 992: {items: 3} }"
     )
-      li.shop-tile_wrap.shop-room_tile.shop-tile_wrap--large(
+      li.shop-tile_wrap.shop-room_tile(
         v-for="(category, index) in storeFrontCtrl.roomsCategoriesList.children"
         :key="index"
       )

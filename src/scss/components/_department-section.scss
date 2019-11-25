@@ -7,28 +7,29 @@
       }
     }
   }
-}
-.depart_tile {
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  height: 90px;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  padding: 0 0 0 20px;
-  background-color: $white;
-  border: 1px solid $col-border;
-  color: inherit;
-  overflow: hidden;
-  @include media('>=xlarge') {
-    padding-left: 40px;
+  .depart_tile {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 90px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0 0 0 20px;
+    background-color: $white;
+    border: 1px solid $col-border;
+    color: inherit;
+    overflow: hidden;
+    @include media('>=xlarge') {
+      padding-left: 40px;
+    }
+    &:hover {
+      color: $col-primary;
+    }
   }
-  &:hover {
-    color: $col-primary;
-  }
 }
+
 .depart_title {
   margin: 0;
   text-transform: capitalize;

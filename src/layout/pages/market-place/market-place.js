@@ -1,6 +1,5 @@
-import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'CartPage',
+  name: 'MarketPlace',
   data () {
     return {
       items: [],
@@ -31,11 +30,7 @@ export default {
       }
     }
   },
-  computed: {
-    ...mapState('cartsProduct',['cartProducts'])
-  },
   methods: {
-    ...mapMutations('cartsProduct', ['deleteFromCart']),
     decrementQty() {
       this.qty--
     },

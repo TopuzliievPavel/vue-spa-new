@@ -64,17 +64,16 @@ $footer-col-dark: #36363a;
 .shop-tile_wrap {
   padding: $product-layout-padding;
   display: flex;
-  width: 100%;
   flex: 0 0 100%;
   max-width: 100%;
   @include media('>=presmall') {
     flex: 0 0 50%;
     max-width: 50%;
   }
-  @include media('>=medium') {
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-  }
+  //@include media('>=medium') {
+  //  flex: 0 0 33.33%;
+  //  max-width: 33.33%;
+  //}
   @include media('>=large') {
     flex: 0 0 25%;
     max-width: 25%;

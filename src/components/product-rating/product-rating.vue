@@ -1,5 +1,5 @@
 <template lang="pug">
-  strong {{ rateValue }}
+  strong {{ productRateValue }}
 </template>
 
 <script src="./product-rating.js"></script>

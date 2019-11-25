@@ -62,7 +62,7 @@ export default {
           .createUserWithEmailAndPassword(this.user.email, this.user.pass)
           .then(
             (user) => {
-              this.createUser(user.uid);
+              this.createUser(user.user.uid);
               this.sendVerifire();
               this.$router.replace('/user-profile');
               this.sendForm = false;

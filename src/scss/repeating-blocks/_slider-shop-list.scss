@@ -1,11 +1,22 @@
-.shop-tile_wrap--large {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
 .owl-carousel,
 .owl-carousel .owl-stage-outer {
   position: static;
+
+  .shop-tile_wrap {
+    padding: $product-layout-padding;
+    display: flex;
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    .layout-list & {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  .shop-tile {
+    flex-direction: column;
+  }
 }
 
 .shop_section--position {

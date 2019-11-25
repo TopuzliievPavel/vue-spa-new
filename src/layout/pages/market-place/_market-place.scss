@@ -30,29 +30,3 @@
     display: block;
   }
 }
-
-.carts__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  @include media(">=premedium") {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
-.cart__item {
-  margin-bottom: 20px;
-  @include media(">=premedium") {
-    padding: 0 10px;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  @include media(">=xlarge") {
-    flex: 0 0 25%;
-    max-width: 25%;
-  }
-}
-.empty-cart {
-  text-align: center;
-}

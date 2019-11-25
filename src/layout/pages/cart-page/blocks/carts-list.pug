@@ -1,0 +1,37 @@
+main.page_main.shop-cart-page
+  .content-wrap.content-indent.empty-cart(v-if="cartProducts.length")
+    ul.carts__list
+      li.cart__item(
+        v-for="cart in cartProducts"
+        :key="cart.id"
+      )
+        .shop-tile.banners_slide-products
+          router-link.product-tile_photo-wrap(:to="cart.link")
+            .product-tile_label-wrap.product-tile_label(v-if="cart.newPrice")
+              span Sale
+            img(
+              :alt="cart.title"
+              :src="cart.thumbnail || cart.defaultImage"
+            )
+
+          .product-tile_details-wrap
+            h4.product-tile_name
+              router-link.product-item-link(
+                v-show="cart.title"
+                :to="cart.link"
+              )
+                | {{ cart.title }}
+
+            .product-tile_details-inner
+              .product-tile_price
+                span.price(v-show="cart.price") {{ cart.newPrice || cart.price | currency }}
+                span.old-price(v-if="cart.newPrice") {{ cart.price | currency }}
+              .product-tile_quantity
+                span.quantity(v-if="cart.quantity") {{ cart.quantity }}
+            .product-tile_btn-inner
+              button.btn.btn--link(
+                type="button"
+                @click="deleteFromCart(cart)"
+              )
+                i.fa.fa-trash(aria-hidden="true")
+                  | Delete from cart

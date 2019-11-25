@@ -1,4 +1,5 @@
 import { loginUser, logoutUser, checkLoginUser } from '../../core/loginUser';
+import {mapGetters} from "vuex";
 
 export default {
   name: 'PageHeader',
@@ -23,7 +24,8 @@ export default {
   computed: {
     userIsLogin() {
       return this.$store.state.auth.isLogin;
-    }
+    },
+    ...mapGetters('cartsProduct',['cartsCount'])
   },
   watch: {
     '$route' (to, from) {

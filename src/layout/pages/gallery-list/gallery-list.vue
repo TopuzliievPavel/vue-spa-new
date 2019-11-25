@@ -13,10 +13,6 @@
           )
             include blocks/article-item.pug
 
-
-
-
-
 </template>
 
 <script src="./gallery-list.js"></script>

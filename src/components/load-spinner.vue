@@ -25,14 +25,15 @@
 <style lang="scss" scoped>
   @import '../scss/base';
   .spinner {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
-    position: fixed;
-    top: 5px;
-    right: 25px;
-    z-index: 9999;
-    //background-color: #000;
   }
+
+
   .spinner_dot {
     background-color: $col-primary;
     width: 12px;

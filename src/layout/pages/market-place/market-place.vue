@@ -1,16 +1,13 @@
 <template lang="pug">
   main.page_main.shop-cart-page
-    .content-wrap.content-indent.empty-cart(v-if="!cartProducts.length")
+    .content-wrap.content-indent.empty-cart(v-if="!cartCtrl.cartProducts.length")
       i.fa.fa-shopping-basket(aria-hidden="true")
       p No item in your shopping cart
-      router-link.btn.btn--primary(:to="{name: 'StoreFront'}") Continue shopping
+      router-link.btn.btn--primary(:to="{name: 'ShopList'}") Continue shopping
 
-    .content-wrap.content-indent(v-if="cartProducts.length")
+    .content-wrap.content-indent(v-if="cartCtrl.cartProducts.length")
       .shop-section_title
         h1.h2 Shopping cart
-
-      include blocks/carts-list.pug
-
       .page_content-wrap
         .page_content
           .cart-table_table
@@ -24,7 +21,7 @@
               .cart-table_column
                 h4.checkout_title remove
             .cart-table_body(
-              v-for="(seller, index) in cartProducts"
+              v-for="(seller, index) in cartCtrl.cartProducts"
               :key="index"
             )
               .cart-table_row-seller
@@ -95,8 +92,7 @@
               .shop-cart_btn-wrap
                 router-link.btn.btn--gray(:to="{name: 'ComingSoon'}") Checkout Now
                 router-link.btn.btn--primary.shop-cart_btn(:to="{name: 'StoreFront'}") Keep Shopping
-
 </template>
+<script src="./market-place.js"></script>
 
-<script src="./cart-page.js"></script>
-<style lang="scss"> @import "./cart-page.scss";</style>
+<style lang="scss" scoped> @import "./market-place";</style>

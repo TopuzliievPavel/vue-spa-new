@@ -47,7 +47,7 @@ export default {
           .then((s) => {
             if (s.val()) {
               this.user = s.val();
-              console.log(this.user)
+              console.log('----------user---------', this.user)
             }
             else {
               setUserLogin(false, '', this);
@@ -123,19 +123,17 @@ export default {
         (error) => {
           console.log(error);
         },
-
         () => {
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
             if (prefix === 'avatar') {
               this.user.avatar = downloadURL;
             }
-            else if (prefix === 'bg') {
+            else {
               this.user.bg = downloadURL;
             }
-            else {
-              this.user.bg = this.user.avatar = downloadURL;
-            }
             console.log('File available at', downloadURL);
+          }).catch(error => {
+            return error
           });
           this.saveUser();
       });

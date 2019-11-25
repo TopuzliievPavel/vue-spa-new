@@ -1,4 +1,6 @@
 export default {
-  name: 'RatingProduct',
-  props: ['rateValue', 'isReadOnly', 'isHoverDisable']
+  name: 'ProductRating',
+  props: {
+    productRateValue: Number
+  }
 }

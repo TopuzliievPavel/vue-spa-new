@@ -29,7 +29,7 @@
           ]
 
         .search-autocomplete_wrapper(
-        :class="{'show-search': autocomplete.isOpen && autocomplete.searchText.length > 0}"
+          :class="{'show-search': autocomplete.isOpen && autocomplete.searchText.length > 0}"
         )
           ul.search-autocomplete_list
             each item in searchList

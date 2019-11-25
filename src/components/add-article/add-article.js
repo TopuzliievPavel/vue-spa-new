@@ -72,8 +72,13 @@ export default {
         }, function(error) {
           console.log(error);
         },
+        // () => {
+        //   this.article.image = uploadTask.snapshot.downloadURL;
+        // });
         () => {
-          this.article.image = uploadTask.snapshot.downloadURL;
+          uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+              this.article.img = url
+            })
         });
     },
     saveArticle() {
@@ -84,7 +89,7 @@ export default {
       db.ref('dataPages/media/listItems/' + this.article.slug).set(this.article);
       db.ref('dataPages/media/listPage/tags').set(saveTag);
       db.ref('dataPages/media/currentId').set(this.article.articleId);
-
+      console.log(this.article);
     },
     deleteCom() {
       console.log('del');

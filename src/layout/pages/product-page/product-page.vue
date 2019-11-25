@@ -10,8 +10,6 @@
       aside.page_sidebar.show-for-xlarge(v-if="productPageCtrl.similarProducts.length")
         include blocks/sidebar.pug
 
-
-
 </template>
 
 <script src="./product-page.js"></script>

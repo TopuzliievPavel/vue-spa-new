@@ -5,7 +5,6 @@
       include blocks/products-carousel.pug
       include blocks/single-banner.pug
 
-
 </template>
 
 <script src="./department-list.js"></script>

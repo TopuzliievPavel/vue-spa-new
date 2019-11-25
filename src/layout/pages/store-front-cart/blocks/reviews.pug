@@ -1,0 +1,26 @@
+.page_reviews-wrap
+  .page_reviews
+    h3.reviews-title Reviews ({{ reviewCount || 0 }})
+    .button-wrap
+      button.btn.btn--gray(
+        type="button"
+        @click.prevent="deleteReview"
+      ) Delete Review
+      button.btn.btn--primary.add-review-button(
+        type="button"
+        @click.prevent="addReview"
+      ) Add Review
+  .form
+    input.form-review_field(
+      type="text"
+      v-model="review.title"
+    )
+    textarea(v-model="review.description")
+    user-review.animate-fade-in(
+      v-for="(review, index) in reviews"
+      :key="index"
+      :productReview="review"
+    )
+    p(
+      v-if="reviewCount === 0"
+    ) No reviews added

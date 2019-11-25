@@ -1,11 +1,11 @@
 <template lang="pug">
   header.page_header(
-      :class="{\
+    :class="{\
         'menu-show': openBurgerMenu,\
         'signin-show': openSignIn,\
         'logged': userIsLogin\
         }"
-    )
+  )
 
     include blocks/hidden-section.pug
     section.header_main
@@ -21,13 +21,18 @@
             li
               router-link.nav-list_link(:to="{name: 'StoreFront'}" exact) STORE FRONT
             li
-              router-link.nav-list_link(:to="{name: 'CartPage'}" exact) MARKETPLACE
+              router-link.nav-list_link(:to="{name: 'MarketPlace'}" exact) MARKETPLACE
             li
               router-link.nav-list_link(:to="{name: 'ProductPage'}" exact) PRODUCTS
             li
-              router-link.nav-list_link(to="/some-link" exact) FIND A PRO
-            li
               router-link.nav-list_link(to="/some-link" exact) CONTACT
+            li
+              router-link.nav-list_link(:to="{name: 'CartPage'}" exact)
+                span Shopping Cart
+                | &nbsp;
+                i.fa.fa-shopping-cart.show-for-presmall
+                | &nbsp;
+                sup {{ cartsCount }}
 
           ul.header_options.header_nav-secondary
             li
@@ -38,6 +43,8 @@
                 span TIPSTER TV
                 | &nbsp;
                 i.fa.fa-television.show-for-presmall
+
+
 
 </template>
 

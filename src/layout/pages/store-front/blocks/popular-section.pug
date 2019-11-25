@@ -1,5 +1,5 @@
 section.shop_section.shop_section--position(
-  v-if="storeFrontCtrl.productsList.length"
+  v-if="storeFrontList.length"
 )
   .shop-section_header
     .shop-section_actions
@@ -9,17 +9,16 @@ section.shop_section.shop_section--position(
 
   .products-carousel
     carousel.shop_list(
-      :loop="true"
       :items="4"
       :navText="navText"
-      :responsive="{0: {items: 1, nav: false, dots: true}, 480: {items: 2, nav: false }, 768: { nav: true, dots: false }, 992: {items: 4, dots: false} }"
+      :responsive="{0: {items: 1, nav: false, dots: true}, 480: {items: 2, nav: false }, 768: { items: 3, nav: true, dots: false }, 992: {items: 4, dots: false} }"
     )
-      li.shop-tile_wrap.shop-tile_wrap--large(
-        v-for="(product, id) in storeFrontCtrl.productsList"
-        :key="id"
+      li.shop-tile_wrap(
+        v-for="product in storeFrontList"
+        :key="product.id"
       )
         .shop-tile.banners_slide-products
-          router-link.product-tile_photo-wrap(:to="product.link")
+          router-link.product-tile_photo-wrap(:to="{name: 'StoreFrontCart', params: {id: product.id - 1}}")
             .product-tile_label-wrap.product-tile_label(v-if="product.newPrice")
               span Sale
             img(
@@ -29,11 +28,7 @@ section.shop_section.shop_section--position(
 
           .product-tile_details-wrap
             h4.product-tile_name
-              router-link.product-item-link(
-                v-show="product.title"
-                :to="product.link"
-              )
-                | {{ product.title }}
+              | {{ product.title }}
 
             .product-tile_details-inner
               .product-tile_price
@@ -41,9 +36,6 @@ section.shop_section.shop_section--position(
                 span.old-price(v-if="product.newPrice") {{ product.price | currency }}
 
             .product-tile_btn-inner
-              button.btn.btn--link(
-                type="button"
-                @click.prevent="addToCart(product)"
+              add-to-cart.btn.btn--link(
+                @click-btn="addToCart(product)"
               )
-                i.fa.fa-shopping-cart(aria-hidden="true")
-                | Add to cart

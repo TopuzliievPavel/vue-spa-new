@@ -1,14 +1,94 @@
 import carousel from 'vue-owl-carousel'
-import { addToCart } from "../../../core/loginUser";
-
+import AddToCart from '../../../components/add-to-cart'
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'StoreFront',
-  components: {
-    carousel,
-  },
+  components: { carousel, AddToCart },
   data() {
     return {
+      storeFrontList: [
+        {
+          id: 1,
+          price: 50,
+          newPrice: '',
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/bathoil-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Bath-oil',
+          quantity: 1
+        },
+        {
+          id: 2,
+          price: 59.99,
+          newPrice: '',
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/office-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Office',
+          quantity: 1
+        },
+        {
+          id: 3,
+          price: 40,
+          newPrice: 20,
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/board-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Board',
+          quantity: 1
+        },
+        {
+          id: 4,
+          price: 20,
+          newPrice: '',
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/iphone-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Iphone',
+          quantity: 1
+        },
+        {
+          id: 5,
+          price: 90,
+          newPrice: 60,
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/technology-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Technology',
+          quantity: 1
+        },
+        {
+          id: 6,
+          price: 75,
+          newPrice: '',
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/visa-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Visa',
+          quantity: 1
+        },
+        {
+          id: 7,
+          price: 65,
+          newPrice: 50,
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/premium-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Premium',
+          quantity: 1
+        },
+        {
+          id: 8,
+          price: 100,
+          newPrice: '',
+          link: '/some-link',
+          thumbnail: require('@/assets/img/store-front-page/idea-popular.jpg'),
+          defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
+          title: 'Idea',
+          quantity: 1
+        }
+      ],
       navText: [
         '<i class="fa fa-angle-left"></i>',
         '<i class="fa fa-angle-right"></i>'
@@ -143,72 +223,6 @@ export default {
             linkTitle: ''
           }
         },
-        productsList: [
-          {
-            price: 50,
-            newPrice: '',
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/bathoil-popular.jpg'),
-            defaultImage: 'https://s3.amazonaws.com/HT-Shop/default_shop.jpg',
-            title: 'Bath-oil'
-          },
-          {
-            price: 59.99,
-            newPrice: '',
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/office-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Office'
-          },
-          {
-            price: 40,
-            newPrice: 20,
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/board-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Board'
-          },
-          {
-            price: 20,
-            newPrice: '',
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/iphone-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Iphone'
-          },
-          {
-            price: 90,
-            newPrice: 60,
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Technology'
-          },
-          {
-            price: 75,
-            newPrice: '',
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/visa-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Visa'
-          },
-          {
-            price: 65,
-            newPrice: 50,
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/premium-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Premium'
-          },
-          {
-            price: 100,
-            newPrice: '',
-            link: '/some-link',
-            thumbnail: require('@/assets/img/store-front-page/idea-popular.jpg'),
-            defaultImage: require('@/assets/img/store-front-page/technology-popular.jpg'),
-            title: 'Idea'
-          }
-        ],
         roomsList: [
           require('@/assets/img/store-front-page/computer-rooms.jpg'),
           require('@/assets/img/store-front-page/conference-rooms.jpg'),
@@ -258,11 +272,11 @@ export default {
             },
             {
               title: 'Apartment',
-              thumbnail: ''
+              thumbnail: require('@/assets/img/store-front-page/apartment-rooms.jpg'),
             },
             {
               title: 'category',
-              thumbnail: require('@/assets/img/store-front-page/apartment-rooms.jpg'),
+              thumbnail: require('@/assets/img/store-front-page/tables-room.jpg'),
               children: [
                 {
                   tittle: ''
@@ -285,9 +299,10 @@ export default {
   computed: {
     userIsLogin() {
       return this.$store.state.auth.isLogin;
-    }
+    },
+    ...mapGetters('cartsProduct', ['cartsCount'])
   },
   methods: {
-    addToCart
+    ...mapMutations('cartsProduct', ['addToCart', 'deleteFromCart'])
   }
 }

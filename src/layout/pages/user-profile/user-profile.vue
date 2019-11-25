@@ -24,6 +24,7 @@
               .name-wrapper
                 h1.name
                   span.user-name {{ user.firstName }}
+                  span.user-name {{ user.lastName }}
 
               .soc-block(v-if="isSocial")
                 span.spoil-text.show-for-medium Social networks links
